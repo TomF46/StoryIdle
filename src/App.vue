@@ -21,7 +21,6 @@ export default {
     };
   },
   mounted(){
-    this.$store.dispatch("loadTasks");
     this.$store.dispatch("loadPlayerData").then(res => {
       console.log("loaded")
       this.loaded = true;

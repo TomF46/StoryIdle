@@ -1,0 +1,24 @@
+{
+    "tasks" : [
+        {
+            "id" : 1,
+            "name" : "Beg",
+            "timeToComplete" : 5000,
+            "rewardId" : 1,
+            "rewardAmount" : 0.15,
+            "automationRequirement" : [
+                {"itemId" : 1 , "amount" : 20}
+            ] 
+        },
+        {
+            "id": 2,
+            "name" : "Chop wood",
+            "timeToComplete" : 10000,
+            "rewardId" : 2,
+            "rewardAmount" : 1,
+            "automationRequirement" : [
+                {"itemId" : 1 , "amount" : 20}
+            ] 
+        }
+    ]
+}
