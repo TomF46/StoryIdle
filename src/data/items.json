@@ -1,6 +1,6 @@
 {
     "items" : [
-        {"id": 0, "name": "money", "value" : 1, "canBeSold" : false},
-        {"id": 1, "name": "wood", "value" : 3, "canBeSold" : true}
+        {"id": 1, "name": "money", "value" : 1, "canBeSold" : false},
+        {"id": 2, "name": "wood", "value" : 3, "canBeSold" : true}
     ]
 }

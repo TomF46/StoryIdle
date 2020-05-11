@@ -18,6 +18,18 @@ const playerData = {
     }
   },
   actions: {
+    addToInventory({state}, item){
+        console.log(state);
+        console.log(item);
+        var inventoryItem = state.inventory.find(x => x.itemId == item.id);
+        
+        if(inventoryItem){
+            inventoryItem.amount+= item.amount
+            return;
+        }
+
+        state.inventory.push({itemId : item.id, amount: item.amount});
+    },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {
         Vue.prototype.$storage.get("playerData").then(data => {
@@ -29,7 +41,7 @@ const playerData = {
             return;
           }
 
-          state = data;
+          Object.assign(state, data) 
           dispatch("setUserTaskData");
           resolve();
         }).catch(err => {
@@ -56,8 +68,7 @@ const playerData = {
       });
     },
     giveDefaultItems({state}){
-        console.log("Add money")
-        state.inventory.push({itemId : 1, name: "money", amount: 0})
+        state.inventory.push({itemId : 1, amount: 0})
     },
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {

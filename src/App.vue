@@ -23,6 +23,7 @@ export default {
   mounted(){
     this.$store.dispatch("loadPlayerData").then(res => {
       console.log("loaded")
+      console.log(this.$store.state.playerData);
       this.loaded = true;
     }).catch(err =>{
       console.log(err)
