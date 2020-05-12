@@ -1,6 +1,6 @@
 <template>
     <div class="log">
-        <p>Log</p>
+        <p class="center-text">Log</p>
         <ul>
           <li v-for="(log, i) in displayLogs" :key="i">{{log.timestamp}} - {{log.text}}</li>
         </ul>

@@ -45,4 +45,8 @@ export default {
     margin: 0px;
     min-height: 100vh;
   }
+
+  .center-text{
+    text-align: center;
+  }
 </style>

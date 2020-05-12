@@ -1,10 +1,16 @@
 <template>
-    <div class="header row center-xs">
-        <div class="logo">
-            <button class="switch-button" @click="switchView">{{switchText}}</button>
-            <p>Storyline Idle - Stage {{currentStage}}</p>
-            <button class="reset-button" @click="confirmReset">Reset</button>
-        </div>
+    <div class="header row">
+      <div class="col-xs-4">
+          <button v-if="!isCurrentPage('/')" class="link-button" @click="navigate('/')">Tasks</button>
+          <button v-if="!isCurrentPage('/shop')" class="link-button" @click="navigate('/shop')">Shop</button>
+          <button v-if="!isCurrentPage('/inventory')" class="link-button" @click="navigate('/inventory')">Inventory</button>
+      </div>
+      <div class="logo center-xs col-xs-4">
+          <p>Storyline Idle - Stage {{currentStage}}</p>
+      </div>
+      <div class="col-xs-4">
+        <button class="reset-button" @click="confirmReset">Reset</button>
+      </div>
     </div>
 </template>
 
@@ -12,10 +18,6 @@
 export default {
   name: 'Header',
   computed:{
-    switchText(){
-      var text = this.$route.path == "/" ? "Shop" : "Tasks";
-      return text;
-    },
     currentStage(){
       return this.$store.state.playerData.currentStage;
     }
@@ -28,10 +30,8 @@ export default {
       var consent = confirm("Are you sure you want to reset all progression?")
       if(consent) this.reset();
     },
-    switchView(){
-       var path = this.$route.path == "/" ? "/shop" : "/";
-       this.$router.push(path);
-      
+    isCurrentPage(link){
+      return this.$route.path == link;
     },
     reset(){
       this.$store.dispatch("resetData");
@@ -54,10 +54,8 @@ export default {
         margin: 0;
     }
 
-    .switch-button{
-      position: absolute;
-      top: 20px;
-      left: 20px;
+    .link-button{
+      margin: 20px;
       padding: 10px;
       border: 1px solid #eee;
       background-color: green;

@@ -36,6 +36,18 @@ const playerData = {
 
         state.inventory.push({id : item.id, amount: item.amount});
     },
+    removeFromInventory({state}, item){
+      var inventoryItem = state.inventory.find(x => x.id == item.id);
+
+      if(inventoryItem == null) return //Probably return error as this shouldnt be possible
+
+      inventoryItem.amount-= item.amount;
+
+      if(inventoryItem.amount <= 0){
+        var index = state.inventory.indexOf(inventoryItem);
+        state.inventory.splice(index,1);
+      }
+    },
     buyItem({state, commit, dispatch}, item){
       if(state.money < item.value){
         Vue.prototype.$alerts.notification('error',"Unable to buy", "You dont have enough money for this item");
@@ -45,9 +57,13 @@ const playerData = {
       commit("subtractMoney", item.value);
       dispatch("addToInventory", {id : item.id, amount: 1})
       dispatch("savePlayerData");
-
-
-      
+    },
+    sellItem({state, commit, dispatch}, item){
+      // When i implement selling more than one of an item then check they have enough
+      console.log(item);
+      commit("addMoney", item.value);
+      dispatch("removeFromInventory", {id : item.id, amount: 1})
+      dispatch("savePlayerData");
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {

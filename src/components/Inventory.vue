@@ -1,6 +1,6 @@
 <template>
     <div class="inventory">
-        <p>Inventory</p>
+        <p class="center-text">Quick Inventory</p>
         <ul>
             <li>{{money}} </li>
             <li v-for="(item, i) in inventory" :key="i">{{getItemName(item.id)}} - {{item.amount}}</li>

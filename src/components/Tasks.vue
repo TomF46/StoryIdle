@@ -1,6 +1,6 @@
 <template>
     <div class="tasks">
-        <p>Tasks</p>
+        <p class="center-text">Tasks</p>
         <div v-for="(task, i) in tasks" :key="i">
             <task  :task="task" :userTaskData="getUserTaskData(task)"></task>
         </div>
