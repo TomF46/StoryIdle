@@ -6,7 +6,8 @@ const playerData = {
       money: 0,
       taskData: [],
       log: [],
-      inventory: []
+      inventory: [],
+      currentStage: 1
   },
   mutations: {
     setPlayerTaskData(state, data){
@@ -75,6 +76,7 @@ const playerData = {
         state.taskData = [];
         state.log = [];
         state.inventory = [];
+        state.currentStage = 1;
         dispatch("setUserTaskData");
         Vue.prototype.$alerts.notification('success',"Reset", "Data has been reset");
       }).catch(error =>{
