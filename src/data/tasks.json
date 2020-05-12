@@ -9,7 +9,8 @@
                 {"id" : 1, "amount" : 1}
             ],
             "automationRequirement" : [
-                {"id" : 1 , "amount" : 20}
+                {"id" : 5 , "amount" : 2},
+                {"id" : 1 , "amount" : 30}
             ] 
         },
         {
@@ -21,7 +22,7 @@
                 {"id" : 1, "amount" : 1}
             ],
             "automationRequirement" : [
-                {"id" : 1 , "amount" : 20}
+                {"id" : 1 , "amount" : 1}
             ] 
         }
     ]

@@ -82,7 +82,7 @@ const playerData = {
       tasks.forEach((task) => {
         if(state.taskData.some(taskDataItem => taskDataItem.id == task.id) == false){
          var unlocked = task.id == 1;
-          state.taskData.push({id: task.id, automated: false, unlocked: unlocked})
+          state.taskData.push({id: task.id, unlocked: unlocked})
         }
       });
     },

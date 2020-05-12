@@ -2,7 +2,7 @@
     <div class="header row center-xs">
         <div class="logo">
             <button class="switch-button" @click="switchView">{{switchText}}</button>
-            <p>Storyline Idle</p>
+            <p>Storyline Idle - Stage {{currentStage}}</p>
             <button class="reset-button" @click="confirmReset">Reset</button>
         </div>
     </div>
@@ -15,6 +15,9 @@ export default {
     switchText(){
       var text = this.$route.path == "/" ? "Shop" : "Tasks";
       return text;
+    },
+    currentStage(){
+      return this.$store.state.playerData.currentStage;
     }
   },
   methods:{

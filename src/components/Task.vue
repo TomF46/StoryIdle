@@ -7,10 +7,7 @@
       :overrunOwed="owedTime"
       @taskFinished="onTaskFinished"
     ></progress-bar>
-    <button v-if="!userTaskData.automated" @click="runTask">Run</button>
-    <!-- <button @click="levelUp">Level up: {{levelUpCostDisplay}}</button>
-    <button v-if="!taskData.automated" @click="unlockAutomation">Unlock automation: {{automationCostDisplay}}</button>
-    <p v-if="taskData.automated">Task automated</p>-->
+    <button @click="runTask">Run</button>
   </div>
 </template>
 
@@ -43,10 +40,25 @@ export default {
           "Not sure how this has happened"
         );
       return userTaskData;
+    },
+    automated(){
+      var automated = true;
+
+      // refactor this might not be right function if we cant break
+      this.task.automationRequirement.forEach(requirement => {
+        var item = this.$store.state.playerData.inventory.find(item => item.id == requirement.id);
+        if(item == null || automated == false){
+          automated = false;
+        }else{
+          automated = item.amount >= requirement.amount
+        }
+      })
+
+      return automated;
     }
   },
   mounted() {
-    if (this.userTaskData.automated) this.runTask();
+    
   },
   methods: {
     runTask() {
@@ -55,7 +67,7 @@ export default {
     onTaskFinished(overrun) {
       this.payUser();
 
-      if (!this.userTaskData.automated) return;
+      if (!this.automated) return;
 
       // If overrun is greater than the time to complete a task pay the user for those tasks until the overrun owed is less than the task time
       while (overrun > this.task.timeToComplete) {
