@@ -20,6 +20,9 @@ const playerData = {
     },
     addMoney(state, amount){
       state.money += amount;
+    },
+    subtractMoney(state, amount){
+      state.money -= amount;
     }
   },
   actions: {
@@ -32,6 +35,19 @@ const playerData = {
         }
 
         state.inventory.push({id : item.id, amount: item.amount});
+    },
+    buyItem({state, commit, dispatch}, item){
+      if(state.money < item.value){
+        Vue.prototype.$alerts.notification('error',"Unable to buy", "You dont have enough money for this item");
+        return;
+      }
+
+      commit("subtractMoney", item.value);
+      dispatch("addToInventory", {id : item.id, amount: 1})
+      dispatch("savePlayerData");
+
+
+      
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {

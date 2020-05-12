@@ -1,7 +1,9 @@
 <template>
     <div class="header row center-xs">
         <div class="logo">
-            <p>Storyline Idle <button class="reset-button" @click="confirmReset">Reset</button></p>
+            <button class="switch-button" @click="switchView">{{switchText}}</button>
+            <p>Storyline Idle</p>
+            <button class="reset-button" @click="confirmReset">Reset</button>
         </div>
     </div>
 </template>
@@ -9,6 +11,12 @@
 <script>
 export default {
   name: 'Header',
+  computed:{
+    switchText(){
+      var text = this.$route.path == "/" ? "Shop" : "Tasks";
+      return text;
+    }
+  },
   methods:{
     navigate(link){
       this.$router.push(link);
@@ -16,6 +24,11 @@ export default {
     confirmReset(){
       var consent = confirm("Are you sure you want to reset all progression?")
       if(consent) this.reset();
+    },
+    switchView(){
+       var path = this.$route.path == "/" ? "/shop" : "/";
+       this.$router.push(path);
+      
     },
     reset(){
       this.$store.dispatch("resetData");
@@ -36,6 +49,16 @@ export default {
         font-size: 1.5rem;
         padding: 20px;
         margin: 0;
+    }
+
+    .switch-button{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px;
+      border: 1px solid #eee;
+      background-color: green;
+      color: #eee;
     }
 
     .reset-button{

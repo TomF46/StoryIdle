@@ -1,5 +1,9 @@
 {
     "items" : [
-        {"id": 1, "name": "wood", "value" : 3, "canBeSold" : true}
+        {"id": 1, "name": "wood", "value" : 5, "canBeSold" : true, "buyable" : false},
+        {"id": 2, "name": "Axe", "value" : 50, "canBeSold" : false, "buyable" : true},
+        {"id": 3, "name": "Coal", "value" : 10, "canBeSold" : true, "buyable" : false},
+        {"id": 4, "name": "Pickaxe", "value" : 500, "canBeSold" : false, "buyable" : true},
+        {"id": 5, "name": "Diamond House", "value" : 50000000, "canBeSold" : false, "buyable" : true}
     ]
 }
