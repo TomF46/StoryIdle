@@ -2,7 +2,8 @@
     <div class="inventory">
         <p>Inventory</p>
         <ul>
-            <li v-for="(item, i) in inventory" :key="i">{{getItemName(item.itemId)}} - {{item.amount}}</li>
+            <li>{{money}} </li>
+            <li v-for="(item, i) in inventory" :key="i">{{getItemName(item.id)}} - {{item.amount}}</li>
         </ul>
     </div>
 </template>
@@ -12,14 +13,15 @@ import Items from '../data/items'
 export default {
   name: 'Inventory',
   computed: {
+    money(){
+      return this.$currenctFormatter.format(this.$store.state.playerData.money);
+    },
     inventory() {
       return this.$store.state.playerData.inventory;
     },
   },
   methods:{
       getItemName(id){
-        console.log(id);
-        console.log(Items)
         var item = Items.items.find(x => x.id == id);
         return item.name;
       }

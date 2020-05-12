@@ -4,20 +4,24 @@
             "id" : 1,
             "name" : "Beg",
             "timeToComplete" : 5000,
-            "rewardId" : 1,
-            "rewardAmount" : 0.15,
+            "moneyReward": 0.15,
+            "itemRewards" : [
+                {"id" : 1, "amount" : 1}
+            ],
             "automationRequirement" : [
-                {"itemId" : 1 , "amount" : 20}
+                {"id" : 1 , "amount" : 20}
             ] 
         },
         {
             "id": 2,
             "name" : "Chop wood",
             "timeToComplete" : 10000,
-            "rewardId" : 2,
-            "rewardAmount" : 1,
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id" : 1, "amount" : 1}
+            ],
             "automationRequirement" : [
-                {"itemId" : 1 , "amount" : 20}
+                {"id" : 1 , "amount" : 20}
             ] 
         }
     ]

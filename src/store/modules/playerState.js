@@ -3,6 +3,7 @@ import Tasks from '../../data/tasks.json';
 
 const playerData = {
   state: {
+      money: 0,
       taskData: [],
       actionLog: [],
       inventory: []
@@ -15,20 +16,21 @@ const playerData = {
       var timestamp =  new Date().getTime();
       var logItem = {dateTime : new Date(timestamp), action: action};
       state.actionLog.push(logItem);
+    },
+    addMoney(state, amount){
+      state.money += amount;
     }
   },
   actions: {
     addToInventory({state}, item){
-        console.log(state);
-        console.log(item);
-        var inventoryItem = state.inventory.find(x => x.itemId == item.id);
+        var inventoryItem = state.inventory.find(x => x.id == item.id);
         
         if(inventoryItem){
             inventoryItem.amount+= item.amount
             return;
         }
 
-        state.inventory.push({itemId : item.id, amount: item.amount});
+        state.inventory.push({id : item.id, amount: item.amount});
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {
@@ -66,9 +68,6 @@ const playerData = {
           state.taskData.push({id: task.id, automated: false, unlocked: unlocked})
         }
       });
-    },
-    giveDefaultItems({state}){
-        state.inventory.push({itemId : 1, amount: 0})
     },
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {
