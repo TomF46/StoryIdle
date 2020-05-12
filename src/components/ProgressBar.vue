@@ -19,7 +19,8 @@ export default {
         timerIncrement: 10,
         active: false,
         startTime: null,
-        totalRunningTime: 0
+        totalRunningTime: 0,
+        timeout: null
     };
   },
   computed: {
@@ -36,7 +37,10 @@ export default {
   },
   methods:{
     start(){
-        if(this.active == true) return;
+        if(this.active == true){
+          this.cancelTask();
+          return;
+        }
         this.active = true;
         this.totalRunningTime = this.miliseconds - this.overrunOwed;
         this.remainingTime = this.miliseconds - this.overrunOwed;
@@ -44,9 +48,15 @@ export default {
         this.runTaskTimer();
     },
     onFinish(overrun){
+        clearTimeout(this.timeout);
         this.active = false;
         this.remainingTime = 0;
-      this.$emit("taskFinished", overrun);
+        this.$emit("taskFinished", overrun);
+    },
+    cancelTask(){
+        clearTimeout(this.timeout);
+        this.active = false;
+        this.remainingTime = 0;
     },
     animateProgress(){
       requestAnimationFrame((timestamp) =>{
@@ -68,7 +78,7 @@ export default {
     },
    runTaskTimer(){
      var taskStartTime = new Date().getTime();
-     setTimeout(() => {
+     this.timeout = setTimeout(() => {
        var finishTime = new Date().getTime();
        var runtime = finishTime - taskStartTime;
        var overrun = runtime - this.totalRunningTime;
