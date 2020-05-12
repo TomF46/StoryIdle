@@ -5,17 +5,17 @@ const playerData = {
   state: {
       money: 0,
       taskData: [],
-      actionLog: [],
+      log: [],
       inventory: []
   },
   mutations: {
     setPlayerTaskData(state, data){
       state.taskData = data;
     },
-    addActionToLog(state, action){
+    addToLog(state, log){
       var timestamp =  new Date().getTime();
-      var logItem = {dateTime : new Date(timestamp), action: action};
-      state.actionLog.push(logItem);
+      var logItem = {timestamp : new Date(timestamp), text: log.text, type: log.type};
+      state.log.push(logItem);
     },
     addMoney(state, amount){
       state.money += amount;
@@ -73,7 +73,7 @@ const playerData = {
       Vue.prototype.$storage.removeAll().then(res => {
         state.money = 0;
         state.taskData = [];
-        state.actionLog = [];
+        state.log = [];
         state.inventory = [];
         dispatch("setUserTaskData");
         Vue.prototype.$alerts.notification('success',"Reset", "Data has been reset");

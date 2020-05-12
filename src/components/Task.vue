@@ -16,6 +16,7 @@
 
 <script>
 import ProgressBar from "./ProgressBar";
+import LogEnum from '../data/enums/LogItems.Enum'
 
 export default {
   name: "task",
@@ -74,7 +75,7 @@ export default {
       });
 
       this.$store.commit("addMoney", this.task.moneyReward);
-      this.$store.commit("addActionToLog", `Completed ${this.task.name}`);
+      this.$store.commit("addToLog", { text : `Completed ${this.task.name}`, type: LogEnum.Action});
       this.$store.dispatch("savePlayerData");
     }
   }

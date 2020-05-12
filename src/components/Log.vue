@@ -1,12 +1,25 @@
 <template>
     <div class="log">
         <p>Log</p>
+        <ul>
+          <li v-for="(log, i) in displayLogs" :key="i">{{log.timestamp}} - {{log.text}}</li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
   name: 'Log',
+  computed:{
+    logs(){
+      return this.$store.state.playerData.log;
+    },
+    displayLogs(){
+      if(this.logs.length < 20) return this.logs;
+
+      return this.logs.slice(this.logs.length - 20, this.logs.length)
+    }
+  },
   methods:{
   }
 }
