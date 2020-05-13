@@ -53,6 +53,7 @@ export default {
   transition: 0.3s;
   margin: 10px;
   min-height: 10vh;
+  padding: 6px;
 
   .card-title {
     text-align: center;
@@ -62,6 +63,9 @@ export default {
     margin: 0 auto;
     display: block;
     padding: 10px;
+    background-color: green;
+    border: 1px solid grey;
+    margin-bottom: 10px;
   }
 }
 

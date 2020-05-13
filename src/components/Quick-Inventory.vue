@@ -34,6 +34,9 @@ export default {
 .inventory{
   ul{
     list-style: none;
+    li{
+      margin-bottom: 4px;
+    }
   }
 }
 </style>

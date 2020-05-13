@@ -1,7 +1,7 @@
 <template>
     <div class="navigation row">
       <div v-for="(link, i) in links" :key="i" class="col-xs-3 button-container">
-          <button class="navigation-button" @click="navigate(link.href)">{{link.text}}</button>
+          <button class="navigation-button" v-bind:class="{ active: link.isActive }" @click="navigate(link.href)">{{link.text}}</button>
       </div>
     </div>
 </template>
@@ -17,6 +17,9 @@ export default {
             {text: "Shop", href: "/shop", isActive: this.isCurrentPage('/shop')},
             {text: "Options", href: "/options", isActive: this.isCurrentPage('/options')},
         ]
+    },
+    buttonClass(){
+
     }
   },
   methods:{
@@ -24,7 +27,7 @@ export default {
       return this.$route.path == link;
     },
     navigate(link){
-        this.$router.push(link);
+     if(!this.isCurrentPage(link)) this.$router.push(link);
     }
   }
 }
@@ -46,6 +49,10 @@ export default {
         border: 0;
         border-right: 1px solid grey;
         border-left: 1px solid grey;
+    }
+
+    .active{
+        border-top: 6px solid #31708e;
     }
 }
 </style>
