@@ -2,7 +2,7 @@
     <div class="tasks">
         <p class="center-text">Tasks</p>
         <div v-for="(task, i) in tasks" :key="i">
-            <task  :task="task" :userTaskData="getUserTaskData(task)"></task>
+            <task  :task="task"></task>
         </div>
     </div>
 </template>
@@ -18,15 +18,9 @@ export default {
   computed: {
     tasks() {
       return Tasks.tasks
-    },
-    userTaskData(){
-      return this.$store.state.playerData.taskData;  
     }
   },
   methods:{
-      getUserTaskData(id){
-          return this.$store.state.playerData.taskData.find(task => task.id == id);
-      }
   }
 }
 </script>

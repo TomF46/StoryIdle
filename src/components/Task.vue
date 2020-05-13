@@ -1,5 +1,5 @@
 <template>
-  <div v-if="userTaskData.unlocked" class="task">
+  <div v-if="taskUnlocked" class="task">
     <p>{{task.name}}</p>
     <progress-bar
       ref="progressbar"
@@ -29,17 +29,9 @@ export default {
     };
   },
   computed: {
-    userTaskData() {
-      var userTaskData = this.$store.state.playerData.taskData.find(
-        task => task.id == this.task.id
-      );
-      if (userTaskData == null)
-        this.$alerts.notification(
-          "error",
-          "Unable to find user task data",
-          "Not sure how this has happened"
-        );
-      return userTaskData;
+    taskUnlocked(){
+      var currentStage = this.$store.state.playerData.currentStage;
+      return this.task.requiredStage <= currentStage;
     },
     automated(){
       var automated = true;

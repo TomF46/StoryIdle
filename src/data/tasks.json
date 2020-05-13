@@ -3,6 +3,7 @@
         {
             "id" : 1,
             "name" : "Beg",
+            "requiredStage": 1,
             "timeToComplete" : 5000,
             "moneyReward": 0.15,
             "itemRewards" : [
@@ -16,6 +17,7 @@
         {
             "id": 2,
             "name" : "Chop wood",
+            "requiredStage": 2,
             "timeToComplete" : 10000,
             "moneyReward": 0,
             "itemRewards" : [
@@ -23,6 +25,19 @@
             ],
             "automationRequirement" : [
                 {"id" : 1 , "amount" : 1}
+            ] 
+        },
+        {
+            "id": 3,
+            "name" : "Mine Coal",
+            "requiredStage": 3,
+            "timeToComplete" : 15000,
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id" : 3, "amount" : 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 5 , "amount" : 1}
             ] 
         }
     ]

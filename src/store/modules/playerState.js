@@ -69,7 +69,6 @@ const playerData = {
       return new Promise((resolve, reject) => {
         Vue.prototype.$storage.get("playerData").then(data => {
           if(data == null){
-            dispatch("setUserTaskData");
             dispatch("giveDefaultItems")
             dispatch("savePlayerData");
             resolve();
@@ -77,7 +76,6 @@ const playerData = {
           }
 
           Object.assign(state, data) 
-          dispatch("setUserTaskData");
           resolve();
         }).catch(err => {
           console.log(err);
@@ -92,16 +90,6 @@ const playerData = {
         Vue.prototype.$alerts.notification('error',"Unable to determine task level", "Not sure how this has happened");
       })
     },
-    setUserTaskData({state}){
-      var tasks = Tasks.tasks;
-
-      tasks.forEach((task) => {
-        if(state.taskData.some(taskDataItem => taskDataItem.id == task.id) == false){
-         var unlocked = task.id == 1;
-          state.taskData.push({id: task.id, unlocked: unlocked})
-        }
-      });
-    },
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {
         state.money = 0;
@@ -109,7 +97,6 @@ const playerData = {
         state.log = [];
         state.inventory = [];
         state.currentStage = 1;
-        dispatch("setUserTaskData");
         Vue.prototype.$alerts.notification('success',"Reset", "Data has been reset");
       }).catch(error =>{
         Vue.prototype.$alerts.notification('error',"Unable to reset data", "Not sure how this has happened");
