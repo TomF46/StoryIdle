@@ -2,7 +2,7 @@
     <div class="log">
         <p class="center-text">Log</p>
         <ul>
-          <li v-for="(log, i) in displayLogs" :key="i">{{log.timestamp}} - {{log.text}}</li>
+          <li v-for="(log, i) in displayLogs" :key="i">{{log.timestamp.toLocaleString()}} - {{log.text}}</li>
         </ul>
     </div>
 </template>
