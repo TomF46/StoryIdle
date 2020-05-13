@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import Inventory from '../components/Inventory'
+import QuickInventory from '../components/Quick-Inventory'
 import Tasks from '../components/Tasks'
 import Log from '../components/Log'
 
 export default {
   name: 'Main',
   components:{
-    "game-inventory" : Inventory,
+    "game-inventory" : QuickInventory,
     "game-tasks" : Tasks,
     "game-log" : Log
   },

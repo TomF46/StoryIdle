@@ -11,7 +11,7 @@
 <script>
 import Items from '../data/items'
 export default {
-  name: 'Inventory',
+  name: 'QuickInventory',
   computed: {
     money(){
       return this.$currenctFormatter.format(this.$store.state.playerData.money);
