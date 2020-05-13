@@ -1,0 +1,38 @@
+<template>
+  <div class="options">
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="center-text">Options</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="reset-button" @click="confirmReset">Reset</button>
+        </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Options',
+  methods:{
+    confirmReset(){
+      var consent = confirm("Are you sure you want to reset all progression?")
+      if(consent) this.reset();
+    },
+    reset(){
+      this.$store.dispatch("resetData");
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.reset-button{
+    padding: 10px;
+    border: 1px solid #eee;
+    background-color: #9B1003;
+    color: #eee;
+}
+</style>

@@ -7,17 +7,27 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Main.vue')
-  },
-  {
-    path: '/shop',
-    name: 'Shop',
-    component: () => import('../views/Shop.vue')
-  },
-  {
-    path: '/inventory',
-    name: 'Inventory',
-    component: () => import('../views/Inventory.vue')
+    redirect: '/tasks',
+    component: () => import('../views/Main.vue'),
+    children: [
+      {
+
+        path: 'tasks',
+        component: () => import('../components/Tasks.vue')
+      },
+      {
+        path: 'inventory',
+        component: () => import('../views/Inventory.vue')
+      },
+      {
+        path: 'shop',
+        component: () => import('../views/Shop.vue')
+      },
+      {
+        path: 'options',
+        component: () => import('../views/Options.vue')
+      }
+    ]
   }
 ]
 
