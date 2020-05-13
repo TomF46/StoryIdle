@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import Tasks from '../../data/tasks.json';
+import StageData from '../../data/stages.json'
+import ItemData from '../../data/items.json'
 
 const playerData = {
   state: {
@@ -23,11 +24,16 @@ const playerData = {
     },
     subtractMoney(state, amount){
       state.money -= amount;
+    },
+    moveToNextStage(state){
+      state.currentStage++;
     }
   },
   actions: {
-    addToInventory({state}, item){
+    addToInventory({state, dispatch}, item){
         var inventoryItem = state.inventory.find(x => x.id == item.id);
+
+        dispatch("checkIfLevelUp", item.id)
         
         if(inventoryItem){
             inventoryItem.amount+= item.amount
@@ -64,6 +70,34 @@ const playerData = {
       commit("addMoney", item.value);
       dispatch("removeFromInventory", {id : item.id, amount: 1})
       dispatch("savePlayerData");
+    },
+    checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor
+
+      var itemData = ItemData.items.find(item => item.id == id);
+
+      if(!itemData.levelUpRequirement) return;
+
+      var nextStageId = state.currentStage + 1;
+      var nextStage = StageData.stages.find(stage => stage.id == nextStageId);
+      if(nextStage){
+        var levelUp = true;
+        nextStage.requirements.forEach(req =>{
+          var inventoryItem = state.inventory.find(item => item.id == req.id);
+          // Same issue as other file with not being able to skip foreach
+          if(!inventoryItem || !levelUp){
+            levelUp = false;
+          }else if(inventoryItem.amount < req.amount){
+            levelUp = false;
+          } else {
+            levelUp = true;
+          }
+        })
+
+        if(!levelUp) return;
+        commit("moveToNextStage")
+        dispatch("savePlayerData");
+      }
+
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {

@@ -1,6 +1,7 @@
 {
     "stages" : [
         {"id": 1, "stageNumber": 1, "name": "Beggar", "intro" : "You wake on a cobbled side street, dazed in old clothes and no possessions", "requirements" : []},
-        {"id": 2, "stageNumber": 2, "name": "Lumberjack", "intro" : "A local craftsman is paying well for wood, this is an oppertunity to make some money", "requirements" : []}
+        {"id": 2, "stageNumber": 2, "name": "Lumberjack", "intro" : "A local craftsman is paying well for wood, this is an oppertunity to make some money", "requirements" : [{"id": 2, "amount" : 1}]},
+        {"id": 3, "stageNumber": 3, "name": "Miner", "intro" : "Sample text", "requirements" : [{"id" : 4, "amount" : 1}]}
     ]
 }
