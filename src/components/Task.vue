@@ -1,13 +1,19 @@
 <template>
-  <div v-if="taskUnlocked" class="task">
-    <p>{{task.name}}</p>
-    <progress-bar
+  <div v-if="taskUnlocked" class="task row">
+    <div class="col-xs-12">
+      <p>{{task.name}}</p>
+    </div>
+    <div class="col-xs-2"> 
+      <button @click="runTask">Run</button>
+    </div>
+    <div class="col-xs-10">
+      <progress-bar
       ref="progressbar"
       :miliseconds="task.timeToComplete"
       :overrunOwed="owedTime"
       @taskFinished="onTaskFinished"
     ></progress-bar>
-    <button @click="runTask">Run</button>
+    </div>
   </div>
 </template>
 
@@ -92,8 +98,9 @@ export default {
   margin: 20px 0px;
 }
 button {
-  margin: 20px;
   padding: 10px;
+  display: block;
+  margin: 0 auto;
   border: 1px solid black;
   background-color: #31708e;
 }

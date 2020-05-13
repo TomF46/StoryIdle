@@ -1,10 +1,10 @@
 <template>
   <div class="main">
     <div class="row game-viewport">
-      <div id="inventory-pane" class="col-xs-3 pane">
+      <div id="inventory-pane" class="col-xs-2 pane">
         <game-inventory></game-inventory>
       </div>
-      <div id="tasks-pane" class="col-xs-6 pane">
+      <div id="tasks-pane" class="col-xs-8 pane">
         <div class="navigation-bar col-xs-12">
           <game-navigation></game-navigation>
         </div>
@@ -13,7 +13,7 @@
           <router-view></router-view>
         </div>
       </div>
-      <div id="log-pane" class="col-xs-3 pane">
+      <div id="log-pane" class="col-xs-2 pane">
         <game-log></game-log>
       </div>
     </div>

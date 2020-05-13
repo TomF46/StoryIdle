@@ -98,7 +98,6 @@ export default {
 .bar-outline{
     border: 1px solid #333;
     width: 60%;
-    margin: 0 auto;
     height: 40px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 }
