@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import StageData from '../../data/stages.json'
 import ItemData from '../../data/items.json'
+import LogEnum from '../../data/enums/LogItems.Enum'
 
 const playerData = {
   state: {
@@ -66,7 +67,6 @@ const playerData = {
     },
     sellItem({state, commit, dispatch}, item){
       // When i implement selling more than one of an item then check they have enough
-      console.log(item);
       commit("addMoney", item.value);
       dispatch("removeFromInventory", {id : item.id, amount: 1})
       dispatch("savePlayerData");
@@ -95,6 +95,7 @@ const playerData = {
 
         if(!levelUp) return;
         commit("moveToNextStage")
+        commit("addToLog", { text : nextStage.intro, type: LogEnum.Storyline})
         dispatch("savePlayerData");
       }
 
