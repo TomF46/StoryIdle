@@ -2,7 +2,7 @@
   <div class="options">
     <div class="row">
         <div class="col-xs-12">
-            <p class="center-text">Options</p>
+            <p class="page-title">Options</p>
         </div>
     </div>
     <div class="row">

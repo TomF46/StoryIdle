@@ -1,6 +1,10 @@
 <template>
     <div class="tasks">
-        <p class="center-text">Tasks</p>
+      <div class="row">
+          <div class="col-xs-12">
+              <p class="page-title">Options</p>
+          </div>
+      </div>
         <div v-for="(task, i) in tasks" :key="i">
             <task  :task="task"></task>
         </div>

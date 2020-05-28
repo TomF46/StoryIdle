@@ -49,4 +49,10 @@ export default {
   .center-text{
     text-align: center;
   }
+
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
 </style>

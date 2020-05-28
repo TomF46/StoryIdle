@@ -2,10 +2,10 @@
   <div class="shop">
     <div class="row">
       <div class="col-xs-12">
-        <p class="shop-title">Inventory</p>
+        <p class="page-title">Inventory</p>
       </div>
       <div class="col-xs-12">
-        <p class="shop-title">{{money}}</p>
+        <p class="page-title">{{money}}</p>
       </div>
     </div>
     <div class="shelves row">
@@ -53,11 +53,6 @@ export default {
 .shop {
   margin: 0 5vw;
 }
-.shop-title {
-  text-align: center;
-  font-size: 2rem;
-}
-
 
 .shop-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
