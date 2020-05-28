@@ -33,6 +33,9 @@ const playerData = {
   actions: {
     addToInventory({state, dispatch}, item){
         var inventoryItem = state.inventory.find(x => x.id == item.id);
+        var itemData = ItemData.items.find(x => x.id == item.id);
+        
+        Vue.prototype.$alerts.notification('success',"Obtained item", `${itemData.name} X ${item.amount}`);
 
         dispatch("checkIfLevelUp", item.id)
         

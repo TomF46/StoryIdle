@@ -100,6 +100,8 @@ export default {
     width: 60%;
     height: 40px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    margin: 0 auto;
+    margin-bottom: 12px;
 }
 .bar-progress{
  height: 100%;

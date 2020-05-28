@@ -49,19 +49,26 @@ export default {
   transition: 0.3s;
   margin: 10px;
   min-height: 10vh;
-  padding: 6px;
+  position: relative;
 
   .card-title {
     text-align: center;
     font-size: 1.25rem;
+    margin-top: 6px;
   }
   .card-button {
-    margin: 0 auto;
-    display: block;
+    width: 100%;
     padding: 10px;
     background-color: green;
-    border: 1px solid grey;
-    margin-bottom: 10px;
+    margin-top: 6px;
+    height: 40px;
+    border: none;
+    border-top: 1px solid grey;
+    position: absolute;
+    bottom: 0;
+  }
+  .card-text{
+    padding-bottom: 46px; // to clear card button
   }
 }
 
