@@ -36,8 +36,6 @@ const playerData = {
         var itemData = ItemData.items.find(x => x.id == item.id);
         
         Vue.prototype.$alerts.notification('success',"Obtained item", `${itemData.name} X ${item.amount}`);
-
-        dispatch("checkIfLevelUp", item.id)
         
         if(inventoryItem){
             inventoryItem.amount+= item.amount
@@ -45,6 +43,8 @@ const playerData = {
         }
 
         state.inventory.push({id : item.id, amount: item.amount});
+
+        dispatch("checkIfLevelUp", item.id)
     },
     removeFromInventory({state}, item){
       var inventoryItem = state.inventory.find(x => x.id == item.id);
@@ -77,7 +77,6 @@ const playerData = {
     checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor
 
       var itemData = ItemData.items.find(item => item.id == id);
-
       if(!itemData.levelUpRequirement) return;
 
       var nextStageId = state.currentStage + 1;

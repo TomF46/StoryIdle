@@ -30,9 +30,10 @@ export default {
 .log{
   ul{
     list-style: none;
-
+    padding-left: 6px;
     li{
       margin-bottom: 4px;
+      font-size: 0.8rem;
     }
   }
 }
