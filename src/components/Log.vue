@@ -1,6 +1,6 @@
 <template>
     <div class="log">
-        <p class="center-text">Log</p>
+        <p class="side-pane-title">Log</p>
         <ul>
           <li v-for="(log, i) in displayLogs" :key="i">{{log.timestamp.toLocaleString()}} - {{log.text}}</li>
         </ul>

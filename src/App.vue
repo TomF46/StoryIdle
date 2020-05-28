@@ -55,4 +55,15 @@ export default {
     font-size: 2rem;
   }
 
+  .side-pane-title{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+  }
+
+  body{
+    font-family: 'Roboto', sans-serif;
+  }
+
 </style>

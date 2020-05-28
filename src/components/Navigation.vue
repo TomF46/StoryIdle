@@ -51,6 +51,10 @@ export default {
         border-left: 1px solid grey;
     }
 
+    .navigation-button:focus {
+      outline:0;
+    }
+
     .active{
         border-top: 6px solid #31708e;
     }
