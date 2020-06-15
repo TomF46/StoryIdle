@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="darkModeClass">
     <div v-if="loaded">
       <idle-header></idle-header>
       <keep-alive>
@@ -21,6 +21,13 @@ export default {
     return {
       loaded: false
     };
+  },
+  computed:{
+    darkModeClass(){
+      var isCurrentlyDarkMode = this.$store.state.settingsData.darkMode;
+
+      return isCurrentlyDarkMode ? "dark" : "light";
+    }
   },
   mounted(){
     this.$store.dispatch("loadPlayerData").then(res => {
@@ -64,6 +71,26 @@ export default {
 
   body{
     font-family: 'Roboto', sans-serif;
+  }
+
+  .dark{
+    background-color: #121212;
+
+    color: #edeeef;
+
+    .log .filter-button, .navigation .navigation-button{
+      background-color: #121212 !important;
+      color: #edeeef;
+    }
+
+    .shop-card, .task-card{
+      background-color: #404040;
+    }
+
+    .header{
+      background-color: #121212;
+      color: #31708e;
+    }
   }
 
 </style>

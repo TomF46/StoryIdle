@@ -87,6 +87,7 @@ export default {
       border: 1px solid grey;;
   }
 
+
   .filter-button:focus {
     outline:0;
   }
