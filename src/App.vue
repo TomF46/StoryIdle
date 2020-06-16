@@ -54,6 +54,25 @@ export default {
     min-height: 100vh;
   }
 
+  .card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+
+    .title{
+      text-align: center;
+      font-size: 1.25rem;
+    }
+
+    button{
+      margin: 10px;
+      padding: 6px 12px;
+      font-size: 1.25rem;
+      text-align: center;
+      margin:0 auto;
+      display:block;
+    }
+  }
+
   .center-text{
     text-align: center;
   }
@@ -84,7 +103,7 @@ export default {
       color: #edeeef;
     }
 
-    .shop-card, .task-card{
+    .shop-card, .task-card, .card{
       background-color: #404040;
     }
 

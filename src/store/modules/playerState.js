@@ -131,6 +131,26 @@ const playerData = {
         })
       });
     },
+    exportPlayerData(){
+      return new Promise((resolve, reject) => {
+        Vue.prototype.$storage.get("playerData").then(data => {
+          if(data == null){
+            reject();
+          }
+          resolve(window.btoa(JSON.stringify(data)));
+        }).catch(err => {
+          console.log(err);
+          reject(err);
+        })
+      });
+    },
+    importPlayerData({state},playerData){
+      return new Promise((resolve, reject) => {
+        var data = JSON.parse(window.atob(playerData));
+        Object.assign(state, data) 
+        resolve();
+      });
+    },
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {
         state.money = 0;
