@@ -15,6 +15,11 @@
             <button class="options-button dark-mode-button" @click="toggleDarkMode">{{darkModeButtonText}}</button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="options-button dark-mode-button" @click="manualSave" >Manual Save</button>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -38,6 +43,11 @@ export default {
     },
     toggleDarkMode(){
       this.$store.dispatch("toggleDarkMode");
+    },
+    manualSave(){
+      this.$store.dispatch("savePlayerData").then(res => {
+        this.$alerts.notification('Success',"Game Saved", "");
+      })
     }
   }
 }

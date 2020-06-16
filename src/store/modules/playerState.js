@@ -121,11 +121,15 @@ const playerData = {
       });
     },
     savePlayerData({state}){
-      Vue.prototype.$storage.set("playerData", state).then(data => {
-        console.log("Saved");
-      }).catch(err => {
-        Vue.prototype.$alerts.notification('error',"Unable to determine task level", "Not sure how this has happened");
-      })
+      return new Promise((resolve, reject) => {
+        Vue.prototype.$storage.set("playerData", state).then(data => {
+          console.log("Saved");
+          resolve();
+        }).catch(err => {
+          Vue.prototype.$alerts.notification('error',"Unable to determine task level", "Not sure how this has happened");
+          reject();
+        })
+      });
     },
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {

@@ -21,7 +21,7 @@ const settingsData = {
         Vue.prototype.$alerts.notification('error',"Unable to save settings", "Not sure how this has happened");
       })
     },
-    loadSettingsData({ commit, dispatch, state }){
+    loadSettingsData({state}){
         Vue.prototype.$storage.get("settingsData").then(data => {
           if(data == null) return;
           Object.assign(state, data) 
