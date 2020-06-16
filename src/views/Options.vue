@@ -37,7 +37,7 @@ export default {
       this.$store.dispatch("resetData");
     },
     toggleDarkMode(){
-      this.$store.commit("toggleDarkMode");
+      this.$store.dispatch("toggleDarkMode");
     }
   }
 }

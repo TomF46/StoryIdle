@@ -36,6 +36,7 @@ export default {
       console.log(err)
       this.$alerts.notification('error',"Unable to load player data", "Not sure how this has happened");
     });
+    this.$store.dispatch("loadSettingsData");
   }
 }
 </script>
