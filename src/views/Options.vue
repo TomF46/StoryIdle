@@ -6,25 +6,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
-            <button class="options-button reset-button" @click="confirmReset">Reset</button>
-        </div>
-        <div class="col-xs-4">
+        <div class="col-xs-12">
             <button class="options-button dark-mode-button" @click="toggleDarkMode">{{darkModeButtonText}}</button>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-12">
             <button class="options-button dark-mode-button" @click="manualSave" >Manual Save</button>
+        </div>
+        <div class="col-xs-12">
+            <button class="options-button reset-button" @click="confirmReset">Reset Save</button>
         </div>
     </div>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-8 col-xs-offset-2">
         <div class="card">
           <div class="row">
             <div class="col-xs-12">
-              <p class="title">Export Save</p>
+              <p class="title">Save management</p>
             </div>
             <div class="col-xs-12">
-              <textarea v-model="playerData" placeholder="Player data export will appear here"></textarea>
+              <textarea v-model="playerData" placeholder="Add save code to import, if exporting your code will appear here"></textarea>
             </div>
             <div class="col-xs-6"> 
               <button @click="exportSave">Export Save</button>
@@ -90,6 +90,7 @@ export default {
 
 <style lang="scss">
 .options-button{
+    margin-top: 20px;
     padding: 10px;
     border: 1px solid #eee;
     color: #eee;
@@ -111,4 +112,5 @@ export default {
     min-height: 80px;
   }
 }
+
 </style>

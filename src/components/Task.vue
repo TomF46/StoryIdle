@@ -1,9 +1,9 @@
 <template>
   <div v-if="taskUnlocked" class="task row">
-    <div class="task-card col-xs-8 col-xs-offset-2">
+    <div class="card col-xs-8 col-xs-offset-2">
       <div class="row">
         <div class="col-xs-12">
-        <p class="name">{{task.name}}</p>
+        <p class="title">{{task.name}}</p>
       </div>
       <div class="col-xs-12">
         <progress-bar
@@ -101,22 +101,6 @@ export default {
 .task {
   margin: 20px 0px;
 
-  .task-card{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 12px;
-
-    .name{
-      text-align: center;
-      font-size: 1.25rem;
-    }
-
-    .run-button{
-      margin: 10px;
-      padding: 6px 12px;
-      font-size: 1.25rem;
-      margin: 0 auto;
-    }
-  }
 
 }
 button {
