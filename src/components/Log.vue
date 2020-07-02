@@ -68,16 +68,12 @@ export default {
     logsLength () {
       if(this.logsLength < 100) return;
 
-      console.log(this.logsLength);
-
       var ActionLogs = this.logs.filter(x => x.type == LogItemsTypes.Action);
 
       if(ActionLogs.length < 100) return;
 
       var lastActionLog = ActionLogs[0];
       this.$store.commit("removeLog", lastActionLog);
-
-
     }
   }
 }

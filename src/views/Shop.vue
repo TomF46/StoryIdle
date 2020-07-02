@@ -37,8 +37,11 @@ export default {
     };
   },
   computed:{
+      currentStage(){
+        return this.$store.state.playerData.currentStage;
+      },
       shopItems(){
-          return Items.items.filter(x => x.buyable == true);
+          return Items.items.filter(x => x.buyable == true && this.currentStage >= x.stageUnlocked);
       },
       searchResults(){
         if(!this.searchTerm) return this.shopItems;
