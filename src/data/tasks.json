@@ -38,6 +38,68 @@
             "automationRequirement" : [
                 {"id" : 5 , "amount" : 1}
             ] 
+        },
+        {
+            "id": 4,
+            "name" : "Mine iron ore",
+            "requiredStage": 3,
+            "timeToComplete" : 50000,
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id" : 8, "amount" : 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 5 , "amount" : 1}
+            ] 
+        },
+        {
+            "id": 5,
+            "name" : "Smith iron armour",
+            "requiredStage": 4,
+            "timeToComplete" : 50000,
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id" : 9, "amount" : 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 13 , "amount" : 1}
+            ] 
+        },
+        {
+            "id": 6,
+            "name" : "Complete smithing contract",
+            "requiredStage": 4,
+            "timeToComplete" : 60000,
+            "moneyReward": 800,
+            "itemRewards" : [
+            ],
+            "automationRequirement" : [
+                {"id" : 13 , "amount" : 1}
+            ] 
+        },
+        {
+            "id": 7,
+            "name" : "Sell jewellery for jeweller",
+            "requiredStage": 5,
+            "timeToComplete" : 5000,
+            "moneyReward": 200,
+            "itemRewards" : [
+            ],
+            "automationRequirement" : [
+                {"id" : 14 , "amount" : 1}
+            ] 
+        },
+        {
+            "id": 8,
+            "name" : "Scam out of towners",
+            "requiredStage": 5,
+            "timeToComplete" : 10000,
+            "moneyReward": 1000,
+            "itemRewards" : [
+            ],
+            "automationRequirement" : [
+                {"id" : 14 , "amount" : 1}
+            ] 
         }
     ]
 }

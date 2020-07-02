@@ -45,6 +45,11 @@ export default {
   /* Import flexgrid css during build */
   @import '../node_modules/flexboxgrid/dist/flexboxgrid.min.css';
 
+  html,
+body {
+  height:100%
+}
+
   .row{
     max-width: 100vw;
   }

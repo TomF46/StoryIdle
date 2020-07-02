@@ -50,7 +50,7 @@ export default {
     padding: 0px;
   }
   .pane{
-    height: calc(100vh - 4rem);
+    min-height: calc(100vh - 4rem);
   }
   .navigation-bar{
     height: 4rem;
