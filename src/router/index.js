@@ -26,6 +26,10 @@ Vue.use(VueRouter)
       {
         path: 'options',
         component: () => import('../views/Options.vue')
+      },
+      {
+        path: 'stats',
+        component: () => import('../views/Stats.vue')
       }
     ]
   }

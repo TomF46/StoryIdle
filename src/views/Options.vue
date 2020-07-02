@@ -10,6 +10,9 @@
             <button class="options-button dark-mode-button" @click="toggleDarkMode">{{darkModeButtonText}}</button>
         </div>
         <div class="col-xs-12">
+            <button class="options-button dark-mode-button" @click="viewStats" >View stats</button>
+        </div>
+        <div class="col-xs-12">
             <button class="options-button dark-mode-button" @click="manualSave" >Manual Save</button>
         </div>
         <div class="col-xs-12">
@@ -83,6 +86,9 @@ export default {
       }).catch(err =>{
         this.$alerts.notification('error',"Unable to import data", "");
       });
+    },
+    viewStats(){
+      this.$router.push("/stats")
     }
   }
 }
