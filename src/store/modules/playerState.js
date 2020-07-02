@@ -71,10 +71,18 @@ const playerData = {
       dispatch("addToInventory", {id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
-    sellItem({state, commit, dispatch}, item){
-      // When i implement selling more than one of an item then check they have enough
-      commit("addMoney", item.value);
-      dispatch("removeFromInventory", {id : item.id, amount: 1})
+    sellItem({state, commit, dispatch}, request){
+      var inventoryItem = state.inventory.find(x => x.id == request.item.id);
+
+      if(inventoryItem == null) return //Probably return error as this shouldnt be possible;
+
+      if(inventoryItem.amount < request.amount){
+        Vue.prototype.$alerts.notification('error',"Unable to sell", "You cant sell that many");
+        return;
+      }
+
+      commit("addMoney", request.item.value * request.amount);
+      dispatch("removeFromInventory", {id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
     checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor

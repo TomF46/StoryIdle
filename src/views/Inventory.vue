@@ -7,8 +7,11 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-10">
         <input class="search-box" v-model="searchTerm" placeholder="Search for item">
+      </div>
+      <div class="col-xs-2">
+        <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
       </div>
     </div>
     <div class="shelves row">
@@ -16,7 +19,7 @@
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <p class="card-text center-text">Stock {{item.amount}}</p>
-          <button v-if="item.canBeSold" class="card-button" @click="sellItem(item)">Sell single £{{item.value}}</button>
+          <button v-if="item.canBeSold" class="card-button" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
         </div>
       </div>
     </div>
@@ -29,7 +32,9 @@ export default {
   name: 'Inventory',
   data: function() {
     return {
-      searchTerm: ""
+      searchTerm: "",
+      amountToSell: 1,
+      amountToSellOptions: [1,5,10,100]
     };
   },
   computed:{
@@ -56,7 +61,10 @@ export default {
   },
   methods:{
       sellItem(item){
-          this.$store.dispatch("sellItem", item);
+          this.$store.dispatch("sellItem", {item: item, amount: this.amountToSell});
+      },
+      getTotalValue(unitPrice){
+        return unitPrice * this.amountToSell;
       }
   }
 }
@@ -65,6 +73,10 @@ export default {
 <style lang="scss">
 .shop {
   margin: 0 5vw;
+
+  .v-select{
+    margin-right: 10px;
+  }
 }
 
 .shop-card:hover {
