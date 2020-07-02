@@ -7,9 +7,12 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
+      <div class="col-xs-12">
+        <input class="search-box" v-model="searchTerm" placeholder="Search for item">
+      </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in shopItems" :key="i" class="col-xs-3">
+      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <button class="card-button" @click="buyItem(item)">£{{item.value}}</button>
@@ -23,9 +26,19 @@
 import Items from '../data/items.json'
 export default {
   name: 'Shop',
+  data: function() {
+    return {
+      searchTerm: ""
+    };
+  },
   computed:{
       shopItems(){
           return Items.items.filter(x => x.buyable == true);
+      },
+      searchResults(){
+        if(!this.searchTerm) return this.shopItems;
+
+        return this.shopItems.filter(x => x.name.includes(this.searchTerm));
       },
       money(){
         return this.$currenctFormatter.format(this.$store.state.playerData.money);

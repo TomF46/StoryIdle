@@ -70,10 +70,4 @@ export default {
 .shop-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-
-.search-box{
-  width: 20%;
-  margin-left: 10px;
-  height: 20px;
-}
 </style>

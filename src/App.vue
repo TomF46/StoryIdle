@@ -118,4 +118,10 @@ body {
     }
   }
 
+  .search-box{
+  width: 20%;
+  margin-left: 10px;
+  height: 20px;
+}
+
 </style>
