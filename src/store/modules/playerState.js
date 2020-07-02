@@ -3,13 +3,16 @@ import StageData from '../../data/stages.json'
 import ItemData from '../../data/items.json'
 import LogEnum from '../../data/enums/LogItems.Enum'
 
+
 const playerData = {
   state: {
       money: 0,
       log: [],
       inventory: [],
       stats: {
-        tasks: []
+        tasks: [],
+        totalMoneyEarned: 0,
+        totalMoneySpent: 0,
       },
       currentStage: 1
   },
@@ -21,9 +24,11 @@ const playerData = {
     },
     addMoney(state, amount){
       state.money += amount;
+      state.stats.totalMoneyEarned += amount;
     },
     subtractMoney(state, amount){
       state.money -= amount;
+      state.stats.totalMoneySpent += amount;
     },
     moveToNextStage(state){
       state.currentStage++;
@@ -176,6 +181,11 @@ const playerData = {
         state.log = [];
         state.inventory = [];
         state.currentStage = 1;
+        state.stats = {
+          tasks: [],
+          totalMoneyEarned: 0,
+          totalMoneySpent: 0
+        };
         Vue.prototype.$alerts.notification('success',"Reset", "Data has been reset");
       }).catch(error =>{
         Vue.prototype.$alerts.notification('error',"Unable to reset data", "Not sure how this has happened");

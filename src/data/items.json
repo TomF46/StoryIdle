@@ -13,7 +13,9 @@
         {"id": 11, "name": "Forge", "value" : 50000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true},
         {"id": 12, "name": "Selling to dummies for dummies book", "value" : 200000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true},
         {"id": 13, "name": "Blacksmith Assistant", "value" : 250000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false},
-        {"id": 14, "name": "Advertising space", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false}
+        {"id": 14, "name": "Advertising space", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false},
+        {"id": 15, "name": "Magic axe", "value" : 5, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false}
+
 
     ]
 }

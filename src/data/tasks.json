@@ -27,7 +27,7 @@
                 {"id" : 1, "amount" : 1}
             ],
             "automationRequirement" : [
-                {"id" : 1 , "amount" : 1}
+                {"id" : 15 , "amount" : 1}
             ] 
         },
         {
