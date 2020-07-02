@@ -7,9 +7,12 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
+      <div class="col-xs-12">
+        <input class="search-box" v-model="searchTerm" placeholder="Search for item">
+      </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in inventoryItems" :key="i" class="col-xs-3">
+      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <p class="card-text center-text">Stock {{item.amount}}</p>
@@ -24,6 +27,11 @@
 import Items from '../data/items.json'
 export default {
   name: 'Inventory',
+  data: function() {
+    return {
+      searchTerm: ""
+    };
+  },
   computed:{
       inventoryItems(){
           var inventory = this.$store.state.playerData.inventory;
@@ -36,6 +44,11 @@ export default {
              items.push(copy);
           });
           return items;
+      },
+      searchResults(){
+        if(!this.searchTerm) return this.inventoryItems;
+
+        return this.inventoryItems.filter(x => x.name.includes(this.searchTerm));
       },
       money(){
         return this.$currenctFormatter.format(this.$store.state.playerData.money);
@@ -56,5 +69,11 @@ export default {
 
 .shop-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search-box{
+  width: 20%;
+  margin-left: 10px;
+  height: 20px;
 }
 </style>
