@@ -58,14 +58,17 @@ const playerData = {
         state.inventory.splice(index,1);
       }
     },
-    buyItem({state, commit, dispatch}, item){
-      if(state.money < item.value){
+    buyItem({state, commit, dispatch}, request){
+
+      var totalCost = request.item.value * request.amount;
+
+      if(state.money < totalCost){
         Vue.prototype.$alerts.notification('error',"Unable to buy", "You dont have enough money for this item");
         return;
       }
 
-      commit("subtractMoney", item.value);
-      dispatch("addToInventory", {id : item.id, amount: 1})
+      commit("subtractMoney", totalCost);
+      dispatch("addToInventory", {id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
     sellItem({state, commit, dispatch}, item){

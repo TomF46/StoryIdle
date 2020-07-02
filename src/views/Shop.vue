@@ -7,15 +7,18 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-10">
         <input class="search-box" v-model="searchTerm" placeholder="Search for item">
+      </div>
+      <div class="col-xs-2">
+        <v-select v-model="amountToBuy" :options="amountToBuyOptions" :clearable="false" />
       </div>
     </div>
     <div class="shelves row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
-          <button class="card-button" @click="buyItem(item)">£{{item.value}}</button>
+          <button class="card-button" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
         </div>
       </div>
     </div>
@@ -28,7 +31,9 @@ export default {
   name: 'Shop',
   data: function() {
     return {
-      searchTerm: ""
+      searchTerm: "",
+      amountToBuy: 1,
+      amountToBuyOptions: [1,5,10,100]
     };
   },
   computed:{
@@ -46,7 +51,10 @@ export default {
   },
   methods:{
       buyItem(item){
-          this.$store.dispatch("buyItem", item)
+          this.$store.dispatch("buyItem", {item: item, amount: this.amountToBuy});
+      },
+      calculateTotalCost(unitPrice){
+        return unitPrice * this.amountToBuy;
       }
   }
 }
@@ -55,6 +63,9 @@ export default {
 <style lang="scss">
 .shop {
   margin: 0 5vw;
+  .v-select{
+    margin-right: 10px;
+  }
 }
 
 .shop-card {

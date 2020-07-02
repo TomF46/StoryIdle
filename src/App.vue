@@ -45,10 +45,10 @@ export default {
   /* Import flexgrid css during build */
   @import '../node_modules/flexboxgrid/dist/flexboxgrid.min.css';
 
-  html,
-body {
-  height:100%
-}
+
+  html, body {
+    height:100%
+  }
 
   .row{
     max-width: 100vw;
@@ -112,6 +112,10 @@ body {
       background-color: #404040;
     }
 
+    .v-select{
+      background-color: #edeeef;
+    }
+
     .header{
       background-color: #121212;
       color: #31708e;
@@ -121,7 +125,8 @@ body {
   .search-box{
   width: 20%;
   margin-left: 10px;
-  height: 20px;
+  height: 90%;
+  background-color: #edeeef;
 }
 
 </style>
