@@ -22,6 +22,10 @@ const playerData = {
       var logItem = {timestamp : new Date(timestamp), text: log.text, type: log.type};
       state.log.push(logItem);
     },
+    removeLog(state, log){
+      var index = state.log.indexOf(log);
+      state.log.splice(index, 1);
+    },
     addMoney(state, amount){
       state.money += amount;
       state.stats.totalMoneyEarned += amount;
