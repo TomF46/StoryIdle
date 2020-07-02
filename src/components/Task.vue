@@ -67,7 +67,14 @@ export default {
       this.$refs.progressbar.start();
     },
     onTaskFinished(overrun) {
-      this.payUser();
+
+
+
+      if (this.checkTaskIsSuccessful()) {
+        this.payUser();
+      } else {
+        this.$alerts.notification('Error',"Task failed", "");
+      }
 
       if (!this.automated) return;
 
@@ -91,6 +98,9 @@ export default {
       this.$store.commit("addMoney", this.task.moneyReward);
       this.$store.commit("addToLog", { text : `Completed ${this.task.name}`, type: LogEnum.Action});
       this.$store.dispatch("savePlayerData");
+    },
+    checkTaskIsSuccessful(){
+      return this.task.successRate >= Math.random();
     }
   }
 };

@@ -5,6 +5,7 @@
             "name" : "Beg",
             "requiredStage": 1,
             "timeToComplete" : 5000,
+            "successRate" : 1,
             "moneyReward": 0.15,
             "itemRewards" : [
                 {"id" : 1, "amount" : 1}
@@ -18,6 +19,7 @@
             "name" : "Chop wood",
             "requiredStage": 2,
             "timeToComplete" : 10000,
+            "successRate" : 1,
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 1, "amount" : 1}
@@ -31,6 +33,7 @@
             "name" : "Mine Coal",
             "requiredStage": 3,
             "timeToComplete" : 15000,
+            "successRate" : 1,
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 3, "amount" : 1}
@@ -43,7 +46,8 @@
             "id": 4,
             "name" : "Mine iron ore",
             "requiredStage": 3,
-            "timeToComplete" : 50000,
+            "timeToComplete" : 30000,
+            "successRate" : 1,
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 8, "amount" : 1}
@@ -56,7 +60,8 @@
             "id": 5,
             "name" : "Smith iron armour",
             "requiredStage": 4,
-            "timeToComplete" : 50000,
+            "timeToComplete" : 20000,
+            "successRate" : 1,
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 9, "amount" : 1}
@@ -69,7 +74,8 @@
             "id": 6,
             "name" : "Complete smithing contract",
             "requiredStage": 4,
-            "timeToComplete" : 60000,
+            "timeToComplete" : 50000,
+            "successRate" : 1,
             "moneyReward": 800,
             "itemRewards" : [
             ],
@@ -82,6 +88,7 @@
             "name" : "Sell jewellery for jeweller",
             "requiredStage": 5,
             "timeToComplete" : 5000,
+            "successRate" : 1,
             "moneyReward": 200,
             "itemRewards" : [
             ],
@@ -93,7 +100,8 @@
             "id": 8,
             "name" : "Scam out of towners",
             "requiredStage": 5,
-            "timeToComplete" : 10000,
+            "timeToComplete" : 8000,
+            "successRate" : 0.33,
             "moneyReward": 1000,
             "itemRewards" : [
             ],
