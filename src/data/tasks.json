@@ -6,6 +6,7 @@
             "requiredStage": 1,
             "timeToComplete" : 5000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 0.15,
             "itemRewards" : [
                 {"id" : 1, "amount" : 1}
@@ -20,6 +21,7 @@
             "requiredStage": 2,
             "timeToComplete" : 10000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 1, "amount" : 1}
@@ -34,6 +36,7 @@
             "requiredStage": 3,
             "timeToComplete" : 15000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 3, "amount" : 1}
@@ -48,6 +51,7 @@
             "requiredStage": 3,
             "timeToComplete" : 30000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 8, "amount" : 1}
@@ -62,6 +66,9 @@
             "requiredStage": 4,
             "timeToComplete" : 20000,
             "successRate" : 1,
+            "consumes": [
+                {"id" : 8, "amount" : 1}
+            ],
             "moneyReward": 0,
             "itemRewards" : [
                 {"id" : 9, "amount" : 1}
@@ -76,6 +83,7 @@
             "requiredStage": 4,
             "timeToComplete" : 50000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 800,
             "itemRewards" : [
             ],
@@ -89,6 +97,7 @@
             "requiredStage": 5,
             "timeToComplete" : 5000,
             "successRate" : 1,
+            "consumes": [],
             "moneyReward": 200,
             "itemRewards" : [
             ],
@@ -102,6 +111,7 @@
             "requiredStage": 5,
             "timeToComplete" : 8000,
             "successRate" : 0.33,
+            "consumes": [],
             "moneyReward": 1000,
             "itemRewards" : [
             ],

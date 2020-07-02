@@ -57,6 +57,20 @@ export default {
       })
 
       return automated;
+    },
+    userHasRequiredItems(){
+      var hasItems = true;
+
+      this.task.consumes.forEach(requiredItem => {
+        var item = this.$store.state.playerData.inventory.find(item => item.id == requiredItem.id);
+        if(item == null || hasItems == false){
+          hasItems = false;
+        }else{
+          hasItems = item.amount >= requiredItem.amount
+        }
+      })
+
+      return hasItems;
     }
   },
   mounted() {
@@ -64,7 +78,7 @@ export default {
   },
   methods: {
     runTask() {
-      this.$refs.progressbar.start();
+      this.checkCanRunTask() ? this.$refs.progressbar.start() : this.$alerts.notification('Error',"User does not have required items", "");
     },
     onTaskFinished(overrun) {
 
@@ -101,6 +115,15 @@ export default {
     },
     checkTaskIsSuccessful(){
       return this.task.successRate >= Math.random();
+    },
+    checkCanRunTask(){
+      if(!this.userHasRequiredItems) return false;
+
+      this.task.consumes.forEach(requiredItem => {
+        this.$store.dispatch("removeFromInventory", {id : requiredItem.id, amount: requiredItem.amount});
+      })
+
+      return true;
     }
   }
 };
