@@ -6,15 +6,14 @@ import LogEnum from '../../data/enums/LogItems.Enum'
 const playerData = {
   state: {
       money: 0,
-      taskData: [],
       log: [],
       inventory: [],
+      stats: {
+        tasks: []
+      },
       currentStage: 1
   },
   mutations: {
-    setPlayerTaskData(state, data){
-      state.taskData = data;
-    },
     addToLog(state, log){
       var timestamp =  new Date().getTime();
       var logItem = {timestamp : new Date(timestamp), text: log.text, type: log.type};
@@ -113,6 +112,15 @@ const playerData = {
       }
 
     },
+    incrementTaskStats({state},task){
+      var TaskInStats = state.stats.tasks.find(x => x.id == task.id);
+      if(TaskInStats != null){
+        TaskInStats.totalComplete++;
+        return
+      };
+
+      state.stats.tasks.push({id: task.id, name: task.name, totalComplete: 1});
+    },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {
         Vue.prototype.$storage.get("playerData").then(data => {
@@ -165,7 +173,6 @@ const playerData = {
     resetData({dispatch, state}){
       Vue.prototype.$storage.removeAll().then(res => {
         state.money = 0;
-        state.taskData = [];
         state.log = [];
         state.inventory = [];
         state.currentStage = 1;

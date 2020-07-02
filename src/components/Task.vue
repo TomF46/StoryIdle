@@ -111,6 +111,7 @@ export default {
 
       this.$store.commit("addMoney", this.task.moneyReward);
       this.$store.commit("addToLog", { text : `Completed ${this.task.name}`, type: LogEnum.Action});
+      this.$store.dispatch("incrementTaskStats", this.task);
       this.$store.dispatch("savePlayerData");
     },
     checkTaskIsSuccessful(){
