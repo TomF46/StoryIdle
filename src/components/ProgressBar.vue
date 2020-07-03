@@ -97,15 +97,18 @@ export default {
 <style scoped lang="scss">
 .bar-outline{
     border: 1px solid #333;
-    width: 60%;
     height: 40px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
-    margin: 0 auto;
-    margin-bottom: 12px;
+    margin: auto auto;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
 }
 .bar-progress{
  height: 100%;
  background-color : #31708e;
  transition: width linear;
+ 
 }
 </style>

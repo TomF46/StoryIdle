@@ -1,11 +1,12 @@
 <template>
   <div v-if="taskUnlocked" class="task row">
-    <div class="card col-xs-8 col-xs-offset-2">
+    <div class="card col-xs-8 col-xs-offset-2" v-tooltip="tooltipOptions">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-2">
         <p class="title">{{task.name}}</p>
+        <p class="duration">{{duration}} seconds</p>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-8 center-items">
         <progress-bar
         ref="progressbar"
         :miliseconds="task.timeToComplete"
@@ -13,7 +14,7 @@
         @taskFinished="onTaskFinished"
       ></progress-bar>
       </div>
-      <div class="col-xs-12"> 
+      <div class="col-xs-2 center-items"> 
         <button class="run-button" @click="runTask">Run</button>
       </div>
     </div>
@@ -24,6 +25,7 @@
 <script>
 import ProgressBar from "./ProgressBar";
 import LogEnum from '../data/enums/LogItems.Enum'
+import Items from '../data/items.json'
 
 export default {
   name: "task",
@@ -71,6 +73,37 @@ export default {
       })
 
       return hasItems;
+    },
+    duration(){
+      return this.task.timeToComplete / 1000;
+    },
+    tooltipText(){
+      var text = `Earns: `
+
+      if(this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`
+
+      this.task.itemRewards.forEach(item => {
+        var itemData = Items.items.find(x => x.id == item.id);
+        text = text + ` ${itemData.name} x ${item.amount}`
+      });
+
+      if(this.task.consumes.length > 0){
+
+        text = text + " Costs: "
+
+        this.task.consumes.forEach(requiredItem => {
+          var itemData = Items.items.find(x => x.id == requiredItem.id);
+          text = text + ` ${itemData.name} x ${requiredItem.amount}`
+        })
+
+      }
+
+      return text;
+    },
+    tooltipOptions(){
+      return { 
+        content: this.tooltipText,
+      }
     }
   },
   mounted() {
@@ -135,13 +168,30 @@ export default {
 .task {
   margin: 20px 0px;
 
+  .duration{
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
 
+  .title{
+    margin-bottom: 0;
+  }
 }
 button {
-  padding: 10px;
+  padding: 5px 10px;
   display: block;
   margin: 0 auto;
   border: 1px solid black;
   background-color: #31708e;
+}
+
+.center-items{
+  position: relative;
+  button{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }
 </style>
