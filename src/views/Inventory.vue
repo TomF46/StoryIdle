@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import Items from '../data/items.json'
 export default {
   name: 'Inventory',
   data: function() {
@@ -44,7 +43,7 @@ export default {
           var items = [];
 
           inventory.forEach(item => {
-             var copy = Items.items.find(x => x.id == item.id);
+             var copy = this.$itemService.getItem(item.id);
              copy.amount = item.amount;
              items.push(copy);
           });

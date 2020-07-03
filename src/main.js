@@ -11,11 +11,13 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VModal from 'vue-js-modal'
 import VTooltip from 'v-tooltip'
+import ItemService from './services/Item.service'
 
 Vue.config.productionTip = false
 Vue.prototype.$storage = StorageService;
 Vue.prototype.$currenctFormatter = CurrencyFormatterService;
 Vue.prototype.$alerts = AlertService; 
+Vue.prototype.$itemService = ItemService;
 
 Vue.use(Notifications);
 Vue.component('v-select', vSelect)

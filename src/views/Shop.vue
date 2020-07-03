@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import Items from '../data/items.json'
 export default {
   name: 'Shop',
   data: function() {
@@ -41,7 +40,7 @@ export default {
         return this.$store.state.playerData.currentStage;
       },
       shopItems(){
-          return Items.items.filter(x => x.buyable == true && this.currentStage >= x.stageUnlocked);
+          return this.$itemService.getBuyableItems(this.currentStage)
       },
       searchResults(){
         if(!this.searchTerm) return this.shopItems;

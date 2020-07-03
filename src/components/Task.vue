@@ -25,7 +25,6 @@
 <script>
 import ProgressBar from "./ProgressBar";
 import LogEnum from '../data/enums/LogItems.Enum'
-import Items from '../data/items.json'
 
 export default {
   name: "task",
@@ -83,7 +82,7 @@ export default {
       if(this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`
 
       this.task.itemRewards.forEach(item => {
-        var itemData = Items.items.find(x => x.id == item.id);
+        var itemData = this.$itemService.getItem(item.id)
         text = text + ` ${itemData.name} x ${item.amount}`
       });
 
@@ -92,7 +91,7 @@ export default {
         text = text + " Costs: "
 
         this.task.consumes.forEach(requiredItem => {
-          var itemData = Items.items.find(x => x.id == requiredItem.id);
+          var itemData = this.$itemService.getItem(requiredItem.id);
           text = text + ` ${itemData.name} x ${requiredItem.amount}`
         })
 

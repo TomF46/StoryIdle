@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import StageData from '../../data/stages.json'
-import ItemData from '../../data/items.json'
 import LogEnum from '../../data/enums/LogItems.Enum'
 
 
@@ -41,7 +40,7 @@ const playerData = {
   actions: {
     addToInventory({state, dispatch}, item){
         var inventoryItem = state.inventory.find(x => x.id == item.id);
-        var itemData = ItemData.items.find(x => x.id == item.id);
+        var itemData = Vue.prototype.$itemService.getItem(item.id)
         
         Vue.prototype.$alerts.notification('success',"Obtained item", `${itemData.name} X ${item.amount}`);
         
@@ -95,7 +94,7 @@ const playerData = {
     },
     checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor
 
-      var itemData = ItemData.items.find(item => item.id == id);
+      var itemData = Vue.prototype.$itemService.getItem(id)
       if(!itemData.levelUpRequirement) return;
 
       var nextStageId = state.currentStage + 1;
