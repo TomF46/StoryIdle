@@ -72,6 +72,7 @@ export default {
 
 .shop-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
   transition: 0.3s;
   margin: 10px;
   min-height: 10vh;
@@ -85,8 +86,8 @@ export default {
   .card-button {
     width: 100%;
     padding: 10px;
-    background-color: green;
-    margin-top: 6px;
+    background-color: #31708e;
+    margin-top: 12px;
     height: 40px;
     border: none;
     border-top: 1px solid grey;
@@ -94,7 +95,7 @@ export default {
     bottom: 0;
   }
   .card-text{
-    padding-bottom: 46px; // to clear card button
+    padding-bottom: 66px; // to clear card button
   }
 }
 

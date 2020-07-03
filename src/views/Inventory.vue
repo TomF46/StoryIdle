@@ -20,6 +20,7 @@
           <p class="card-title">{{item.name}}</p>
           <p class="card-text center-text">Stock {{item.amount}}</p>
           <button v-if="item.canBeSold" class="card-button pointer" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
+          <button v-if="!item.canBeSold" class="card-button cant-sell">Not for resale</button>
         </div>
       </div>
     </div>
@@ -76,6 +77,10 @@ export default {
   .v-select{
     margin-right: 10px;
   }
+
+  .card-button.cant-sell{
+  background-color: #404040;
+}
 }
 
 .shop-card:hover {
