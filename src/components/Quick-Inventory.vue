@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import Items from '../data/items'
 export default {
   name: 'QuickInventory',
   computed: {
@@ -22,7 +21,7 @@ export default {
   },
   methods:{
       getItemName(id){
-        var item = Items.items.find(x => x.id == id);
+        var item = this.$itemService.getItem(id);
         return item.name;
       }
   }
