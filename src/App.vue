@@ -99,6 +99,18 @@ export default {
     font-family: 'Roboto', sans-serif;
   }
 
+  .light{
+    background-color: #f0f0f0;
+
+    .log .filter-button, .navigation .navigation-button{
+      background-color: #f0f0f0 !important;
+    }
+
+    .shop-card, .task-card, .card, .vue-dialog{
+      background-color: #fafafa;
+    }
+  }
+
   .dark{
     background-color: #121212;
 
