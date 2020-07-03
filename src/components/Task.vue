@@ -15,7 +15,7 @@
       ></progress-bar>
       </div>
       <div class="col-xs-2 center-items"> 
-        <button class="run-button" @click="runTask">Run</button>
+        <button class="run-button pointer" @click="runTask">Run</button>
       </div>
     </div>
     </div>

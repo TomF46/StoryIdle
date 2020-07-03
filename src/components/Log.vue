@@ -7,7 +7,7 @@
       </div>
       <div class="row">
         <div v-for="(filter, i) in filters" :key="i" class="col-xs-3 filter-container">
-          <button class="filter-button" v-bind:class="{ active: isCurrentFilter(filter) }" @click="changeFilter(filter)" >{{filter.title}}</button>
+          <button class="filter-button pointer" v-bind:class="{ active: isCurrentFilter(filter) }" @click="changeFilter(filter)" >{{filter.title}}</button>
         </div>
       </div>
       <div class="row">

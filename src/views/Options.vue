@@ -30,10 +30,10 @@
               <textarea v-model="playerData" placeholder="Add save code to import, if exporting your code will appear here"></textarea>
             </div>
             <div class="col-xs-6"> 
-              <button @click="exportSave">Export Save</button>
+              <button class="pointer" @click="exportSave">Export Save</button>
             </div>
             <div class="col-xs-6"> 
-              <button @click="importSave">Import Save</button>
+              <button class="pointer" @click="importSave">Import Save</button>
             </div>
         </div>
       </div>
@@ -114,6 +114,7 @@ export default {
     padding: 10px;
     border: 1px solid #eee;
     color: #eee;
+    cursor: pointer;
 }
 .reset-button{
     background-color: #9B1003;

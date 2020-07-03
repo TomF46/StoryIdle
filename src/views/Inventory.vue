@@ -19,7 +19,7 @@
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <p class="card-text center-text">Stock {{item.amount}}</p>
-          <button v-if="item.canBeSold" class="card-button" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
+          <button v-if="item.canBeSold" class="card-button pointer" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
         </div>
       </div>
     </div>

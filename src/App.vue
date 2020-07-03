@@ -142,6 +142,14 @@ export default {
   background-color: #edeeef;
 }
 
+.shelves{
+  margin-top: 40px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
 .tooltip {
   display: block !important;
   z-index: 10000;

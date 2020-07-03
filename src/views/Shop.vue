@@ -18,7 +18,7 @@
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
-          <button class="card-button" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
+          <button class="card-button pointer" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
         </div>
       </div>
     </div>

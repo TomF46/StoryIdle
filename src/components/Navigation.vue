@@ -1,7 +1,7 @@
 <template>
     <div class="navigation row">
       <div v-for="(link, i) in links" :key="i" class="col-xs-3 button-container">
-          <button class="navigation-button" v-bind:class="{ active: link.isActive }" @click="navigate(link.href)">{{link.text}}</button>
+          <button class="navigation-button pointer" v-bind:class="{ active: link.isActive }" @click="navigate(link.href)">{{link.text}}</button>
       </div>
     </div>
 </template>
