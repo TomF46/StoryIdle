@@ -46,7 +46,7 @@ export default {
       searchResults(){
         if(!this.searchTerm) return this.shopItems;
 
-        return this.shopItems.filter(x => x.name.includes(this.searchTerm));
+        return this.shopItems.filter(x => x.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
       },
       money(){
         return this.$currenctFormatter.format(this.$store.state.playerData.money);
