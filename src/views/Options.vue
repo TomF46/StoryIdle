@@ -59,8 +59,22 @@ export default {
   },
   methods:{
     confirmReset(){
-      var consent = confirm("Are you sure you want to reset all progression?")
-      if(consent) this.reset();
+      this.$modal.show('dialog', {
+          title: "Are you sure?",
+          text: "Please confirm that you want to reset your data, all data will be lost and can only be recovered if you first export a copy of your save data.",
+          buttons: [
+            {
+              title: 'Yes reset data',
+              handler: () => { 
+                this.reset()
+                this.$modal.hide('dialog')
+              }
+            },
+            {
+              title: 'No, take me back'
+            }
+         ]
+      })
     },
     reset(){
       this.$store.dispatch("resetData");
