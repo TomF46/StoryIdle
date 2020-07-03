@@ -7,6 +7,7 @@
       </keep-alive>
     </div>
     <notifications group="notify" position="bottom center" />
+    <v-dialog />
   </div>
 </template>
 
@@ -108,7 +109,7 @@ export default {
       color: #edeeef;
     }
 
-    .shop-card, .task-card, .card{
+    .shop-card, .task-card, .card, .vue-dialog{
       background-color: #404040;
     }
 

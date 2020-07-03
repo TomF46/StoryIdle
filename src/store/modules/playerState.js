@@ -117,6 +117,17 @@ const playerData = {
         if(!levelUp) return;
         commit("moveToNextStage")
         commit("addToLog", { text : nextStage.intro, type: LogEnum.Storyline})
+
+        Vue.prototype.$modal.show('dialog', {
+          title: `Unlocked ${nextStage.name}`,
+          text: nextStage.intro,
+          buttons: [
+            {
+              title: 'Ok'
+            }
+         ]
+        })
+
         dispatch("savePlayerData");
       }
 
