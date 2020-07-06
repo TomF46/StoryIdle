@@ -13,6 +13,9 @@
             <button class="options-button dark-mode-button" @click="viewStats" >View stats</button>
         </div>
         <div class="col-xs-12">
+            <button class="options-button dark-mode-button" @click="viewLog" >View Log</button>
+        </div>
+        <div class="col-xs-12">
             <button class="options-button dark-mode-button" @click="manualSave" >Manual Save</button>
         </div>
         <div class="col-xs-12">
@@ -103,6 +106,9 @@ export default {
     },
     viewStats(){
       this.$router.push("/stats")
+    },
+    viewLog(){
+      this.$router.push("/log")
     }
   }
 }

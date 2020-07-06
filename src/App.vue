@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="darkModeClass">
+  <div id="app container" :class="darkModeClass">
     <div v-if="loaded">
       <idle-header></idle-header>
       <keep-alive>
@@ -45,10 +45,13 @@ export default {
 <style lang="scss">
   /* Import flexgrid css during build */
   @import '../node_modules/flexboxgrid/dist/flexboxgrid.min.css';
+  @import './assets/flexHelper.css';
 
 
   html, body {
-    height:100%
+    height:100%;
+    margin:0;
+    padding:0;
   }
 
   .row{

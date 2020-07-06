@@ -16,11 +16,8 @@ export default {
             {text: "Inventory", href: "/inventory", isActive: this.isCurrentPage('/inventory')},
             {text: "Shop", href: "/shop", isActive: this.isCurrentPage('/shop')},
             {text: "Options", href: "/options", isActive: this.isCurrentPage('/options')},
-        ]
+        ];
     },
-    buttonClass(){
-
-    }
   },
   methods:{
     isCurrentPage(link){

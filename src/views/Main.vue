@@ -1,10 +1,10 @@
 <template>
   <div class="main">
     <div class="row game-viewport">
-      <div id="inventory-pane" class="col-xs-2 pane">
+      <div id="inventory-pane" class="col-xs-0 col-md-2 hidden-sm pane">
         <game-inventory></game-inventory>
       </div>
-      <div id="tasks-pane" class="col-xs-8 pane">
+      <div id="tasks-pane" class="col-xs-12 col-md-8 pane">
         <div class="navigation-bar col-xs-12">
           <game-navigation></game-navigation>
         </div>
@@ -16,7 +16,7 @@
           </transition>
         </div>
       </div>
-      <div id="log-pane" class="col-xs-2 pane">
+      <div id="log-pane" class="col-xs-0 col-md-2 hidden-sm pane">
         <game-log></game-log>
       </div>
     </div>
