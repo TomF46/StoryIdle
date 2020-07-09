@@ -1,7 +1,11 @@
 <template>
     <div class="header row">
-      <div class="logo center-xs col-xs-12">
-          <p>Storyline Idle - Stage {{currentStage}}</p>
+      <div class="logo center-md col-md-12 start-xs col-xs-6">
+          <p>Storyline Idle</p>
+      </div>
+      <div class="header-info hidden-md hidden-lg end-xs col-xs-6">
+          <p>{{money}}</p>
+          <p>Stage: {{currentStage}}</p>
       </div>
     </div>
 </template>
@@ -12,7 +16,10 @@ export default {
   computed:{
     currentStage(){
       return this.$store.state.playerData.currentStage;
-    }
+    },
+    money(){
+      return this.$currenctFormatter.format(this.$store.state.playerData.money);
+    },
   },
   methods:{
     navigate(link){
@@ -30,11 +37,27 @@ export default {
     margin: 0;
     position: relative;
     height: 4rem;
-    p{
-        font-size: 1.5rem;
-        padding: 20px;
+    .logo{
+      display: flex;
+      align-items: center
+    }
+    .logo p{
+        font-size: 1.25rem;
         margin: 0;
         font-weight: bold;
+        display: flex;
+        align-items: center
     }
+
+    @media only screen and (min-width: 48em) {
+      .logo p{
+        font-size: 1.25rem;
+      }
+    }
+
+    .header-info p{
+      margin: 6px;
+    }
+
 }
 </style>
