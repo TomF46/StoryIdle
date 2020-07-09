@@ -14,11 +14,18 @@
         <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
       </div>
     </div>
-    <div class="shelves row">
+    <div class="shelves inventory row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-md-3">
-        <div class="shop-card">
-          <p class="card-title">{{item.name}}</p>
-          <p class="card-text center-text">Stock {{item.amount}}</p>
+        <div class="shop-card row">
+          <div class="col-xs-12">
+            <p class="card-title">{{item.name}}</p>
+          </div>
+          <div class="col-xs-12 center-xs">
+            <img class="shop-card-icon inventory-icon" :src="item.icon" />
+          </div>
+          <div class="col-xs-12">
+            <p class="card-text center-text">Stock {{item.amount}}</p>
+          </div>
           <button v-if="item.canBeSold" class="card-button pointer" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
           <button v-if="!item.canBeSold" class="card-button cant-sell">Not for resale</button>
         </div>
@@ -80,7 +87,12 @@ export default {
 
   .card-button.cant-sell{
   background-color: #404040;
-}
+  }
+
+  .shop-card-icon.inventory-icon{
+    padding-bottom: 10px;
+  }
+
 }
 
 .shop-card:hover {

@@ -16,8 +16,13 @@
     </div>
     <div class="shelves row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-md-3">
-        <div class="shop-card">
-          <p class="card-title">{{item.name}}</p>
+        <div class="shop-card row">
+          <div class=" col-xs-12">
+            <p class="card-title">{{item.name}}</p>
+          </div>
+          <div class=" col-xs-12 center-xs">
+            <img class="shop-card-icon" :src="item.icon" />
+          </div>
           <button class="card-button pointer" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
         </div>
       </div>
@@ -97,7 +102,13 @@ export default {
     border-radius: 0 0 5px 5px;
   }
   .card-text{
-    padding-bottom: 66px; // to clear card button
+    padding-bottom: 40px; // to clear card button
+  }
+
+  .shop-card-icon{
+    width: 33%;
+    margin: 0 auto;
+    padding-bottom: 60px;
   }
 }
 
