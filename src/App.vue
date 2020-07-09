@@ -139,7 +139,7 @@ export default {
   }
 
   .search-box{
-  width: 20%;
+  width: 100%;
   margin-left: 10px;
   height: 90%;
   background-color: #edeeef;

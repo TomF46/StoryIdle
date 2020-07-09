@@ -7,15 +7,15 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
-      <div class="col-xs-10">
+      <div class="col-xs-5 col-md-3">
         <input class="search-box" v-model="searchTerm" placeholder="Search for item">
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6">
         <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
       </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
+      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-md-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <p class="card-text center-text">Stock {{item.amount}}</p>

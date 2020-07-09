@@ -2,11 +2,11 @@
   <div v-if="taskUnlocked" class="task row center-xs">
     <div class="card col-lg-8 col-xs-10" v-tooltip="tooltipOptions">
       <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-12 col-sm-2">
         <p class="title">{{task.name}}</p>
         <p class="duration">{{duration}} seconds</p>
       </div>
-      <div class="col-xs-8 center-items">
+      <div class="col-xs-12 col-sm-8 center-items">
         <progress-bar
         ref="progressbar"
         :miliseconds="task.timeToComplete"
@@ -14,7 +14,7 @@
         @taskFinished="onTaskFinished"
       ></progress-bar>
       </div>
-      <div class="col-xs-2 center-items"> 
+      <div class="col-xs-12 col-sm-2 center-items"> 
         <button class="run-button pointer" @click="runTask">Run</button>
       </div>
     </div>
@@ -167,6 +167,11 @@ export default {
 .task {
   margin: 20px 0px;
 
+  .card{
+    border-top: 4px solid #31708e;
+    border-radius: 5px;
+  }
+
   .duration{
     text-align: center;
     font-size: 0.8rem;
@@ -174,6 +179,7 @@ export default {
   }
 
   .title{
+    margin-top: 0;
     margin-bottom: 0;
   }
 }
@@ -183,14 +189,20 @@ button {
   margin: 0 auto;
   border: 1px solid black;
   background-color: #31708e;
+  margin-top: 5px;
 }
 
-.center-items{
-  position: relative;
-  button{
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
+@media only screen and (min-width: 48em) {
+  .center-items{
+    position: relative;
+    button{
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      margin-top: 0;
+    }
   }
 }
+
+
 </style>

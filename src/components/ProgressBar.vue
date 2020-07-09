@@ -95,20 +95,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 .bar-outline{
     border: 1px solid #333;
     height: 40px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
     margin: auto auto;
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
 }
 .bar-progress{
  height: 100%;
  background-color : #31708e;
  transition: width linear;
- 
 }
+
+@media only screen and (min-width: 48em) {
+  .bar-outline{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+  }
+}
+
 </style>

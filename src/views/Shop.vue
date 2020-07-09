@@ -7,15 +7,15 @@
       <div class="col-xs-12">
         <p class="page-title">{{money}}</p>
       </div>
-      <div class="col-xs-10">
+      <div class="col-xs-5 col-md-3">
         <input class="search-box" v-model="searchTerm" placeholder="Search for item">
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6">
         <v-select v-model="amountToBuy" :options="amountToBuyOptions" :clearable="false" />
       </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-3">
+      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-md-3">
         <div class="shop-card">
           <p class="card-title">{{item.name}}</p>
           <button class="card-button pointer" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
@@ -77,6 +77,7 @@ export default {
   margin: 10px;
   min-height: 10vh;
   position: relative;
+  border-radius: 5px;
 
   .card-title {
     text-align: center;
@@ -93,6 +94,7 @@ export default {
     border-top: 1px solid grey;
     position: absolute;
     bottom: 0;
+    border-radius: 0 0 5px 5px;
   }
   .card-text{
     padding-bottom: 66px; // to clear card button
