@@ -6,8 +6,11 @@
         </div>
       </div>
       <div class="row">
-        <div v-for="(filter, i) in filters" :key="i" class="col-xs-3 filter-container">
+        <!-- <div v-for="(filter, i) in filters" :key="i" class="col-xs-3 filter-container">
           <button class="filter-button pointer" v-bind:class="{ active: isCurrentFilter(filter) }" @click="changeFilter(filter)" >{{filter.title}}</button>
+        </div> -->
+        <div class="col-xs-12">
+          <v-select class="log-select" v-model="filter" :reduce="title => title.filterEnum" label="title" :options="filters" :clearable="false" />
         </div>
       </div>
       <div class="row">
@@ -27,8 +30,9 @@ export default {
   name: 'Log',
   data: function() {
     return {
-        filter: null
-    };
+        filter: null,
+        selectedFilterName: "All"
+    }
   },
   computed:{
     logs(){
@@ -74,7 +78,8 @@ export default {
 
       var lastActionLog = ActionLogs[0];
       this.$store.commit("removeLog", lastActionLog);
-    }
+    },
+    
   }
 }
 </script>

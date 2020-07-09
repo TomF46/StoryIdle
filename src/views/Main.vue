@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="row game-viewport">
-      <div id="inventory-pane" class="col-xs-0 col-md-2 hidden-sm pane">
+    <div :class="dynamicViewPortClass" class="game-viewport">
+      <div id="inventory-pane" class="col-xs-0 col-md-2 hidden-sm hidden-xs pane">
         <game-inventory></game-inventory>
       </div>
       <div id="tasks-pane" class="col-xs-12 col-md-8 pane">
@@ -16,7 +16,7 @@
           </transition>
         </div>
       </div>
-      <div id="log-pane" class="col-xs-0 col-md-2 hidden-sm pane">
+      <div id="log-pane" class="col-xs-0 col-md-2 hidden-sm hidden-xs pane">
         <game-log></game-log>
       </div>
     </div>
@@ -35,6 +35,37 @@ export default {
     "game-log" : Log,
     "game-navigation" : Navigation
   },
+  data() {
+    return {
+      pageWidth: 0
+    };
+  },
+  computed:{
+    dynamicViewPortClass(){
+      return this.pageWidth >= 64 ? "row" : "";
+    }
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  mounted(){
+    this.setPageWidth();
+  },
+  methods:{
+    handleResize(){
+      this.setPageWidth();
+    },
+    setPageWidth(){
+      this.pageWidth = window.innerWidth / parseFloat(
+        getComputedStyle(
+          document.querySelector('body')
+        )['font-size']
+      )
+    }
+  }
 }
 </script>
 
@@ -56,6 +87,11 @@ export default {
     height: 4rem;
     border-bottom: 1px solid grey;
   }
+}
+
+@media (max-width: 1024px) {
+
+  
 }
 
 .fade-enter-active,

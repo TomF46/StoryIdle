@@ -1,6 +1,6 @@
 <template>
-  <div v-if="taskUnlocked" class="task row">
-    <div class="card col-xs-8 col-xs-offset-2" v-tooltip="tooltipOptions">
+  <div v-if="taskUnlocked" class="task row center-xs">
+    <div class="card col-lg-8 col-xs-10" v-tooltip="tooltipOptions">
       <div class="row">
         <div class="col-xs-2">
         <p class="title">{{task.name}}</p>
