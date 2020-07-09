@@ -13,7 +13,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 6 , "amount" : 1}
-            ] 
+            ],
+            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-beggar-50.png"
         },
         {
             "id": 2,
@@ -28,7 +29,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 15 , "amount" : 1}
-            ] 
+            ],
+            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"
         },
         {
             "id": 3,
@@ -43,7 +45,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 5 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png" 
         },
         {
             "id": 4,
@@ -58,7 +61,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 5 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"  
         },
         {
             "id": 5,
@@ -75,7 +79,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 13 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png" 
         },
         {
             "id": 6,
@@ -89,7 +94,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 13 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png" 
         },
         {
             "id": 7,
@@ -103,7 +109,8 @@
             ],
             "automationRequirement" : [
                 {"id" : 14 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-jewel-48.png"  
         },
         {
             "id": 8,
@@ -117,7 +124,24 @@
             ],
             "automationRequirement" : [
                 {"id" : 14 , "amount" : 1}
-            ] 
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-robber-100.png"  
+        },
+        {
+            "id" : 1,
+            "name" : "Beg mom and dad",
+            "requiredStage": 1,
+            "timeToComplete" : 5000,
+            "successRate" : 1,
+            "consumes": [],
+            "moneyReward": 100000000,
+            "itemRewards" : [
+                {"id" : 1, "amount" : 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 6 , "amount" : 1}
+            ],
+            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-beggar-50.png"
         }
     ]
 }

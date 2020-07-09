@@ -42,6 +42,11 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs">
+      <p>Icons provided by https://icons8.com/</p>
+    </div>
+  </div>
   </div>
 </template>
 

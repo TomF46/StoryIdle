@@ -2,17 +2,20 @@
   <div v-if="taskUnlocked" class="task row center-xs">
     <div class="card col-lg-8 col-xs-10" v-tooltip="tooltipOptions">
       <div class="row">
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-1">
+        <img class="icon" :src="task.icon"/>
+      </div>
+      <div class="col-xs-12 col-sm-2">
         <p class="title">{{task.name}}</p>
         <p class="duration">{{duration}} seconds</p>
       </div>
-      <div class="col-xs-12 col-sm-8 center-items">
+      <div class="col-xs-12 col-sm-7 center-items">
         <progress-bar
         ref="progressbar"
         :miliseconds="task.timeToComplete"
         :overrunOwed="owedTime"
         @taskFinished="onTaskFinished"
-      ></progress-bar>
+        ></progress-bar>
       </div>
       <div class="col-xs-12 col-sm-2 center-items"> 
         <button class="run-button pointer" @click="runTask">Run</button>
@@ -182,6 +185,11 @@ export default {
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  .icon{
+    width: 4em;
+    margin: 0 auto;
+  }
 }
 button {
   padding: 5px 10px;
@@ -201,6 +209,11 @@ button {
       transform: translate(-50%,-50%);
       margin-top: 0;
     }
+  }
+
+  .icon{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
