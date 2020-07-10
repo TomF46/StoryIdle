@@ -2,14 +2,13 @@
   <div v-if="taskUnlocked" class="task row center-xs">
     <div class="card col-lg-8 col-xs-10" v-tooltip="tooltipOptions">
       <div class="row">
-        <div class="col-xs-12 col-sm-1">
+        <div class="col-xs-12 col-sm-2 col-md-1 center-items">
         <img class="icon" :src="task.icon"/>
       </div>
       <div class="col-xs-12 col-sm-2">
-        <p class="title">{{task.name}}</p>
-        <p class="duration">{{duration}} seconds</p>
+        <p class="title">{{task.name}} <br><span class="duration">{{duration}} seconds</span></p>
       </div>
-      <div class="col-xs-12 col-sm-7 center-items">
+      <div class="col-xs-12 col-sm-6 col-md-7 center-items">
         <progress-bar
         ref="progressbar"
         :miliseconds="task.timeToComplete"
@@ -203,7 +202,7 @@ button {
 @media only screen and (min-width: 48em) {
   .center-items{
     position: relative;
-    button{
+    button, .icon{
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
