@@ -16,7 +16,7 @@
     </div>
     <div class="shelves inventory row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
-        <div class="shop-card row">
+        <div class="shop-card row" :class="canSellCss(item.canBeSold)" @click="sellItem(item)">
           <div class="col-xs-12">
             <p class="card-title">{{item.name}}</p>
           </div>
@@ -26,7 +26,7 @@
           <div class="col-xs-12">
             <p class="card-text center-text">Stock {{item.amount}}</p>
           </div>
-          <button v-if="item.canBeSold" class="card-button pointer" @click="sellItem(item)">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
+          <button v-if="item.canBeSold" class="card-button pointer">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
           <button v-if="!item.canBeSold" class="card-button cant-sell">Not for resale</button>
         </div>
       </div>
@@ -68,10 +68,14 @@ export default {
   },
   methods:{
       sellItem(item){
+        if(!item.canBeSold) return;
           this.$store.dispatch("sellItem", {item: item, amount: this.amountToSell});
       },
       getTotalValue(unitPrice){
         return unitPrice * this.amountToSell;
+      },
+      canSellCss(canBeSold){
+        return canBeSold ? "pointer" : "";
       }
   }
 }

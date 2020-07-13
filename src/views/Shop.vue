@@ -16,14 +16,14 @@
     </div>
     <div class="shelves row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
-        <div class="shop-card row">
+        <div class="shop-card row pointer" @click="buyItem(item)">
           <div class=" col-xs-12">
             <p class="card-title">{{item.name}}</p>
           </div>
           <div class=" col-xs-12 center-xs">
             <img class="shop-card-icon" :src="item.icon" />
           </div>
-          <button class="card-button pointer" @click="buyItem(item)">£{{calculateTotalCost(item.value)}}</button>
+          <button class="card-button pointer">£{{calculateTotalCost(item.value)}}</button>
         </div>
       </div>
     </div>
