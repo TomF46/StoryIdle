@@ -2,7 +2,7 @@
     <div class="log">
       <div class="row">
         <div class="col-xs-12">
-          <p class="side-pane-title">Log</p>
+          <p class="side-pane-title box">Log</p>
         </div>
       </div>
       <div class="row">
@@ -87,6 +87,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .log{
+  padding-right: 8px;
+  
   ul{
     list-style: none;
     padding-left: 6px;
@@ -115,5 +117,9 @@ export default {
   .active{
       border-top: 6px solid #31708e;
   }
+
+  // .row{
+  //   padding-right: 0;
+  // }
 }
 </style>

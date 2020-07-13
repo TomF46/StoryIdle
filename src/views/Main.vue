@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div :class="dynamicViewPortClass" class="game-viewport">
-      <div id="inventory-pane" class="col-xs-0 col-md-2 hidden-sm hidden-xs pane">
+      <div id="inventory-pane" class="col-xs-0 col-sm-2  hidden-xs pane">
         <game-inventory></game-inventory>
       </div>
       <div id="tasks-pane" class="col-xs-12 col-md-8 pane">
@@ -16,7 +16,7 @@
           </transition>
         </div>
       </div>
-      <div id="log-pane" class="col-xs-0 col-md-2 hidden-sm hidden-xs pane">
+      <div id="log-pane" class="col-xs-0 col-md-2 hidden-xs pane">
         <game-log></game-log>
       </div>
     </div>
@@ -79,6 +79,7 @@ export default {
   }
   #tasks-pane{
     padding: 0px;
+    padding-bottom: 10px;
   }
   .pane{
     min-height: calc(100vh - 4rem);

@@ -1,5 +1,5 @@
 <template>
-    <div class="inventory">
+    <div class="quick-inventory">
         <p class="side-pane-title">Quick Inventory</p>
         <ul>
             <li>{{money}} </li>
@@ -30,11 +30,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.inventory{
+.quick-inventory{
   ul{
     list-style: none;
+    padding-left: 10px;
     li{
       margin-bottom: 4px;
+      font-size: 0.8rem;
     }
   }
 }

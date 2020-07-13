@@ -1,5 +1,5 @@
 <template>
-  <div id="app container" :class="darkModeClass">
+  <div id="app" :class="darkModeClass">
     <div v-if="loaded">
       <idle-header></idle-header>
       <keep-alive>
@@ -47,15 +47,11 @@ export default {
   @import '../node_modules/flexboxgrid/dist/flexboxgrid.min.css';
   @import './assets/flexHelper.css';
 
-
   html, body {
     height:100%;
     margin:0;
     padding:0;
-  }
-
-  .row{
-    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   body, #app{
@@ -143,7 +139,8 @@ export default {
   margin-left: 10px;
   height: 90%;
   background-color: #edeeef;
-}
+  border: 1px solid rgba(60,60,60,.26);
+  }
 
 .shelves{
   margin-top: 40px;

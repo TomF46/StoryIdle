@@ -186,7 +186,7 @@ export default {
   }
 
   .icon{
-    width: 4em;
+    width: 2.5rem;
     margin: 0 auto;
   }
 }
