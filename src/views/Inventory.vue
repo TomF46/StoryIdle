@@ -78,24 +78,4 @@ export default {
 </script>
 
 <style lang="scss">
-.shop {
-  margin: 0 5vw;
-
-  .v-select{
-    margin-right: 10px;
-  }
-
-  .card-button.cant-sell{
-  background-color: #404040;
-  }
-
-  .shop-card-icon.inventory-icon{
-    padding-bottom: 10px;
-  }
-
-}
-
-.shop-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
 </style>

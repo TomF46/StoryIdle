@@ -255,4 +255,74 @@ export default {
   opacity: 1;
   transition: opacity .15s;
 }
+
+.shop {
+  margin: 0 5vw;
+  .v-select{
+    margin-right: 10px;
+  }
+}
+
+.shop {
+  margin: 0 5vw;
+
+  .v-select{
+    margin-right: 10px;
+  }
+
+  .card-button.cant-sell{
+  background-color: #404040;
+  }
+
+  .shop-card-icon.inventory-icon{
+    padding-bottom: 10px;
+  }
+
+}
+
+.shop-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shop-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
+  transition: 0.3s;
+  margin: 10px;
+  min-height: 10vh;
+  position: relative;
+  border-radius: 5px;
+  height: 90%;
+
+  .card-title {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 6px;
+  }
+  .card-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #31708e;
+    margin-top: 12px;
+    height: 40px;
+    border: none;
+    border-top: 1px solid grey;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+  }
+  .card-text{
+    padding-bottom: 40px; // to clear card button
+  }
+
+  .shop-card-icon{
+    width: 33%;
+    margin: 0 auto;
+    padding-bottom: 60px;
+  }
+}
+
+.shop-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 </style>
