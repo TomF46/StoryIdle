@@ -35,7 +35,7 @@ export default {
 <style scoped lang="scss">
 .header{
     background-color: #31708e;
-    box-shadow: 0 4px 2px -2px #0c3b5b;
+    box-shadow: 1px 4px 2px -2px #0c3b5b;
     margin: 0;
     position: relative;
     height: 4rem;
