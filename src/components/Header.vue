@@ -4,8 +4,10 @@
           <p>Storyline Idle</p>
       </div>
       <div class="header-info hidden-md hidden-lg end-xs col-xs-6">
-          <p>{{money}}</p>
-          <p>Stage: {{currentStage}}</p>
+          <div class="info-container">
+            <p>{{money}}</p><br>
+            <p class="stage">Stage: {{currentStage}}</p>
+          </div>
       </div>
     </div>
 </template>
@@ -55,9 +57,21 @@ export default {
       }
     }
 
-    .header-info p{
-      margin: 6px;
+    .header-info{
+      .info-container{
+        background-color: #387fa1;
+        box-shadow: inset 0 4px 2px -2px #0c3b5b;
+        display: inline-block;
+        margin-top: 8px;
+        border-radius: 5px;
+        p{
+          margin: 4px;
+          display: inline-block;
+        }
+        .stage{
+          margin-top: 0;
+        }
+      }
     }
-
 }
 </style>
