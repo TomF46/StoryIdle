@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="shelves inventory row">
-      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-md-3">
+      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
         <div class="shop-card row">
           <div class="col-xs-12">
             <p class="card-title">{{item.name}}</p>
