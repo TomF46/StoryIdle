@@ -135,6 +135,7 @@ export default {
   background-color: grey;
 }
 
+.options{
 .card{
   margin-top: 40px;
   
@@ -144,5 +145,7 @@ export default {
     min-height: 80px;
   }
 }
+}
+
 
 </style>
