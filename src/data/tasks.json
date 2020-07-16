@@ -126,22 +126,6 @@
                 {"id" : 14 , "amount" : 1}
             ],
             "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-robber-100.png"  
-        },
-        {
-            "id" : 1,
-            "name" : "Beg mom and dad",
-            "requiredStage": 1,
-            "timeToComplete" : 5000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 100000000,
-            "itemRewards" : [
-                {"id" : 1, "amount" : 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 6 , "amount" : 1}
-            ],
-            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-beggar-50.png"
         }
     ]
 }
