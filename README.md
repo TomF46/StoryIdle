@@ -1,5 +1,7 @@
 # StoryIdle
-Story based idle game , early development just for fun
+Story based idle game, code exercise
 
 
-Temp deploying to https://master.d1v695qpusmtsh.amplifyapp.com/
+Deploying to https://idle.tomfylesdev.com/
+Has all the main PWA features (service workers, caching, manifest) and can be installed onto PWA supporting phones.
+Responsive
