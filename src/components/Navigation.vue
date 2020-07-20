@@ -13,7 +13,7 @@ export default {
     links(){
         return [
             {text: "Tasks", href: "/tasks", icon:"https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-task-48.png" , isActive: this.isCurrentPage('/tasks')},
-            {text: "Inventory", href: "/inventory", icon:"https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-inventory-flow-50.png", isActive: this.isCurrentPage('/inventory')},
+            {text: "Inventory", href: "/inventory", icon:"https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-inventory-flow-50-dark.png", isActive: this.isCurrentPage('/inventory')},
             {text: "Shop", href: "/shop", icon:"https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-shop-52.png", isActive: this.isCurrentPage('/shop')},
             {text: "Options", href: "/options", icon:"https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-automation-52.png", isActive: this.isCurrentPage('/options')},
         ];
