@@ -21,7 +21,7 @@
             <p class="card-title">{{item.name}}</p>
           </div>
           <div class="col-xs-12 center-xs">
-            <img class="shop-card-icon inventory-icon" :src="item.icon" />
+            <img class="shop-card-icon inventory-icon" :alt="item.name" :src="item.icon" />
           </div>
           <div class="col-xs-12">
             <p class="card-text center-text">Stock {{item.amount}}</p>

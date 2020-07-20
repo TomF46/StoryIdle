@@ -21,7 +21,7 @@
             <p class="card-title">{{item.name}}</p>
           </div>
           <div class=" col-xs-12 center-xs">
-            <img class="shop-card-icon" :src="item.icon" />
+            <img class="shop-card-icon" :alt="item.name" :src="item.icon" />
           </div>
           <button class="card-button pointer">£{{calculateTotalCost(item.value)}}</button>
         </div>

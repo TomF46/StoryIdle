@@ -3,7 +3,7 @@
     <div class="card col-lg-8 col-xs-10 pointer" @click="runTask" v-tooltip="tooltipOptions">
       <div class="row">
         <div class="col-xs-12 col-sm-2 col-md-1 center-items">
-        <img class="icon" :src="task.icon"/>
+        <img class="icon" :alt="task.name" :src="task.icon"/>
       </div>
       <div class="col-xs-12 col-sm-2 col-md-3">
         <p class="title">{{task.name}} <br><span class="duration">{{duration}} seconds</span><br><span class="detailText">{{earnsText}}</span><br><span class="detailText">{{costsText}}</span></p>
