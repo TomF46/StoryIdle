@@ -1,14 +1,14 @@
 <template>
   <div v-if="taskUnlocked" class="task row center-xs">
-    <div class="card col-lg-8 col-xs-10" v-tooltip="tooltipOptions">
+    <div class="card col-lg-8 col-xs-10 pointer" @click="runTask" v-tooltip="tooltipOptions">
       <div class="row">
         <div class="col-xs-12 col-sm-2 col-md-1 center-items">
         <img class="icon" :src="task.icon"/>
       </div>
-      <div class="col-xs-12 col-sm-2">
-        <p class="title">{{task.name}} <br><span class="duration">{{duration}} seconds</span></p>
+      <div class="col-xs-12 col-sm-2 col-md-3">
+        <p class="title">{{task.name}} <br><span class="duration">{{duration}} seconds</span><br><span class="detailText">{{earnsText}}</span><br><span class="detailText">{{costsText}}</span></p>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-7 center-items">
+      <div class="col-xs-12 col-sm-7 col-md-7 center-items">
         <progress-bar
         ref="progressbar"
         :miliseconds="task.timeToComplete"
@@ -16,8 +16,8 @@
         @taskFinished="onTaskFinished"
         ></progress-bar>
       </div>
-      <div class="col-xs-12 col-sm-2 center-items"> 
-        <button class="run-button pointer" @click="runTask">Run</button>
+      <div class="col-xs-12 col-sm-1 center-items"> 
+        <!-- <button class="run-button pointer" @click="runTask">Run</button> -->
       </div>
     </div>
     </div>
@@ -78,28 +78,32 @@ export default {
     duration(){
       return this.task.timeToComplete / 1000;
     },
-    tooltipText(){
+    earnsText(){
       var text = `Earns: `
 
       if(this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`
 
       this.task.itemRewards.forEach(item => {
         var itemData = this.$itemService.getItem(item.id)
-        text = text + ` ${itemData.name} x ${item.amount}`
+        text = text + ` ${item.amount} ${itemData.name}`
       });
 
-      if(this.task.consumes.length > 0){
+      return text;
+    },
+    costsText(){
+      if(this.task.consumes.length == 0) return ""
 
-        text = text + " Costs: "
+      var text = "Costs: "
 
-        this.task.consumes.forEach(requiredItem => {
-          var itemData = this.$itemService.getItem(requiredItem.id);
-          text = text + ` ${itemData.name} x ${requiredItem.amount}`
-        })
-
-      }
+      this.task.consumes.forEach(requiredItem => {
+        var itemData = this.$itemService.getItem(requiredItem.id);
+        text = text + ` ${requiredItem.amount} ${itemData.name}`
+      })
 
       return text;
+    },
+    tooltipText(){
+      return this.earnsText + " " + this.costsText;
     },
     tooltipOptions(){
       return { 
@@ -188,6 +192,11 @@ export default {
   .icon{
     width: 2.5rem;
     margin: 0 auto;
+  }
+
+  .detailText{
+    text-align: center;
+    font-size: 0.8rem;
   }
 }
 button {

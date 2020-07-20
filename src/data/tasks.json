@@ -9,7 +9,6 @@
             "consumes": [],
             "moneyReward": 0.15,
             "itemRewards" : [
-                {"id" : 1, "amount" : 1}
             ],
             "automationRequirement" : [
                 {"id" : 6 , "amount" : 1}
