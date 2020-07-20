@@ -34,6 +34,10 @@ Vue.use(VueRouter)
       {
         path: 'log',
         component: () => import('../components/Log.vue')
+      },
+      {
+        path: 'about',
+        component: () => import('../views/About.vue')
       }
     ]
   }
