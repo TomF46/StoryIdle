@@ -4,6 +4,7 @@
         {"id": 2, "stageNumber": 2, "name": "Lumberjack", "intro" : "A local craftsman is paying well for wood, this is an oppertunity to make some money", "requirements" : [{"id": 2, "amount" : 1}]},
         {"id": 3, "stageNumber": 3, "name": "Miner", "intro" : "Miners always seem to have more money, lets give that a go.", "requirements" : [{"id" : 4, "amount" : 1}]},
         {"id": 4, "stageNumber": 4, "name": "Blacksmith", "intro" : "The local blacksmith is awful, i could do much better", "requirements" : [{"id" : 10, "amount" : 1},{"id" : 11, "amount" : 1}]},
-        {"id": 5, "stageNumber": 5, "name": "Salesman", "intro" : "This is tiring work, i need something less physical", "requirements" : [{"id" : 12, "amount" : 1}]}
+        {"id": 5, "stageNumber": 5, "name": "Salesperson", "intro" : "This is tiring work, i need something less physical", "requirements" : [{"id" : 12, "amount" : 1}]},
+        {"id": 6, "stageNumber": 6, "name": "Business owner", "intro" : "The golf game wont work on it self, i need to get some employees to do the work for me", "requirements" : [{"id" : 16, "amount" : 1}]}
     ]
 }

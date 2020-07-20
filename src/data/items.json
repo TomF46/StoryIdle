@@ -14,6 +14,10 @@
         {"id": 12, "name": "Selling to dummies for dummies book", "value" : 200000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 4,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-book-50.png"},
         {"id": 13, "name": "Blacksmith Assistant", "value" : 250000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 4,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png"},
         {"id": 14, "name": "Advertising space", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 5,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-billboard-50.png"},
-        {"id": 15, "name": "Magic axe", "value" : 5, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 2,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"}
+        {"id": 15, "name": "Magic axe", "value" : 5, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 2,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"},
+        {"id": 16, "name": "Golf club", "value" : 100000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 5,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-club-64.png"},
+        {"id": 17, "name": "HR Department", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-management-80.png"},
+        {"id": 18, "name": "Golf Trophy", "value" : 75000, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-trophy-64.png"},
+        {"id": 19, "name": "Golf Coach", "value" : 1000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-coach-80.png"}        
     ]
 }

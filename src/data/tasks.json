@@ -125,6 +125,37 @@
                 {"id" : 14 , "amount" : 1}
             ],
             "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-robber-100.png"  
+        },
+        {
+            "id": 9,
+            "name" : "Hire staff to complete work",
+            "requiredStage": 6,
+            "timeToComplete" : 10000,
+            "successRate" : 1,
+            "consumes": [],
+            "moneyReward": 2000,
+            "itemRewards" : [
+            ],
+            "automationRequirement" : [
+                {"id" : 17 , "amount" : 1}
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-staff-50.png"  
+        },
+        {
+            "id": 10,
+            "name" : "Enter golf tournament",
+            "requiredStage": 6,
+            "timeToComplete" : 100000,
+            "successRate" : 0.10,
+            "consumes": [],
+            "moneyReward": 10000,
+            "itemRewards" : [
+                {"id": 18, "amount": 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 19 , "amount" : 1}
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-50.png"  
         }
     ]
 }
