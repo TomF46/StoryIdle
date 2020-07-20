@@ -156,6 +156,55 @@
                 {"id" : 19 , "amount" : 1}
             ],
             "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-50.png"  
+        },
+        {
+            "id": 11,
+            "name" : "Trade favours for donations",
+            "requiredStage": 7,
+            "timeToComplete" : 20000,
+            "successRate" : 1,
+            "consumes": [],
+            "moneyReward": 15000,
+            "itemRewards" : [
+            ],
+            "automationRequirement" : [
+                {"id" : 21 , "amount" : 1}
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-money-80.png"  
+        },
+        {
+            "id": 12,
+            "name" : "Canvass for votes",
+            "requiredStage": 7,
+            "timeToComplete" : 2000,
+            "successRate" : 0.75,
+            "consumes": [],
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id": 22, "amount": 1}
+            ],
+            "automationRequirement" : [
+                {"id" : 23 , "amount" : 1}
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-helping-hand-50.png"  
+        },
+        {
+            "id": 13,
+            "name" : "Win local election",
+            "requiredStage": 7,
+            "timeToComplete" : 1000,
+            "successRate" : 1,
+            "consumes": [
+                {"id": 22, "amount": 50000}
+            ],
+            "moneyReward": 0,
+            "itemRewards" : [
+                {"id": 24, "amount": 1}
+            ],
+            "automationRequirement" : [
+            ],
+            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"  
         }
+        
     ]
 }
