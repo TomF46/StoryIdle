@@ -38,12 +38,14 @@ export default {
   methods:{
     start(){
         if(this.active == true){
-          this.cancelTask();
+          this.$emit("taskCancelled");
+          this.cancelTimer();
           return;
         }
         this.active = true;
         this.totalRunningTime = this.miliseconds - this.overrunOwed;
         this.remainingTime = this.miliseconds - this.overrunOwed;
+        this.$emit("taskStarted");
         this.animateProgress();
         this.runTaskTimer();
     },
@@ -53,7 +55,7 @@ export default {
         this.remainingTime = 0;
         this.$emit("taskFinished", overrun);
     },
-    cancelTask(){
+    cancelTimer(){
         clearTimeout(this.timeout);
         this.active = false;
         this.remainingTime = 0;
@@ -86,9 +88,6 @@ export default {
        this.onFinish(overrun);
      }, this.totalRunningTime)
    }
-  },
-  mounted(){
-
   }
 }
 </script>

@@ -13,7 +13,8 @@ const playerData = {
         totalMoneyEarned: 0,
         totalMoneySpent: 0,
       },
-      currentStage: 1
+      currentStage: 1,
+      activeTask: null
   },
   mutations: {
     addToLog(state, log){
@@ -35,6 +36,9 @@ const playerData = {
     },
     moveToNextStage(state){
       state.currentStage++;
+    },
+    setActiveTask(state, task){
+      state.activeTask = task;
     }
   },
   actions: {

@@ -14,6 +14,8 @@
         :miliseconds="task.timeToComplete"
         :overrunOwed="owedTime"
         @taskFinished="onTaskFinished"
+        @taskStarted="onTaskStarted"
+        @taskCancelled="onTaskCancelled"
         ></progress-bar>
       </div>
       <div class="col-xs-12 col-sm-1 center-items"> 
@@ -109,24 +111,23 @@ export default {
       return { 
         content: this.tooltipText,
       }
+    },
+    activeTask(){
+      return this.$store.state.playerData.activeTask;
     }
-  },
-  mounted() {
-    
   },
   methods: {
     runTask() {
       this.checkCanRunTask() ? this.$refs.progressbar.start() : this.$alerts.notification('Error',"User does not have required items", "");
     },
     onTaskFinished(overrun) {
-
-
-
       if (this.checkTaskIsSuccessful()) {
         this.payUser();
       } else {
         this.$alerts.notification('Error',"Task failed", "");
       }
+
+      this.$store.commit('setActiveTask', null)
 
       if (!this.automated) return;
 
@@ -137,6 +138,12 @@ export default {
       }
       this.owedTime = overrun;
       this.runTask();
+    },
+    onTaskCancelled(){
+      this.$store.commit('setActiveTask', null)
+    },
+    onTaskStarted(){
+      this.$store.commit('setActiveTask', {id: this.task.id, name:this.task.name, startedTime: new Date().getTime()})
     },
     payUser() {
       this.task.itemRewards.forEach(item => {
@@ -164,6 +171,16 @@ export default {
 
       return true;
     }
+  },
+  watch: {
+    activeTask() {
+      if(this.activeTask == null) return;
+
+      if(this.activeTask.id == this.task.id) return;
+
+      this.$refs.progressbar.cancelTimer() //if not active task make sure timer is stopped as only 1 active task at a time
+    },
+    
   }
 };
 </script>

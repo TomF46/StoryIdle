@@ -90,11 +90,6 @@ export default {
   }
 }
 
-@media (max-width: 1024px) {
-
-  
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition-duration: 0.2s;
