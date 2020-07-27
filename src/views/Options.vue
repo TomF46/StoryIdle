@@ -137,15 +137,31 @@ export default {
 }
 
 .options{
-.card{
-  margin-top: 40px;
-  
-  textarea{
-    width: 80%;
-    margin-left: 10%;
-    min-height: 80px;
+  .card{
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+
+    .title{
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    button{
+      margin: 10px;
+      padding: 6px 12px;
+      font-size: 1.25rem;
+      text-align: center;
+      margin:0 auto;
+      display:block;
+    }
+    
+    textarea{
+      width: 80%;
+      margin-left: 10%;
+      min-height: 80px;
+    }
   }
-}
 }
 
 

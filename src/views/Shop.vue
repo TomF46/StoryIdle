@@ -16,12 +16,12 @@
     </div>
     <div class="shelves row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
-        <div class="shop-card row pointer" @click="buyItem(item)">
+        <div class="item-card row pointer" @click="buyItem(item)">
           <div class=" col-xs-12">
             <p class="card-title">{{item.name}}</p>
           </div>
           <div class=" col-xs-12 center-xs">
-            <img class="shop-card-icon" :alt="item.name" :src="item.icon" />
+            <img class="icon" :alt="item.name" :src="item.icon" />
           </div>
           <button class="card-button pointer">£{{calculateTotalCost(item.value)}}</button>
         </div>
@@ -68,5 +68,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.shop{
+  .item-card .icon{
+    padding-bottom: 60px;
+  }
+}
 </style>

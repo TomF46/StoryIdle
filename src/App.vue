@@ -53,30 +53,12 @@ export default {
     margin:0;
     padding:0;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
   }
 
   body, #app{
     margin: 0px;
     min-height: 100vh;
-  }
-
-  .card{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 8px;
-
-    .title{
-      text-align: center;
-      font-size: 1.1rem;
-    }
-
-    button{
-      margin: 10px;
-      padding: 6px 12px;
-      font-size: 1.25rem;
-      text-align: center;
-      margin:0 auto;
-      display:block;
-    }
   }
 
   .center-text{
@@ -95,129 +77,104 @@ export default {
     font-size: 1.25rem;
   }
 
-  body{
-    font-family: 'Roboto', sans-serif;
+  .pointer{
+    cursor: pointer;
   }
 
-  .light{
-    background-color: #f0f0f0;
+.light{
+  background-color: #f0f0f0;
 
-    .navigation .navigation-button{
-      background-color: #f0f0f0 !important;
-    }
-
-    .shop-card, .task-card, .card, .vue-dialog{
-      background-color: #fafafa;
-    }
+  .navigation .navigation-button{
+    background-color: #f0f0f0 !important;
   }
 
-  .dark{
-    background-color: #121212;
+  .item-card, .task-card, .card, .vue-dialog{
+    background-color: #fafafa;
+  }
+}
 
+.dark{
+  background-color: #121212;
+
+  color: #edeeef;
+
+  .navigation .navigation-button{
+    background-color: #121212 !important;
     color: #edeeef;
+  }
 
-    .navigation .navigation-button{
-      background-color: #121212 !important;
-      color: #edeeef;
-    }
+  .item-card, .task-card, .card, .vue-dialog{
+    background-color: #404040;
+  }
 
-    .shop-card, .task-card, .card, .vue-dialog{
-      background-color: #404040;
-    }
+  .v-select{
+    background-color: #edeeef;
+  }
 
-    .v-select{
-      background-color: #edeeef;
-    }
+  .header{
+    background-color: #121212;
+    color: #31708e;
+  }
+}
 
-    .header{
-      background-color: #121212;
-      color: #31708e;
-    }
+.shop, .inventory {
+  margin: 0 5vw;
+
+  .shelves{
+    margin-top: 40px;
   }
 
   .search-box{
-  width: 100%;
-  margin-left: 10px;
-  height: 90%;
-  background-color: #edeeef;
-  border: 1px solid rgba(60,60,60,.26);
-  }
-
-.shelves{
-  margin-top: 40px;
-}
-
-.pointer{
-  cursor: pointer;
-}
-
-.shop {
-  margin: 0 5vw;
-  .v-select{
-    margin-right: 10px;
-  }
-}
-
-.shop {
-  margin: 0 5vw;
-
-  .v-select{
-    margin-right: 10px;
-  }
-
-  .card-button.cant-sell{
-  background-color: #404040;
-  }
-
-  .shop-card-icon.inventory-icon{
-    padding-bottom: 10px;
-  }
-
-}
-
-.shop-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.shop-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding-top: 6px;
-  transition: 0.3s;
-  margin: 10px;
-  min-height: 10vh;
-  position: relative;
-  border-radius: 5px;
-  height: 90%;
-
-  .card-title {
-    text-align: center;
-    font-size: 1.25rem;
-    margin-top: 6px;
-  }
-  .card-button {
     width: 100%;
-    padding: 10px;
-    background-color: #31708e;
-    margin-top: 12px;
-    height: 40px;
-    border: none;
-    border-top: 1px solid grey;
-    position: absolute;
-    bottom: 0;
-    border-radius: 0 0 5px 5px;
-  }
-  .card-text{
-    padding-bottom: 40px; // to clear card button
+    margin-left: 10px;
+    height: 90%;
+    background-color: #edeeef;
+    border: 1px solid rgba(60,60,60,.26);
   }
 
-  .shop-card-icon{
-    width: 33%;
-    margin: 0 auto;
-    padding-bottom: 60px;
+  .v-select{
+    margin-right: 10px;
   }
-}
 
-.shop-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  .item-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-top: 6px;
+    transition: 0.3s;
+    margin: 10px;
+    min-height: 10vh;
+    position: relative;
+    border-radius: 5px;
+    height: 90%;
+
+    .card-title {
+      text-align: center;
+      font-size: 1.25rem;
+      margin-top: 6px;
+    }
+    .card-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #31708e;
+      margin-top: 12px;
+      height: 40px;
+      border: none;
+      border-top: 1px solid grey;
+      position: absolute;
+      bottom: 0;
+      border-radius: 0 0 5px 5px;
+    }
+    .card-text{
+      padding-bottom: 40px; // to clear card button
+    }
+
+    .icon{
+      width: 33%;
+      margin: 0 auto;
+    }
+  }
+
+  .item-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
 }
 </style>

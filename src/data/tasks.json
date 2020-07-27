@@ -204,21 +204,6 @@
             "automationRequirement" : [
             ],
             "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"  
-        },
-        {
-            "id": 14,
-            "name" : "Cheat",
-            "requiredStage": 1,
-            "timeToComplete" : 1000,
-            "successRate" : 1,
-            "consumes": [
-            ],
-            "moneyReward": 10000000,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"  
         }
     ]
 }

@@ -185,54 +185,54 @@ export default {
   .card{
     border-top: 4px solid #31708e;
     border-radius: 5px;
-  }
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
 
-  .duration{
-    text-align: center;
-    font-size: 0.8rem;
-    margin-top: 2px;
-  }
-
-  .title{
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .icon{
-    width: 2.5rem;
-    margin: 0 auto;
-  }
-
-  .detailText{
-    text-align: center;
-    font-size: 0.8rem;
-  }
-}
-button {
-  padding: 5px 10px;
-  display: block;
-  margin: 0 auto;
-  border: 1px solid black;
-  background-color: #31708e;
-  margin-top: 5px;
-}
-
-@media only screen and (min-width: 48em) {
-  .center-items{
-    position: relative;
-    button, .icon{
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      margin-top: 0;
+    .duration{
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 2px;
     }
+
+    .title{
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .icon{
+      width: 2.5rem;
+      margin: 0 auto;
+    }
+
+    .detailText{
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    @media only screen and (min-width: 48em) {
+      .center-items{
+        position: relative;
+        .icon{
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%,-50%);
+          margin-top: 0;
+        }
+      }
+
+      .icon{
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+
   }
 
-  .icon{
-    width: 100%;
-    margin: 0 auto;
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
+
 }
-
-
 </style>

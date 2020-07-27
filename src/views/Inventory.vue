@@ -1,5 +1,5 @@
 <template>
-  <div class="shop">
+  <div class="inventory">
     <div class="row">
       <div class="col-xs-12">
         <p class="page-title">Inventory</p>
@@ -14,14 +14,14 @@
         <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
       </div>
     </div>
-    <div class="shelves inventory row">
+    <div class="shelves row">
       <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
-        <div class="shop-card row" :class="canSellCss(item.canBeSold)" @click="sellItem(item)">
+        <div class="item-card row" :class="canSellCss(item.canBeSold)" @click="sellItem(item)">
           <div class="col-xs-12">
             <p class="card-title">{{item.name}}</p>
           </div>
           <div class="col-xs-12 center-xs">
-            <img class="shop-card-icon inventory-icon" :alt="item.name" :src="item.icon" />
+            <img class="icon" :alt="item.name" :src="item.icon" />
           </div>
           <div class="col-xs-12">
             <p class="card-text center-text">Stock {{item.amount}}</p>
@@ -82,4 +82,12 @@ export default {
 </script>
 
 <style lang="scss">
+.inventory{
+  .card-button.cant-sell{
+    background-color: #404040;
+  }
+  .item-card .icon{
+    padding-bottom: 10px;
+  }
+}
 </style>
