@@ -48,11 +48,7 @@
 
 <script>
 export default {
-  name: 'About',
-  data: function() {
-    return {
-    };
-  },
+  name: 'About'
 }
 </script>
 

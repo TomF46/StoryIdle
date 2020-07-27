@@ -10,7 +10,6 @@ import AlertService from './services/alert.service'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VModal from 'vue-js-modal'
-import VTooltip from 'v-tooltip'
 import ItemService from './services/Item.service'
 
 Vue.config.productionTip = false
@@ -22,7 +21,6 @@ Vue.prototype.$itemService = ItemService;
 Vue.use(Notifications);
 Vue.component('v-select', vSelect)
 Vue.use(VModal, { dialog: true })
-Vue.use(VTooltip)
 
 new Vue({
   router,

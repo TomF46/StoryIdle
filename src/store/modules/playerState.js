@@ -189,7 +189,8 @@ const playerData = {
        ]
       });
       
-      commit("setActiveTask", null)
+      commit("setActiveTask", null);
+      dispatch("savePlayerData");
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {

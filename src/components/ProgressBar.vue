@@ -63,14 +63,13 @@ export default {
     animateProgress(){
       requestAnimationFrame((timestamp) =>{
           this.startTime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-          this.updateProgress(timestamp) // 400px over 1 second
+          this.updateProgress(timestamp)
       })
     },
     updateProgress(timestamp){
       var timestamp = timestamp || new Date().getTime()
       var runtime = timestamp - this.startTime;
 
-      
       if (runtime < this.totalRunningTime){ // if duration not met yet
         this.remainingTime = this.totalRunningTime - runtime;
         requestAnimationFrame((timestamp) => { // call requestAnimationFrame again with parameters
@@ -92,7 +91,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
 .bar-outline{

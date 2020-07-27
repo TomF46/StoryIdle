@@ -1,6 +1,6 @@
 <template>
   <div v-if="taskUnlocked" class="task row center-xs">
-    <div class="card col-lg-8 col-xs-10 pointer" @click="runTask" v-tooltip="tooltipOptions">
+    <div class="card col-lg-8 col-xs-10 pointer" @click="runTask">
       <div class="row">
         <div class="col-xs-12 col-sm-2 col-md-1 center-items">
         <img class="icon" :alt="task.name" :src="task.icon"/>
@@ -19,7 +19,6 @@
         ></progress-bar>
       </div>
       <div class="col-xs-12 col-sm-1 center-items"> 
-        <!-- <button class="run-button pointer" @click="runTask">Run</button> -->
       </div>
     </div>
     </div>
@@ -104,14 +103,6 @@ export default {
 
       return text;
     },
-    tooltipText(){
-      return this.earnsText + " " + this.costsText;
-    },
-    tooltipOptions(){
-      return { 
-        content: this.tooltipText,
-      }
-    },
     activeTask(){
       return this.$store.state.playerData.activeTask;
     }
@@ -187,7 +178,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .task {
   margin: 20px 0px;

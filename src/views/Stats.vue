@@ -22,21 +22,10 @@
 <script>
 export default {
   name: 'Options',
-  data: function() {
-    return {
-    };
-  },
   computed:{
       stats(){
           return this.$store.state.playerData.stats;
       }
-  },
-  methods:{
   }
 }
 </script>
-
-<style lang="scss">
-
-
-</style>

@@ -22,16 +22,10 @@ export default {
     money(){
       return this.$currenctFormatter.format(this.$store.state.playerData.money);
     },
-  },
-  methods:{
-    navigate(link){
-      this.$router.push(link);
-    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .header{
     background-color: #31708e;
