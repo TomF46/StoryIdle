@@ -1,8 +1,5 @@
 import Mutations from './modules/mutations'
 import Actions from './modules/actions'
-import StageData from '../../../data/stages.json'
-import LogEnum from '../../../data/enums/LogItems.Enum'
-import Tasks from '../../../data/tasks.json'
 
 
 const playerData = {
