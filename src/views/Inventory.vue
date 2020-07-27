@@ -46,16 +46,14 @@ export default {
   },
   computed:{
       inventoryItems(){
-          var inventory = this.$store.state.playerData.inventory;
+        var items = [];
 
-          var items = [];
-
-          inventory.forEach(item => {
-             var copy = this.$itemService.getItem(item.id);
-             copy.amount = item.amount;
-             items.push(copy);
-          });
-          return items;
+        this.$store.state.playerData.inventory.forEach(item => {
+            var copy = this.$itemService.getItem(item.id);
+            copy.amount = item.amount;
+            items.push(copy);
+        });
+        return items;
       },
       searchResults(){
         if(!this.searchTerm) return this.inventoryItems;

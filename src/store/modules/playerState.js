@@ -40,36 +40,15 @@ const playerData = {
     },
     setActiveTask(state, task){
       state.activeTask = task;
+    },
+    addItemToInventory(state, item){
+      state.inventory.push(item)
+    },
+    removeInventoryItemAtIndex(state, index){
+      state.inventory.splice(index,1);
     }
   },
   actions: {
-    addToInventory({state, dispatch}, item){
-        var inventoryItem = state.inventory.find(x => x.id == item.id);
-        var itemData = Vue.prototype.$itemService.getItem(item.id)
-        
-        Vue.prototype.$alerts.notification('success',"Obtained item", `${itemData.name} X ${item.amount}`);
-        
-        if(inventoryItem){
-            inventoryItem.amount+= item.amount
-            return;
-        }
-
-        state.inventory.push({id : item.id, amount: item.amount});
-
-        dispatch("checkIfLevelUp", item.id)
-    },
-    removeFromInventory({state}, item){
-      var inventoryItem = state.inventory.find(x => x.id == item.id);
-
-      if(inventoryItem == null) return //Probably return error as this shouldnt be possible
-
-      inventoryItem.amount-= item.amount;
-
-      if(inventoryItem.amount <= 0){
-        var index = state.inventory.indexOf(inventoryItem);
-        state.inventory.splice(index,1);
-      }
-    },
     buyItem({state, commit, dispatch}, request){
 
       var totalCost = request.item.value * request.amount;
@@ -80,7 +59,7 @@ const playerData = {
       }
 
       commit("subtractMoney", totalCost);
-      dispatch("addToInventory", {id : request.item.id, amount: request.amount})
+      Vue.prototype.$inventoryService.addItemToInventory({id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
     sellItem({state, commit, dispatch}, request){
@@ -94,7 +73,7 @@ const playerData = {
       }
 
       commit("addMoney", request.item.value * request.amount);
-      dispatch("removeFromInventory", {id : request.item.id, amount: request.amount})
+      Vue.prototype.$inventoryService.removeItemFromInventory({id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
     checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor
@@ -161,11 +140,7 @@ const playerData = {
       if(offlineMoneyGain > 0) commit("addMoney", offlineMoneyGain);
 
       task.itemRewards.forEach(item => {
-        var rewardPayload = {
-          id: item.id,
-          amount: item.amount * timesTaskCompleted
-        };
-        dispatch("addToInventory", rewardPayload);
+        Vue.prototype.$inventoryService.addItemToInventory({id: item.id, amount: item.amount * timesTaskCompleted});
       });
 
       var dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;

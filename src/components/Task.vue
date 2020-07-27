@@ -48,33 +48,10 @@ export default {
       return this.task.requiredStage <= currentStage;
     },
     automated(){
-      var automated = true;
-
-      // refactor this might not be right function if we cant break
-      this.task.automationRequirement.forEach(requirement => {
-        var item = this.$store.state.playerData.inventory.find(item => item.id == requirement.id);
-        if(item == null || automated == false){
-          automated = false;
-        }else{
-          automated = item.amount >= requirement.amount
-        }
-      })
-
-      return automated;
+      return this.$inventoryService.checkUserHasItems(this.task.automationRequirement);
     },
     userHasRequiredItems(){
-      var hasItems = true;
-
-      this.task.consumes.forEach(requiredItem => {
-        var item = this.$store.state.playerData.inventory.find(item => item.id == requiredItem.id);
-        if(item == null || hasItems == false){
-          hasItems = false;
-        }else{
-          hasItems = item.amount >= requiredItem.amount
-        }
-      })
-
-      return hasItems;
+      return this.$inventoryService.checkUserHasItems(this.task.consumes);
     },
     duration(){
       return this.task.timeToComplete / 1000;
@@ -140,11 +117,7 @@ export default {
     },
     payUser() {
       this.task.itemRewards.forEach(item => {
-        var rewardPayload = {
-          id: item.id,
-          amount: item.amount
-        };
-        this.$store.dispatch("addToInventory", rewardPayload);
+        this.$inventoryService.addItemToInventory({id: item.id, amount: item.amount});
       });
 
       this.$store.commit("addMoney", this.task.moneyReward);
@@ -159,7 +132,7 @@ export default {
       if(!this.userHasRequiredItems) return false;
 
       this.task.consumes.forEach(requiredItem => {
-        this.$store.dispatch("removeFromInventory", {id : requiredItem.id, amount: requiredItem.amount});
+        this.$inventoryService.removeItemFromInventory({id : requiredItem.id, amount: requiredItem.amount});
       })
 
       return true;
@@ -171,6 +144,7 @@ export default {
 
       if(this.activeTask.id == this.task.id) return;
 
+      if(this.$refs.progressbar == null) return;
       this.$refs.progressbar.cancelTimer() //if not active task make sure timer is stopped as only 1 active task at a time
     },
     

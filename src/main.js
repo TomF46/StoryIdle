@@ -11,12 +11,14 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VModal from 'vue-js-modal'
 import ItemService from './services/Item.service'
+import InventoryService from './services/Inventory.service'
 
 Vue.config.productionTip = false
 Vue.prototype.$storage = StorageService;
 Vue.prototype.$currenctFormatter = CurrencyFormatterService;
 Vue.prototype.$alerts = AlertService; 
 Vue.prototype.$itemService = ItemService;
+Vue.prototype.$inventoryService = InventoryService;
 
 Vue.use(Notifications);
 Vue.component('v-select', vSelect)
