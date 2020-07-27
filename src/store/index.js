@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import playerData from './modules/playerState'
+import playerData from './modules/playerState/playerState'
 import settingsData from './modules/settingsState'
 
 Vue.use(Vuex)
