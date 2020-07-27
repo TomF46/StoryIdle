@@ -140,10 +140,12 @@ export default {
       this.runTask();
     },
     onTaskCancelled(){
-      this.$store.commit('setActiveTask', null)
+      this.$store.commit('setActiveTask', null);
+      this.$store.dispatch("savePlayerData");
     },
     onTaskStarted(){
-      this.$store.commit('setActiveTask', {id: this.task.id, name:this.task.name, startedTime: new Date().getTime()})
+      this.$store.commit('setActiveTask', {id: this.task.id, startedTime: new Date().getTime()});
+      this.$store.dispatch("savePlayerData");
     },
     payUser() {
       this.task.itemRewards.forEach(item => {

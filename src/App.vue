@@ -33,6 +33,7 @@ export default {
   mounted(){
     this.$store.dispatch("loadPlayerData").then(res => {
       this.loaded = true;
+      this.$store.dispatch("giveOfflineGains");
     }).catch(err =>{
       console.log(err)
       this.$alerts.notification('error',"Unable to load player data", "Not sure how this has happened");

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import StageData from '../../data/stages.json'
 import LogEnum from '../../data/enums/LogItems.Enum'
+import Tasks from '../../data/tasks.json'
 
 
 const playerData = {
@@ -143,6 +144,52 @@ const playerData = {
       };
 
       state.stats.tasks.push({id: task.id, name: task.name, totalComplete: 1});
+    },
+    giveOfflineGains({commit, dispatch, state}){
+      if(state.activeTask == null) return;
+
+      var task = Tasks.tasks.find(x => x.id == state.activeTask.id);
+
+      var offlineTime = new Date().getTime() - state.activeTask.startedTime;
+
+      var timesTaskCompleted = Math.floor(offlineTime / task.timeToComplete);
+
+      if(timesTaskCompleted <= 0) return;
+
+      var offlineMoneyGain = task.moneyReward * timesTaskCompleted;
+
+      if(offlineMoneyGain > 0) commit("addMoney", offlineMoneyGain);
+
+      task.itemRewards.forEach(item => {
+        var rewardPayload = {
+          id: item.id,
+          amount: item.amount * timesTaskCompleted
+        };
+        dispatch("addToInventory", rewardPayload);
+      });
+
+      var dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;
+
+      if(offlineMoneyGain > 0) dialogText = dialogText + `, ${Vue.prototype.$currenctFormatter.format(offlineMoneyGain)}`
+
+      if(task.itemRewards.length > 0){
+        task.itemRewards.forEach(item => {
+          var itemData = Vue.prototype.$itemService.getItem(item.id);
+          dialogText = dialogText + `, ${item.amount * timesTaskCompleted} X ${itemData.name}`
+        });
+      }
+
+      Vue.prototype.$modal.show('dialog', {
+        title: "Offline gain",
+        text: dialogText,
+        buttons: [
+          {
+            title: 'Ok'
+          }
+       ]
+      });
+      
+      commit("setActiveTask", null)
     },
     loadPlayerData({ commit, dispatch, state }){
       return new Promise((resolve, reject) => {
