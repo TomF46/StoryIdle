@@ -9,6 +9,17 @@ const alertService = {
           title: title,
           text: message
         });
+    },
+    dialog(title, text){
+      Vue.prototype.$modal.show('dialog', {
+        title: title,
+        text: text,
+        buttons: [
+          {
+            title: 'Ok'
+          }
+       ]
+      });
     }
 }
 

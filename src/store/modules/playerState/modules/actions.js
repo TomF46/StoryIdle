@@ -6,7 +6,6 @@ import Tasks from '../../../../data/tasks.json'
 
 const actions = {
     buyItem({state, commit, dispatch}, request){
-
       var totalCost = request.item.value * request.amount;
 
       if(state.money < totalCost){
@@ -21,7 +20,7 @@ const actions = {
     sellItem({state, commit, dispatch}, request){
       var inventoryItem = state.inventory.find(x => x.id == request.item.id);
 
-      if(inventoryItem == null) return //Probably return error as this shouldnt be possible;
+      if(inventoryItem == null) return
 
       if(inventoryItem.amount < request.amount){
         Vue.prototype.$alerts.notification('error',"Unable to sell", "You cant sell that many");
@@ -32,44 +31,19 @@ const actions = {
       Vue.prototype.$inventoryService.removeItemFromInventory({id : request.item.id, amount: request.amount})
       dispatch("savePlayerData");
     },
-    checkIfLevelUp({state, commit, dispatch}, id){ //Needs refactor
-
-      var itemData = Vue.prototype.$itemService.getItem(id)
-      if(!itemData.levelUpRequirement) return;
-
+    checkIfLevelUp({state, commit, dispatch}){
       var nextStageId = state.currentStage + 1;
       var nextStage = StageData.stages.find(stage => stage.id == nextStageId);
-      if(nextStage){
-        var levelUp = true;
-        nextStage.requirements.forEach(req =>{
-          var inventoryItem = state.inventory.find(item => item.id == req.id);
-          // Same issue as other file with not being able to skip foreach
-          if(!inventoryItem || !levelUp){
-            levelUp = false;
-          }else if(inventoryItem.amount < req.amount){
-            levelUp = false;
-          } else {
-            levelUp = true;
-          }
-        })
+      if(!nextStage) return;
 
-        if(!levelUp) return;
-        commit("moveToNextStage")
-        commit("addToLog", { text : nextStage.intro, type: LogEnum.Storyline})
+      var levelUp = Vue.prototype.$inventoryService.checkUserHasItems(nextStage.requirements);
+      if(!levelUp) return;
 
-        Vue.prototype.$modal.show('dialog', {
-          title: `Unlocked ${nextStage.name}`,
-          text: nextStage.intro,
-          buttons: [
-            {
-              title: 'Ok'
-            }
-         ]
-        })
+      commit("moveToNextStage")
+      commit("addToLog", { text : nextStage.intro, type: LogEnum.Storyline})
 
-        dispatch("savePlayerData");
-      }
-
+      Vue.prototype.$alerts.dialog(`Unlocked ${nextStage.name}`, nextStage.intro);
+      dispatch("savePlayerData");
     },
     incrementTaskStats({state},task){
       var TaskInStats = state.stats.tasks.find(x => x.id == task.id);
@@ -110,28 +84,15 @@ const actions = {
         });
       }
 
-      Vue.prototype.$modal.show('dialog', {
-        title: "Offline gain",
-        text: dialogText,
-        buttons: [
-          {
-            title: 'Ok'
-          }
-       ]
-      });
+      Vue.prototype.$alerts.dialog("Offline gain", dialogText);
       
       commit("setActiveTask", null);
       dispatch("savePlayerData");
     },
-    loadPlayerData({ commit, dispatch, state }){
+    loadPlayerData({state}){
       return new Promise((resolve, reject) => {
         Vue.prototype.$storage.get("playerData").then(data => {
-          if(data == null){
-            dispatch("giveDefaultItems")
-            dispatch("savePlayerData");
-            resolve();
-            return;
-          }
+          if(data == null) resolve();
 
           Object.assign(state, data) 
           resolve();
@@ -172,7 +133,7 @@ const actions = {
         resolve();
       });
     },
-    resetData({dispatch, state}){
+    resetData({state}){
       Vue.prototype.$storage.removeAll().then(res => {
         state.money = 0;
         state.log = [];

@@ -43,7 +43,7 @@ const inventoryService = {
         }
 
         store.commit("addItemToInventory", {id : item.id, amount: item.amount})
-        store.dispatch("checkIfLevelUp", item.id)
+        store.dispatch("checkIfLevelUp")
     },
     removeItemFromInventory(item){
       var inventoryItem = this.getUsersItem(item.id)
