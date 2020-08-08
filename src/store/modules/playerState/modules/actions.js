@@ -5,7 +5,7 @@ import Tasks from "../../../../data/tasks.json";
 
 const actions = {
   buyItem({ state, commit, dispatch }, request) {
-    var totalCost = request.item.value * request.amount;
+    const totalCost = request.item.value * request.amount;
 
     if (state.money < totalCost) {
       Vue.prototype.$alerts.notification(
@@ -24,7 +24,7 @@ const actions = {
     dispatch("savePlayerData");
   },
   sellItem({ state, commit, dispatch }, request) {
-    var inventoryItem = state.inventory.find((x) => x.id == request.item.id);
+    const inventoryItem = state.inventory.find((x) => x.id == request.item.id);
 
     if (inventoryItem == null) return;
 
@@ -45,11 +45,11 @@ const actions = {
     dispatch("savePlayerData");
   },
   checkIfLevelUp({ state, commit, dispatch }) {
-    var nextStageId = state.currentStage + 1;
-    var nextStage = StageData.stages.find((stage) => stage.id == nextStageId);
+    const nextStageId = state.currentStage + 1;
+    const nextStage = StageData.stages.find((stage) => stage.id == nextStageId);
     if (!nextStage) return;
 
-    var levelUp = Vue.prototype.$inventoryService.checkUserHasItems(
+    const levelUp = Vue.prototype.$inventoryService.checkUserHasItems(
       nextStage.requirements
     );
     if (!levelUp) return;
@@ -61,7 +61,7 @@ const actions = {
     dispatch("savePlayerData");
   },
   incrementTaskStats({ state }, task) {
-    var TaskInStats = state.stats.tasks.find((x) => x.id == task.id);
+    const TaskInStats = state.stats.tasks.find((x) => x.id == task.id);
     if (TaskInStats != null) {
       TaskInStats.totalComplete++;
       return;
@@ -72,15 +72,15 @@ const actions = {
   giveOfflineGains({ commit, dispatch, state }) {
     if (state.activeTask == null) return;
 
-    var task = Tasks.tasks.find((x) => x.id == state.activeTask.id);
+    const task = Tasks.tasks.find((x) => x.id == state.activeTask.id);
 
-    var offlineTime = new Date().getTime() - state.activeTask.startedTime;
+    const offlineTime = new Date().getTime() - state.activeTask.startedTime;
 
-    var timesTaskCompleted = Math.floor(offlineTime / task.timeToComplete);
+    const timesTaskCompleted = Math.floor(offlineTime / task.timeToComplete);
 
     if (timesTaskCompleted <= 0) return;
 
-    var offlineMoneyGain = task.moneyReward * timesTaskCompleted;
+    const offlineMoneyGain = task.moneyReward * timesTaskCompleted;
 
     if (offlineMoneyGain > 0) commit("addMoney", offlineMoneyGain);
 
@@ -91,7 +91,7 @@ const actions = {
       });
     });
 
-    var dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;
+    let dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;
 
     if (offlineMoneyGain > 0)
       dialogText =
@@ -100,7 +100,7 @@ const actions = {
 
     if (task.itemRewards.length > 0) {
       task.itemRewards.forEach((item) => {
-        var itemData = Vue.prototype.$itemService.getItem(item.id);
+        const itemData = Vue.prototype.$itemService.getItem(item.id);
         dialogText =
           dialogText +
           `, ${item.amount * timesTaskCompleted} X ${itemData.name}`;
@@ -164,7 +164,7 @@ const actions = {
   },
   importPlayerData({ state }, playerData) {
     return new Promise((resolve) => {
-      var data = JSON.parse(window.atob(playerData));
+      const data = JSON.parse(window.atob(playerData));
       Object.assign(state, data);
       resolve();
     });

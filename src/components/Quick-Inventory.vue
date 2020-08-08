@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getItemName(id) {
-      var item = this.$itemService.getItem(id);
+      const item = this.$itemService.getItem(id);
       return item.name;
     },
   },

@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     darkModeClass() {
-      var isCurrentlyDarkMode = this.$store.state.settingsData.darkMode;
+      const isCurrentlyDarkMode = this.$store.state.settingsData.darkMode;
 
       return isCurrentlyDarkMode ? "dark" : "light";
     },

@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     taskUnlocked() {
-      var currentStage = this.$store.state.playerData.currentStage;
+      const currentStage = this.$store.state.playerData.currentStage;
       return this.task.requiredStage <= currentStage;
     },
     automated() {
@@ -66,12 +66,12 @@ export default {
       return this.task.timeToComplete / 1000;
     },
     earnsText() {
-      var text = `Earns: `;
+      let text = `Earns: `;
 
       if (this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`;
 
       this.task.itemRewards.forEach((item) => {
-        var itemData = this.$itemService.getItem(item.id);
+        const itemData = this.$itemService.getItem(item.id);
         text = text + ` ${item.amount} ${itemData.name}`;
       });
 
@@ -80,10 +80,10 @@ export default {
     costsText() {
       if (this.task.consumes.length == 0) return "";
 
-      var text = "Costs: ";
+      let text = "Costs: ";
 
       this.task.consumes.forEach((requiredItem) => {
-        var itemData = this.$itemService.getItem(requiredItem.id);
+        const itemData = this.$itemService.getItem(requiredItem.id);
         text = text + ` ${requiredItem.amount} ${itemData.name}`;
       });
 

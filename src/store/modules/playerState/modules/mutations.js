@@ -1,7 +1,7 @@
 const mutations = {
   addToLog(state, log) {
-    var timestamp = new Date().getTime();
-    var logItem = {
+    const timestamp = new Date().getTime();
+    let logItem = {
       timestamp: new Date(timestamp),
       text: log.text,
       type: log.type,

@@ -73,11 +73,13 @@ export default {
     logsLength() {
       if (this.logsLength < 100) return;
 
-      var ActionLogs = this.logs.filter((x) => x.type == LogItemsTypes.Action);
+      const ActionLogs = this.logs.filter(
+        (x) => x.type == LogItemsTypes.Action
+      );
 
       if (ActionLogs.length < 100) return;
 
-      var lastActionLog = ActionLogs[0];
+      const lastActionLog = ActionLogs[0];
       this.$store.commit("removeLog", lastActionLog);
     },
   },

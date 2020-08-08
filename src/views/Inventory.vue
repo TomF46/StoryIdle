@@ -66,10 +66,10 @@ export default {
   },
   computed: {
     inventoryItems() {
-      var items = [];
+      let items = [];
 
       this.$store.state.playerData.inventory.forEach((item) => {
-        var copy = this.$itemService.getItem(item.id);
+        let copy = this.$itemService.getItem(item.id);
         copy.amount = item.amount;
         items.push(copy);
       });

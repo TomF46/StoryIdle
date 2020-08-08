@@ -10,19 +10,19 @@ const inventoryService = {
     return store.state.playerData.inventory.find((item) => item.id == itemId);
   },
   checkUserHasItem(itemId) {
-    var userItem = this.getUsersItem(itemId);
+    const userItem = this.getUsersItem(itemId);
 
     return userItem != null;
   },
   checkUserHasItemAmount(itemId, amount) {
-    var userItem = this.getUsersItem(itemId);
+    const userItem = this.getUsersItem(itemId);
 
     if (userItem == null) return false;
 
     return amount >= userItem.amount;
   },
   checkUserHasItems(items) {
-    var hasItems = true;
+    let hasItems = true;
 
     items.forEach((item) => {
       if (!hasItems) return;
@@ -32,8 +32,8 @@ const inventoryService = {
     return hasItems;
   },
   addItemToInventory(item) {
-    var inventoryItem = this.getUsersItem(item.id);
-    var itemData = itemService.getItem(item.id);
+    let inventoryItem = this.getUsersItem(item.id);
+    const itemData = itemService.getItem(item.id);
 
     alertService.notification(
       "success",
@@ -50,7 +50,7 @@ const inventoryService = {
     store.dispatch("checkIfLevelUp");
   },
   removeItemFromInventory(item) {
-    var inventoryItem = this.getUsersItem(item.id);
+    let inventoryItem = this.getUsersItem(item.id);
 
     if (inventoryItem == null) return;
 

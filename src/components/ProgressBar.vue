@@ -25,8 +25,8 @@ export default {
   },
   computed: {
     barStyles() {
-      var timeComplete = this.totalRunningTime - this.remainingTime;
-      var percentageComplete = (timeComplete / this.totalRunningTime) * 100;
+      let timeComplete = this.totalRunningTime - this.remainingTime;
+      let percentageComplete = (timeComplete / this.totalRunningTime) * 100;
 
       if (this.active == false) percentageComplete = 0;
 
@@ -68,7 +68,7 @@ export default {
     },
     updateProgress(timestamp) {
       timestamp = timestamp || new Date().getTime();
-      var runtime = timestamp - this.startTime;
+      const runtime = timestamp - this.startTime;
 
       if (runtime < this.totalRunningTime) {
         // if duration not met yet
@@ -80,11 +80,11 @@ export default {
       }
     },
     runTaskTimer() {
-      var taskStartTime = new Date().getTime();
+      const taskStartTime = new Date().getTime();
       this.timeout = setTimeout(() => {
-        var finishTime = new Date().getTime();
-        var runtime = finishTime - taskStartTime;
-        var overrun = runtime - this.totalRunningTime;
+        const finishTime = new Date().getTime();
+        const runtime = finishTime - taskStartTime;
+        const overrun = runtime - this.totalRunningTime;
         // In background setTimeout may be throttled, so calculate how long its really been running , return this number so we can calculate real complete actions
         this.onFinish(overrun);
       }, this.totalRunningTime);
