@@ -9,8 +9,7 @@ const mutations = {
     state.log.push(logItem);
   },
   removeLog(state, log) {
-    var index = state.log.indexOf(log);
-    state.log.splice(index, 1);
+    state.log = state.log.filter((storedLog) => storedLog != log);
   },
   addMoney(state, amount) {
     state.money += amount;
@@ -29,8 +28,8 @@ const mutations = {
   addItemToInventory(state, item) {
     state.inventory.push(item);
   },
-  removeInventoryItemAtIndex(state, index) {
-    state.inventory.splice(index, 1);
+  removeItemFromInventory(state, itemToRemove) {
+    state.inventory = state.inventory.filter((item) => item != itemToRemove);
   },
 };
 

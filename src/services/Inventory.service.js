@@ -57,8 +57,7 @@ const inventoryService = {
     inventoryItem.amount -= item.amount;
 
     if (inventoryItem.amount <= 0) {
-      var index = store.state.playerData.inventory.indexOf(inventoryItem);
-      store.commit("removeInventoryItemAtIndex", index);
+      store.commit("removeItemFromInventory", inventoryItem);
     }
   },
 };
