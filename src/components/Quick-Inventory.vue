@@ -2,8 +2,10 @@
   <div class="quick-inventory">
     <p class="side-pane-title">Quick Inventory</p>
     <ul>
-      <li>{{money}}</li>
-      <li v-for="(item, i) in inventory" :key="i">{{getItemName(item.id)}}: {{item.amount}}</li>
+      <li>{{ money }}</li>
+      <li v-for="(item, i) in inventory" :key="i">
+        {{ getItemName(item.id) }}: {{ item.amount }}
+      </li>
     </ul>
   </div>
 </template>

@@ -18,7 +18,7 @@ export default {
   components: {
     "idle-header": Header,
   },
-  data: function () {
+  data: function() {
     return {
       loaded: false,
     };
@@ -33,7 +33,7 @@ export default {
   mounted() {
     this.$store
       .dispatch("loadPlayerData")
-      .then((res) => {
+      .then(() => {
         this.loaded = true;
         this.$store.dispatch("giveOfflineGains");
       })

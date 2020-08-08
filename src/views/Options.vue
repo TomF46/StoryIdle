@@ -7,25 +7,34 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <button
-          class="options-button dark-mode-button"
-          @click="toggleDarkMode"
-        >{{darkModeButtonText}}</button>
+        <button class="options-button dark-mode-button" @click="toggleDarkMode">
+          {{ darkModeButtonText }}
+        </button>
       </div>
       <div class="col-xs-12">
-        <button class="options-button dark-mode-button" @click="viewStats">View stats</button>
+        <button class="options-button dark-mode-button" @click="viewStats">
+          View stats
+        </button>
       </div>
       <div class="col-xs-12">
-        <button class="options-button dark-mode-button" @click="viewLog">View Log</button>
+        <button class="options-button dark-mode-button" @click="viewLog">
+          View Log
+        </button>
       </div>
       <div class="col-xs-12">
-        <button class="options-button dark-mode-button" @click="viewAbout">View About</button>
+        <button class="options-button dark-mode-button" @click="viewAbout">
+          View About
+        </button>
       </div>
       <div class="col-xs-12">
-        <button class="options-button dark-mode-button" @click="manualSave">Manual Save</button>
+        <button class="options-button dark-mode-button" @click="manualSave">
+          Manual Save
+        </button>
       </div>
       <div class="col-xs-12">
-        <button class="options-button reset-button" @click="confirmReset">Reset Save</button>
+        <button class="options-button reset-button" @click="confirmReset">
+          Reset Save
+        </button>
       </div>
     </div>
     <div class="row">
@@ -57,7 +66,7 @@
 <script>
 export default {
   name: "Options",
-  data: function () {
+  data: function() {
     return {
       playerData: null,
     };
@@ -96,7 +105,7 @@ export default {
       this.$store.dispatch("toggleDarkMode");
     },
     manualSave() {
-      this.$store.dispatch("savePlayerData").then((res) => {
+      this.$store.dispatch("savePlayerData").then(() => {
         this.$alerts.notification("Success", "Game Saved", "");
       });
     },
@@ -106,17 +115,17 @@ export default {
         .then((res) => {
           this.playerData = res;
         })
-        .catch((err) => {
+        .catch(() => {
           this.$alerts.notification("error", "Unable to export data", "");
         });
     },
     importSave() {
       this.$store
         .dispatch("importPlayerData", this.playerData)
-        .then((res) => {
+        .then(() => {
           this.$alerts.notification("success", "Imported data", "");
         })
-        .catch((err) => {
+        .catch(() => {
           this.$alerts.notification("error", "Unable to import data", "");
         });
     },

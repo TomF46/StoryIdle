@@ -5,25 +5,39 @@
         <p class="page-title">Shop</p>
       </div>
       <div class="col-xs-12">
-        <p class="page-title">{{money}}</p>
+        <p class="page-title">{{ money }}</p>
       </div>
       <div class="col-xs-5 col-md-3">
-        <input class="search-box" v-model="searchTerm" placeholder="Search for item" />
+        <input
+          class="search-box"
+          v-model="searchTerm"
+          placeholder="Search for item"
+        />
       </div>
       <div class="col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6">
-        <v-select v-model="amountToBuy" :options="amountToBuyOptions" :clearable="false" />
+        <v-select
+          v-model="amountToBuy"
+          :options="amountToBuyOptions"
+          :clearable="false"
+        />
       </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
+      <div
+        v-for="(item, i) in searchResults"
+        :key="i"
+        class="col-xs-6 col-sm-4 col-lg-3"
+      >
         <div class="item-card row pointer" @click="buyItem(item)">
           <div class="col-xs-12">
-            <p class="card-title">{{item.name}}</p>
+            <p class="card-title">{{ item.name }}</p>
           </div>
           <div class="col-xs-12 center-xs">
             <img class="icon" :alt="item.name" :src="item.icon" />
           </div>
-          <button class="card-button pointer">£{{calculateTotalCost(item.value)}}</button>
+          <button class="card-button pointer">
+            £{{ calculateTotalCost(item.value) }}
+          </button>
         </div>
       </div>
     </div>
@@ -33,7 +47,7 @@
 <script>
 export default {
   name: "Shop",
-  data: function () {
+  data: function() {
     return {
       searchTerm: "",
       amountToBuy: 1,

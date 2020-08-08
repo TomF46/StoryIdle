@@ -7,13 +7,13 @@
         </div>
         <div class="col-xs-12 col-sm-2 col-md-3">
           <p class="title">
-            {{task.name}}
+            {{ task.name }}
             <br />
-            <span class="duration">{{duration}} seconds</span>
+            <span class="duration">{{ duration }} seconds</span>
             <br />
-            <span class="detailText">{{earnsText}}</span>
+            <span class="detailText">{{ earnsText }}</span>
             <br />
-            <span class="detailText">{{costsText}}</span>
+            <span class="detailText">{{ costsText }}</span>
           </p>
         </div>
         <div class="col-xs-12 col-sm-7 col-md-7 center-items">
@@ -44,7 +44,7 @@ export default {
   props: {
     task: Object,
   },
-  data: function () {
+  data: function() {
     return {
       owedTime: 0,
     };

@@ -5,32 +5,49 @@
         <p class="page-title">Inventory</p>
       </div>
       <div class="col-xs-12">
-        <p class="page-title">{{money}}</p>
+        <p class="page-title">{{ money }}</p>
       </div>
       <div class="col-xs-5 col-md-3">
-        <input class="search-box" v-model="searchTerm" placeholder="Search for item" />
+        <input
+          class="search-box"
+          v-model="searchTerm"
+          placeholder="Search for item"
+        />
       </div>
       <div class="col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6">
-        <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
+        <v-select
+          v-model="amountToSell"
+          :options="amountToSellOptions"
+          :clearable="false"
+        />
       </div>
     </div>
     <div class="shelves row">
-      <div v-for="(item, i) in searchResults" :key="i" class="col-xs-6 col-sm-4 col-lg-3">
-        <div class="item-card row" :class="canSellCss(item.canBeSold)" @click="sellItem(item)">
+      <div
+        v-for="(item, i) in searchResults"
+        :key="i"
+        class="col-xs-6 col-sm-4 col-lg-3"
+      >
+        <div
+          class="item-card row"
+          :class="canSellCss(item.canBeSold)"
+          @click="sellItem(item)"
+        >
           <div class="col-xs-12">
-            <p class="card-title">{{item.name}}</p>
+            <p class="card-title">{{ item.name }}</p>
           </div>
           <div class="col-xs-12 center-xs">
             <img class="icon" :alt="item.name" :src="item.icon" />
           </div>
           <div class="col-xs-12">
-            <p class="card-text center-text">Stock {{item.amount}}</p>
+            <p class="card-text center-text">Stock {{ item.amount }}</p>
           </div>
-          <button
-            v-if="item.canBeSold"
-            class="card-button pointer"
-          >Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
-          <button v-if="!item.canBeSold" class="card-button cant-sell">Not for resale</button>
+          <button v-if="item.canBeSold" class="card-button pointer">
+            Sell {{ amountToSell }} £{{ getTotalValue(item.value) }}
+          </button>
+          <button v-if="!item.canBeSold" class="card-button cant-sell">
+            Not for resale
+          </button>
         </div>
       </div>
     </div>
@@ -40,7 +57,7 @@
 <script>
 export default {
   name: "Inventory",
-  data: function () {
+  data: function() {
     return {
       searchTerm: "",
       amountToSell: 1,

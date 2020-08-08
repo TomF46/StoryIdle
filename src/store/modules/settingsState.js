@@ -17,10 +17,10 @@ const settingsData = {
     saveSettingsData({ state }) {
       Vue.prototype.$storage
         .set("settingsData", state)
-        .then((data) => {
+        .then(() => {
           console.log("Saved");
         })
-        .catch((err) => {
+        .catch(() => {
           Vue.prototype.$alerts.notification(
             "error",
             "Unable to save settings",

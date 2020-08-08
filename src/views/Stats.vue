@@ -8,15 +8,20 @@
     <div class="row">
       <div class="col-xs-12">
         <p>Money</p>
-        <p>Total money earnt: {{$currenctFormatter.format(this.stats.totalMoneyEarned)}}</p>
-        <p>Total money spent: {{$currenctFormatter.format(this.stats.totalMoneySpent)}}</p>
+        <p>
+          Total money earnt:
+          {{ $currenctFormatter.format(this.stats.totalMoneyEarned) }}
+        </p>
+        <p>
+          Total money spent:
+          {{ $currenctFormatter.format(this.stats.totalMoneySpent) }}
+        </p>
       </div>
       <div class="col-xs-12">
         <p>Tasks</p>
-        <p
-          v-for="(task, i) in stats.tasks"
-          :key="i"
-        >{{task.name}} times completed: {{task.totalComplete}}</p>
+        <p v-for="(task, i) in stats.tasks" :key="i">
+          {{ task.name }} times completed: {{ task.totalComplete }}
+        </p>
       </div>
     </div>
   </div>

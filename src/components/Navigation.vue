@@ -8,7 +8,7 @@
       >
         <img class="navigation-icon" :alt="link.text" :src="link.icon" />
         <br />
-        {{link.text}}
+        {{ link.text }}
       </button>
     </div>
   </div>

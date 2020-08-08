@@ -132,11 +132,11 @@ const actions = {
     return new Promise((resolve, reject) => {
       Vue.prototype.$storage
         .set("playerData", state)
-        .then((data) => {
+        .then(() => {
           console.log("Saved");
           resolve();
         })
-        .catch((err) => {
+        .catch(() => {
           Vue.prototype.$alerts.notification(
             "error",
             "Unable to determine task level",
@@ -163,7 +163,7 @@ const actions = {
     });
   },
   importPlayerData({ state }, playerData) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       var data = JSON.parse(window.atob(playerData));
       Object.assign(state, data);
       resolve();
@@ -172,7 +172,7 @@ const actions = {
   resetData({ state }) {
     Vue.prototype.$storage
       .removeAll()
-      .then((res) => {
+      .then(() => {
         state.money = 0;
         state.log = [];
         state.inventory = [];
@@ -188,7 +188,7 @@ const actions = {
           "Data has been reset"
         );
       })
-      .catch((error) => {
+      .catch(() => {
         Vue.prototype.$alerts.notification(
           "error",
           "Unable to reset data",

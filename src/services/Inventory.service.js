@@ -14,7 +14,7 @@ const inventoryService = {
 
     return userItem != null;
   },
-  checkUserHasItem(itemId, amount) {
+  checkUserHasItemAmount(itemId, amount) {
     var userItem = this.getUsersItem(itemId);
 
     if (userItem == null) return false;
@@ -26,7 +26,7 @@ const inventoryService = {
 
     items.forEach((item) => {
       if (!hasItems) return;
-      hasItems = this.checkUserHasItem(item.id, item.amount);
+      hasItems = this.checkUserHasItemAmount(item.id, item.amount);
     });
 
     return hasItems;

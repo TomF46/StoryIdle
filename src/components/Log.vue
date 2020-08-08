@@ -10,7 +10,7 @@
         <v-select
           class="log-select"
           v-model="filter"
-          :reduce="title => title.filterEnum"
+          :reduce="(title) => title.filterEnum"
           label="title"
           :options="filters"
           :clearable="false"
@@ -20,10 +20,9 @@
     <div class="row">
       <div class="col-xs-12">
         <ul>
-          <li
-            v-for="(log, i) in displayLogs"
-            :key="i"
-          >{{log.timestamp.toLocaleString()}} - {{log.text}}</li>
+          <li v-for="(log, i) in displayLogs" :key="i">
+            {{ log.timestamp.toLocaleString() }} - {{ log.text }}
+          </li>
         </ul>
       </div>
     </div>
@@ -35,7 +34,7 @@ import LogItemsTypes from "../data/enums/LogItems.Enum";
 
 export default {
   name: "Log",
-  data: function () {
+  data: function() {
     return {
       filter: null,
       selectedFilterName: "All",

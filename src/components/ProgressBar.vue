@@ -13,7 +13,7 @@ export default {
     miliseconds: Number,
     overrunOwed: Number,
   },
-  data: function () {
+  data: function() {
     return {
       remainingTime: 0,
       timerIncrement: 10,
@@ -67,7 +67,7 @@ export default {
       });
     },
     updateProgress(timestamp) {
-      var timestamp = timestamp || new Date().getTime();
+      timestamp = timestamp || new Date().getTime();
       var runtime = timestamp - this.startTime;
 
       if (runtime < this.totalRunningTime) {
