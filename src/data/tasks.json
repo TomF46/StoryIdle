@@ -1,209 +1,172 @@
 {
-    "tasks" : [
-        {
-            "id" : 1,
-            "name" : "Beg",
-            "requiredStage": 1,
-            "timeToComplete" : 5000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 0.15,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 6 , "amount" : 1}
-            ],
-            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-beggar-50.png"
-        },
-        {
-            "id": 2,
-            "name" : "Chop wood",
-            "requiredStage": 2,
-            "timeToComplete" : 10000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id" : 1, "amount" : 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 15 , "amount" : 1}
-            ],
-            "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"
-        },
-        {
-            "id": 3,
-            "name" : "Mine Coal",
-            "requiredStage": 3,
-            "timeToComplete" : 15000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id" : 3, "amount" : 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 5 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png" 
-        },
-        {
-            "id": 4,
-            "name" : "Mine iron ore",
-            "requiredStage": 3,
-            "timeToComplete" : 30000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id" : 8, "amount" : 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 5 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"  
-        },
-        {
-            "id": 5,
-            "name" : "Smith iron armour",
-            "requiredStage": 4,
-            "timeToComplete" : 20000,
-            "successRate" : 1,
-            "consumes": [
-                {"id" : 8, "amount" : 1}
-            ],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id" : 9, "amount" : 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 13 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png" 
-        },
-        {
-            "id": 6,
-            "name" : "Complete smithing contract",
-            "requiredStage": 4,
-            "timeToComplete" : 50000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 800,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 13 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png" 
-        },
-        {
-            "id": 7,
-            "name" : "Sell jewellery for jeweller",
-            "requiredStage": 5,
-            "timeToComplete" : 5000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 200,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 14 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-diamond-50.png"  
-        },
-        {
-            "id": 8,
-            "name" : "Scam out of towners",
-            "requiredStage": 5,
-            "timeToComplete" : 8000,
-            "successRate" : 0.33,
-            "consumes": [],
-            "moneyReward": 1000,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 14 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-robber-100.png"  
-        },
-        {
-            "id": 9,
-            "name" : "Hire staff to complete work",
-            "requiredStage": 6,
-            "timeToComplete" : 10000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 2000,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 17 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-staff-50.png"  
-        },
-        {
-            "id": 10,
-            "name" : "Enter golf tournament",
-            "requiredStage": 6,
-            "timeToComplete" : 100000,
-            "successRate" : 0.10,
-            "consumes": [],
-            "moneyReward": 10000,
-            "itemRewards" : [
-                {"id": 18, "amount": 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 19 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-50.png"  
-        },
-        {
-            "id": 11,
-            "name" : "Trade favours for donations",
-            "requiredStage": 7,
-            "timeToComplete" : 20000,
-            "successRate" : 1,
-            "consumes": [],
-            "moneyReward": 15000,
-            "itemRewards" : [
-            ],
-            "automationRequirement" : [
-                {"id" : 21 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-money-80.png"  
-        },
-        {
-            "id": 12,
-            "name" : "Canvass for votes",
-            "requiredStage": 7,
-            "timeToComplete" : 2000,
-            "successRate" : 0.75,
-            "consumes": [],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id": 22, "amount": 1}
-            ],
-            "automationRequirement" : [
-                {"id" : 23 , "amount" : 1}
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-helping-hand-50.png"  
-        },
-        {
-            "id": 13,
-            "name" : "Win local election",
-            "requiredStage": 7,
-            "timeToComplete" : 1000,
-            "successRate" : 1,
-            "consumes": [
-                {"id": 22, "amount": 50000}
-            ],
-            "moneyReward": 0,
-            "itemRewards" : [
-                {"id": 24, "amount": 1}
-            ],
-            "automationRequirement" : [
-            ],
-            "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"  
-        }
-    ]
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Beg",
+      "requiredStage": 1,
+      "timeToComplete": 5000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 0.15,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 6, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-beggar-50.png"
+    },
+    {
+      "id": 2,
+      "name": "Chop wood",
+      "requiredStage": 2,
+      "timeToComplete": 10000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 1, "amount": 1 }],
+      "automationRequirement": [{ "id": 15, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"
+    },
+    {
+      "id": 3,
+      "name": "Mine Coal",
+      "requiredStage": 3,
+      "timeToComplete": 15000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 3, "amount": 1 }],
+      "automationRequirement": [{ "id": 5, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"
+    },
+    {
+      "id": 4,
+      "name": "Mine iron ore",
+      "requiredStage": 3,
+      "timeToComplete": 30000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 8, "amount": 1 }],
+      "automationRequirement": [{ "id": 5, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"
+    },
+    {
+      "id": 5,
+      "name": "Smith iron armour",
+      "requiredStage": 4,
+      "timeToComplete": 20000,
+      "successRate": 1,
+      "consumes": [{ "id": 8, "amount": 1 }],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 9, "amount": 1 }],
+      "automationRequirement": [{ "id": 13, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png"
+    },
+    {
+      "id": 6,
+      "name": "Complete smithing contract",
+      "requiredStage": 4,
+      "timeToComplete": 50000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 800,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 13, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png"
+    },
+    {
+      "id": 7,
+      "name": "Sell jewellery for jeweller",
+      "requiredStage": 5,
+      "timeToComplete": 5000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 200,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 14, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-diamond-50.png"
+    },
+    {
+      "id": 8,
+      "name": "Scam out of towners",
+      "requiredStage": 5,
+      "timeToComplete": 8000,
+      "successRate": 0.33,
+      "consumes": [],
+      "moneyReward": 1000,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 14, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-robber-100.png"
+    },
+    {
+      "id": 9,
+      "name": "Hire staff to complete work",
+      "requiredStage": 6,
+      "timeToComplete": 10000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 2000,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 17, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-staff-50.png"
+    },
+    {
+      "id": 10,
+      "name": "Enter golf tournament",
+      "requiredStage": 6,
+      "timeToComplete": 100000,
+      "successRate": 0.1,
+      "consumes": [],
+      "moneyReward": 10000,
+      "itemRewards": [{ "id": 18, "amount": 1 }],
+      "automationRequirement": [{ "id": 19, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-50.png"
+    },
+    {
+      "id": 11,
+      "name": "Trade favours for donations",
+      "requiredStage": 7,
+      "timeToComplete": 20000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 15000,
+      "itemRewards": [],
+      "automationRequirement": [{ "id": 21, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-money-80.png"
+    },
+    {
+      "id": 12,
+      "name": "Canvass for votes",
+      "requiredStage": 7,
+      "timeToComplete": 2000,
+      "successRate": 0.75,
+      "consumes": [],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 22, "amount": 1 }],
+      "automationRequirement": [{ "id": 23, "amount": 1 }],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-helping-hand-50.png"
+    },
+    {
+      "id": 13,
+      "name": "Win local election",
+      "requiredStage": 7,
+      "timeToComplete": 1000,
+      "successRate": 1,
+      "consumes": [{ "id": 22, "amount": 50000 }],
+      "moneyReward": 0,
+      "itemRewards": [{ "id": 24, "amount": 1 }],
+      "automationRequirement": [],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"
+    },
+    {
+      "id": 14,
+      "name": "Cheat",
+      "requiredStage": 1,
+      "timeToComplete": 1000,
+      "successRate": 1,
+      "consumes": [],
+      "moneyReward": 100000,
+      "itemRewards": [],
+      "automationRequirement": [],
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-win-50.png"
+    }
+  ]
 }

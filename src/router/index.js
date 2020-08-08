@@ -1,52 +1,51 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-  const routes = [
+const routes = [
   {
-    path: '/',
-    name: 'Home',
-    redirect: '/tasks',
-    component: () => import('../views/Main.vue'),
+    path: "/",
+    name: "Home",
+    redirect: "/tasks",
+    component: () => import("../views/Main.vue"),
     children: [
       {
-
-        path: 'tasks',
-        component: () => import('../components/Tasks.vue')
+        path: "tasks",
+        component: () => import("../components/Tasks.vue"),
       },
       {
-        path: 'inventory',
-        component: () => import('../views/Inventory.vue')
+        path: "inventory",
+        component: () => import("../views/Inventory.vue"),
       },
       {
-        path: 'shop',
-        component: () => import('../views/Shop.vue')
+        path: "shop",
+        component: () => import("../views/Shop.vue"),
       },
       {
-        path: 'options',
-        component: () => import('../views/Options.vue')
+        path: "options",
+        component: () => import("../views/Options.vue"),
       },
       {
-        path: 'stats',
-        component: () => import('../views/Stats.vue')
+        path: "stats",
+        component: () => import("../views/Stats.vue"),
       },
       {
-        path: 'log',
-        component: () => import('../components/Log.vue')
+        path: "log",
+        component: () => import("../components/Log.vue"),
       },
       {
-        path: 'about',
-        component: () => import('../views/About.vue')
-      }
-    ]
-  }
-]
+        path: "about",
+        component: () => import("../views/About.vue"),
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

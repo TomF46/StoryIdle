@@ -1,28 +1,244 @@
 {
-    "items" : [
-        {"id": 1, "name": "wood", "value" : 5, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 2, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-wood-50.png"},
-        {"id": 2, "name": "Axe", "value" : 1, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 1, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"},
-        {"id": 3, "name": "Coal", "value" : 10, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 3, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-coal-50.png"},
-        {"id": 4, "name": "Pickaxe", "value" : 500, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 2,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"},
-        {"id": 5, "name": "Mechanical Pickaxe", "value" : 1500, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 3, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"},
-        {"id": 6, "name": "Acoustic guitar", "value" : 1, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 1, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-guitar-50.png"},
-        {"id": 7, "name": "Diamond House", "value" : 50000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 5, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-prefab-house-50.png"},
-        {"id": 8, "name": "Iron ore", "value" : 30, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 3, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-iron-bars-48.png"},
-        {"id": 9, "name": "Iron Armour", "value" : 100, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 4, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-roman-soldier-50.png"},
-        {"id": 10, "name": "Hammer", "value" :5000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 3, "icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-50.png"},
-        {"id": 11, "name": "Forge", "value" : 50000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 3,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-fire-48.png"},
-        {"id": 12, "name": "Selling to dummies for dummies book", "value" : 200000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 4,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-book-50.png"},
-        {"id": 13, "name": "Blacksmith Assistant", "value" : 250000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 4,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png"},
-        {"id": 14, "name": "Advertising space", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 5,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-billboard-50.png"},
-        {"id": 15, "name": "Magic axe", "value" : 5, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 2,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"},
-        {"id": 16, "name": "Golf club", "value" : 100000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 5,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-club-64.png"},
-        {"id": 17, "name": "HR Department", "value" : 500000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-management-80.png"},
-        {"id": 18, "name": "Golf Trophy", "value" : 75000, "canBeSold" : true, "buyable" : false, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-trophy-64.png"},
-        {"id": 19, "name": "Golf Coach", "value" : 1000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-coach-80.png"},
-        {"id": 20, "name": "Spot on local election", "value" : 10000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : true, "stageUnlocked" : 6,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-checkbox-80.png"},
-        {"id": 21, "name": "Weekly donation Telathon", "value" : 15000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 7,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-retro-tv-50.png"},
-        {"id": 22, "name": "Vote", "value" : 20000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 7,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-tick-box-52.png"},
-        {"id": 23, "name": "Canvassing Team", "value" : 20000000, "canBeSold" : false, "buyable" : true, "levelUpRequirement" : false, "stageUnlocked" : 7,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-doorbell-100.png"},
-        {"id": 24, "name": "Election winners medal", "value" : 0, "canBeSold" : false, "buyable" : false, "levelUpRequirement" : true, "stageUnlocked" : 7,"icon" : "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-gold-medal-50.png"}
-    ]
+  "items": [
+    {
+      "id": 1,
+      "name": "wood",
+      "value": 5,
+      "canBeSold": true,
+      "buyable": false,
+      "levelUpRequirement": false,
+      "stageUnlocked": 2,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-wood-50.png"
+    },
+    {
+      "id": 2,
+      "name": "Axe",
+      "value": 1,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 1,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"
+    },
+    {
+      "id": 3,
+      "name": "Coal",
+      "value": 10,
+      "canBeSold": true,
+      "buyable": false,
+      "levelUpRequirement": false,
+      "stageUnlocked": 3,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-coal-50.png"
+    },
+    {
+      "id": 4,
+      "name": "Pickaxe",
+      "value": 500,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 2,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"
+    },
+    {
+      "id": 5,
+      "name": "Mechanical Pickaxe",
+      "value": 1500,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 3,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golden-fever-50.png"
+    },
+    {
+      "id": 6,
+      "name": "Acoustic guitar",
+      "value": 1,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 1,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-guitar-50.png"
+    },
+    {
+      "id": 7,
+      "name": "Diamond House",
+      "value": 50000000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 5,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-prefab-house-50.png"
+    },
+    {
+      "id": 8,
+      "name": "Iron ore",
+      "value": 30,
+      "canBeSold": true,
+      "buyable": false,
+      "levelUpRequirement": false,
+      "stageUnlocked": 3,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-iron-bars-48.png"
+    },
+    {
+      "id": 9,
+      "name": "Iron Armour",
+      "value": 100,
+      "canBeSold": true,
+      "buyable": false,
+      "levelUpRequirement": false,
+      "stageUnlocked": 4,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-roman-soldier-50.png"
+    },
+    {
+      "id": 10,
+      "name": "Hammer",
+      "value": 5000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 3,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-50.png"
+    },
+    {
+      "id": 11,
+      "name": "Forge",
+      "value": 50000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 3,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-fire-48.png"
+    },
+    {
+      "id": 12,
+      "name": "Selling to dummies for dummies book",
+      "value": 200000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 4,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-book-50.png"
+    },
+    {
+      "id": 13,
+      "name": "Blacksmith Assistant",
+      "value": 250000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 4,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-hammer-and-anvil-50.png"
+    },
+    {
+      "id": 14,
+      "name": "Advertising space",
+      "value": 500000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 5,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-billboard-50.png"
+    },
+    {
+      "id": 15,
+      "name": "Magic axe",
+      "value": 5,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 2,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-small-axe-50.png"
+    },
+    {
+      "id": 16,
+      "name": "Golf club",
+      "value": 100000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 5,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-golf-club-64.png"
+    },
+    {
+      "id": 17,
+      "name": "HR Department",
+      "value": 500000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 6,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-management-80.png"
+    },
+    {
+      "id": 18,
+      "name": "Golf Trophy",
+      "value": 75000,
+      "canBeSold": true,
+      "buyable": false,
+      "levelUpRequirement": false,
+      "stageUnlocked": 6,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-trophy-64.png"
+    },
+    {
+      "id": 19,
+      "name": "Golf Coach",
+      "value": 1000000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 6,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-coach-80.png"
+    },
+    {
+      "id": 20,
+      "name": "Spot on local election",
+      "value": 10000000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": true,
+      "stageUnlocked": 6,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-checkbox-80.png"
+    },
+    {
+      "id": 21,
+      "name": "Weekly donation Telathon",
+      "value": 15000000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 7,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-retro-tv-50.png"
+    },
+    {
+      "id": 22,
+      "name": "Vote",
+      "value": 20000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 7,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-tick-box-52.png"
+    },
+    {
+      "id": 23,
+      "name": "Canvassing Team",
+      "value": 20000000,
+      "canBeSold": false,
+      "buyable": true,
+      "levelUpRequirement": false,
+      "stageUnlocked": 7,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-doorbell-100.png"
+    },
+    {
+      "id": 24,
+      "name": "Election winners medal",
+      "value": 0,
+      "canBeSold": false,
+      "buyable": false,
+      "levelUpRequirement": true,
+      "stageUnlocked": 7,
+      "icon": "https://storyline-icons.s3-eu-west-1.amazonaws.com/icons8-gold-medal-50.png"
+    }
+  ]
 }

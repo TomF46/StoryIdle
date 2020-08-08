@@ -3,99 +3,114 @@
     <div class="card col-lg-8 col-xs-10 pointer" @click="runTask">
       <div class="row">
         <div class="col-xs-12 col-sm-2 col-md-1 center-items">
-        <img class="icon" :alt="task.name" :src="task.icon"/>
+          <img class="icon" :alt="task.name" :src="task.icon" />
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-3">
+          <p class="title">
+            {{task.name}}
+            <br />
+            <span class="duration">{{duration}} seconds</span>
+            <br />
+            <span class="detailText">{{earnsText}}</span>
+            <br />
+            <span class="detailText">{{costsText}}</span>
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-7 center-items">
+          <progress-bar
+            ref="progressbar"
+            :miliseconds="task.timeToComplete"
+            :overrunOwed="owedTime"
+            @taskFinished="onTaskFinished"
+            @taskStarted="onTaskStarted"
+            @taskCancelled="onTaskCancelled"
+          ></progress-bar>
+        </div>
+        <div class="col-xs-12 col-sm-1 center-items"></div>
       </div>
-      <div class="col-xs-12 col-sm-2 col-md-3">
-        <p class="title">{{task.name}} <br><span class="duration">{{duration}} seconds</span><br><span class="detailText">{{earnsText}}</span><br><span class="detailText">{{costsText}}</span></p>
-      </div>
-      <div class="col-xs-12 col-sm-7 col-md-7 center-items">
-        <progress-bar
-        ref="progressbar"
-        :miliseconds="task.timeToComplete"
-        :overrunOwed="owedTime"
-        @taskFinished="onTaskFinished"
-        @taskStarted="onTaskStarted"
-        @taskCancelled="onTaskCancelled"
-        ></progress-bar>
-      </div>
-      <div class="col-xs-12 col-sm-1 center-items"> 
-      </div>
-    </div>
     </div>
   </div>
 </template>
 
 <script>
 import ProgressBar from "./ProgressBar";
-import LogEnum from '../data/enums/LogItems.Enum'
+import LogEnum from "../data/enums/LogItems.Enum";
 
 export default {
   name: "task",
   components: {
-    ProgressBar
+    ProgressBar,
   },
   props: {
-    task: Object
+    task: Object,
   },
-  data: function() {
+  data: function () {
     return {
-      owedTime: 0
+      owedTime: 0,
     };
   },
   computed: {
-    taskUnlocked(){
+    taskUnlocked() {
       var currentStage = this.$store.state.playerData.currentStage;
       return this.task.requiredStage <= currentStage;
     },
-    automated(){
-      return this.$inventoryService.checkUserHasItems(this.task.automationRequirement);
+    automated() {
+      return this.$inventoryService.checkUserHasItems(
+        this.task.automationRequirement
+      );
     },
-    userHasRequiredItems(){
+    userHasRequiredItems() {
       return this.$inventoryService.checkUserHasItems(this.task.consumes);
     },
-    duration(){
+    duration() {
       return this.task.timeToComplete / 1000;
     },
-    earnsText(){
-      var text = `Earns: `
+    earnsText() {
+      var text = `Earns: `;
 
-      if(this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`
+      if (this.task.moneyReward > 0) text = text + `£${this.task.moneyReward}`;
 
-      this.task.itemRewards.forEach(item => {
-        var itemData = this.$itemService.getItem(item.id)
-        text = text + ` ${item.amount} ${itemData.name}`
+      this.task.itemRewards.forEach((item) => {
+        var itemData = this.$itemService.getItem(item.id);
+        text = text + ` ${item.amount} ${itemData.name}`;
       });
 
       return text;
     },
-    costsText(){
-      if(this.task.consumes.length == 0) return ""
+    costsText() {
+      if (this.task.consumes.length == 0) return "";
 
-      var text = "Costs: "
+      var text = "Costs: ";
 
-      this.task.consumes.forEach(requiredItem => {
+      this.task.consumes.forEach((requiredItem) => {
         var itemData = this.$itemService.getItem(requiredItem.id);
-        text = text + ` ${requiredItem.amount} ${itemData.name}`
-      })
+        text = text + ` ${requiredItem.amount} ${itemData.name}`;
+      });
 
       return text;
     },
-    activeTask(){
+    activeTask() {
       return this.$store.state.playerData.activeTask;
-    }
+    },
   },
   methods: {
     runTask() {
-      this.checkCanRunTask() ? this.$refs.progressbar.start() : this.$alerts.notification('Error',"User does not have required items", "");
+      this.checkCanRunTask()
+        ? this.$refs.progressbar.start()
+        : this.$alerts.notification(
+            "Error",
+            "User does not have required items",
+            ""
+          );
     },
     onTaskFinished(overrun) {
       if (this.checkTaskIsSuccessful()) {
         this.payUser();
       } else {
-        this.$alerts.notification('Error',"Task failed", "");
+        this.$alerts.notification("Error", "Task failed", "");
       }
 
-      this.$store.commit('setActiveTask', null)
+      this.$store.commit("setActiveTask", null);
 
       if (!this.automated) return;
 
@@ -107,48 +122,59 @@ export default {
       this.owedTime = overrun;
       this.runTask();
     },
-    onTaskCancelled(){
-      this.$store.commit('setActiveTask', null);
+    onTaskCancelled() {
+      this.$store.commit("setActiveTask", null);
       this.$store.dispatch("savePlayerData");
     },
-    onTaskStarted(){
-      this.$store.commit('setActiveTask', {id: this.task.id, startedTime: new Date().getTime()});
+    onTaskStarted() {
+      this.$store.commit("setActiveTask", {
+        id: this.task.id,
+        startedTime: new Date().getTime(),
+      });
       this.$store.dispatch("savePlayerData");
     },
     payUser() {
-      this.task.itemRewards.forEach(item => {
-        this.$inventoryService.addItemToInventory({id: item.id, amount: item.amount});
+      this.task.itemRewards.forEach((item) => {
+        this.$inventoryService.addItemToInventory({
+          id: item.id,
+          amount: item.amount,
+        });
       });
 
       this.$store.commit("addMoney", this.task.moneyReward);
-      this.$store.commit("addToLog", { text : `Completed ${this.task.name}`, type: LogEnum.Action});
+      this.$store.commit("addToLog", {
+        text: `Completed ${this.task.name}`,
+        type: LogEnum.Action,
+      });
       this.$store.dispatch("incrementTaskStats", this.task);
       this.$store.dispatch("savePlayerData");
     },
-    checkTaskIsSuccessful(){
+    checkTaskIsSuccessful() {
       return this.task.successRate >= Math.random();
     },
-    checkCanRunTask(){
-      if(!this.userHasRequiredItems) return false;
+    checkCanRunTask() {
+      if (!this.userHasRequiredItems) return false;
 
-      this.task.consumes.forEach(requiredItem => {
-        this.$inventoryService.removeItemFromInventory({id : requiredItem.id, amount: requiredItem.amount});
-      })
+      this.task.consumes.forEach((requiredItem) => {
+        this.$inventoryService.removeItemFromInventory({
+          id: requiredItem.id,
+          amount: requiredItem.amount,
+        });
+      });
 
       return true;
-    }
+    },
   },
   watch: {
     activeTask() {
-      if(this.activeTask == null) return;
+      if (this.activeTask == null) return;
 
-      if(this.activeTask.id == this.task.id) return;
+      if (this.activeTask.id == this.task.id) return;
 
-      if(this.$refs.progressbar == null) return;
-      this.$refs.progressbar.cancelTimer() //if not active task make sure timer is stopped as only 1 active task at a time
+      if (this.$refs.progressbar == null) return;
+      this.$refs.progressbar.cancelTimer(); //if not active task make sure timer is stopped as only 1 active task at a time
     },
-    
-  }
+  },
 };
 </script>
 
@@ -156,57 +182,56 @@ export default {
 .task {
   margin: 20px 0px;
 
-  .card{
+  .card {
     border-top: 4px solid #31708e;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 8px;
 
-    .duration{
+    .duration {
       text-align: center;
       font-size: 0.8rem;
       margin-top: 2px;
     }
 
-    .title{
+    .title {
       margin-top: 0;
       margin-bottom: 0;
       text-align: center;
       font-size: 1.1rem;
     }
 
-    .icon{
+    .icon {
       width: 2.5rem;
       margin: 0 auto;
     }
 
-    .detailText{
+    .detailText {
       text-align: center;
       font-size: 0.8rem;
     }
 
     @media only screen and (min-width: 48em) {
-      .center-items{
+      .center-items {
         position: relative;
-        .icon{
+        .icon {
           position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%,-50%);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           margin-top: 0;
         }
       }
 
-      .icon{
+      .icon {
         width: 100%;
         margin: 0 auto;
       }
     }
-
   }
 
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
-
 }
 </style>

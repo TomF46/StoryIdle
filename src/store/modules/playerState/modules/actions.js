@@ -1,140 +1,178 @@
-import Vue from 'vue'
-import StageData from '../../../../data/stages.json'
-import LogEnum from '../../../../data/enums/LogItems.Enum'
-import Tasks from '../../../../data/tasks.json'
-
+import Vue from "vue";
+import StageData from "../../../../data/stages.json";
+import LogEnum from "../../../../data/enums/LogItems.Enum";
+import Tasks from "../../../../data/tasks.json";
 
 const actions = {
-    buyItem({state, commit, dispatch}, request){
-      var totalCost = request.item.value * request.amount;
+  buyItem({ state, commit, dispatch }, request) {
+    var totalCost = request.item.value * request.amount;
 
-      if(state.money < totalCost){
-        Vue.prototype.$alerts.notification('error',"Unable to buy", "You dont have enough money for this item");
-        return;
-      }
+    if (state.money < totalCost) {
+      Vue.prototype.$alerts.notification(
+        "error",
+        "Unable to buy",
+        "You dont have enough money for this item"
+      );
+      return;
+    }
 
-      commit("subtractMoney", totalCost);
-      Vue.prototype.$inventoryService.addItemToInventory({id : request.item.id, amount: request.amount})
-      dispatch("savePlayerData");
-    },
-    sellItem({state, commit, dispatch}, request){
-      var inventoryItem = state.inventory.find(x => x.id == request.item.id);
+    commit("subtractMoney", totalCost);
+    Vue.prototype.$inventoryService.addItemToInventory({
+      id: request.item.id,
+      amount: request.amount,
+    });
+    dispatch("savePlayerData");
+  },
+  sellItem({ state, commit, dispatch }, request) {
+    var inventoryItem = state.inventory.find((x) => x.id == request.item.id);
 
-      if(inventoryItem == null) return
+    if (inventoryItem == null) return;
 
-      if(inventoryItem.amount < request.amount){
-        Vue.prototype.$alerts.notification('error',"Unable to sell", "You cant sell that many");
-        return;
-      }
+    if (inventoryItem.amount < request.amount) {
+      Vue.prototype.$alerts.notification(
+        "error",
+        "Unable to sell",
+        "You cant sell that many"
+      );
+      return;
+    }
 
-      commit("addMoney", request.item.value * request.amount);
-      Vue.prototype.$inventoryService.removeItemFromInventory({id : request.item.id, amount: request.amount})
-      dispatch("savePlayerData");
-    },
-    checkIfLevelUp({state, commit, dispatch}){
-      var nextStageId = state.currentStage + 1;
-      var nextStage = StageData.stages.find(stage => stage.id == nextStageId);
-      if(!nextStage) return;
+    commit("addMoney", request.item.value * request.amount);
+    Vue.prototype.$inventoryService.removeItemFromInventory({
+      id: request.item.id,
+      amount: request.amount,
+    });
+    dispatch("savePlayerData");
+  },
+  checkIfLevelUp({ state, commit, dispatch }) {
+    var nextStageId = state.currentStage + 1;
+    var nextStage = StageData.stages.find((stage) => stage.id == nextStageId);
+    if (!nextStage) return;
 
-      var levelUp = Vue.prototype.$inventoryService.checkUserHasItems(nextStage.requirements);
-      if(!levelUp) return;
+    var levelUp = Vue.prototype.$inventoryService.checkUserHasItems(
+      nextStage.requirements
+    );
+    if (!levelUp) return;
 
-      commit("moveToNextStage")
-      commit("addToLog", { text : nextStage.intro, type: LogEnum.Storyline})
+    commit("moveToNextStage");
+    commit("addToLog", { text: nextStage.intro, type: LogEnum.Storyline });
 
-      Vue.prototype.$alerts.dialog(`Unlocked ${nextStage.name}`, nextStage.intro);
-      dispatch("savePlayerData");
-    },
-    incrementTaskStats({state},task){
-      var TaskInStats = state.stats.tasks.find(x => x.id == task.id);
-      if(TaskInStats != null){
-        TaskInStats.totalComplete++;
-        return
-      };
+    Vue.prototype.$alerts.dialog(`Unlocked ${nextStage.name}`, nextStage.intro);
+    dispatch("savePlayerData");
+  },
+  incrementTaskStats({ state }, task) {
+    var TaskInStats = state.stats.tasks.find((x) => x.id == task.id);
+    if (TaskInStats != null) {
+      TaskInStats.totalComplete++;
+      return;
+    }
 
-      state.stats.tasks.push({id: task.id, name: task.name, totalComplete: 1});
-    },
-    giveOfflineGains({commit, dispatch, state}){
-      if(state.activeTask == null) return;
+    state.stats.tasks.push({ id: task.id, name: task.name, totalComplete: 1 });
+  },
+  giveOfflineGains({ commit, dispatch, state }) {
+    if (state.activeTask == null) return;
 
-      var task = Tasks.tasks.find(x => x.id == state.activeTask.id);
+    var task = Tasks.tasks.find((x) => x.id == state.activeTask.id);
 
-      var offlineTime = new Date().getTime() - state.activeTask.startedTime;
+    var offlineTime = new Date().getTime() - state.activeTask.startedTime;
 
-      var timesTaskCompleted = Math.floor(offlineTime / task.timeToComplete);
+    var timesTaskCompleted = Math.floor(offlineTime / task.timeToComplete);
 
-      if(timesTaskCompleted <= 0) return;
+    if (timesTaskCompleted <= 0) return;
 
-      var offlineMoneyGain = task.moneyReward * timesTaskCompleted;
+    var offlineMoneyGain = task.moneyReward * timesTaskCompleted;
 
-      if(offlineMoneyGain > 0) commit("addMoney", offlineMoneyGain);
+    if (offlineMoneyGain > 0) commit("addMoney", offlineMoneyGain);
 
-      task.itemRewards.forEach(item => {
-        Vue.prototype.$inventoryService.addItemToInventory({id: item.id, amount: item.amount * timesTaskCompleted});
+    task.itemRewards.forEach((item) => {
+      Vue.prototype.$inventoryService.addItemToInventory({
+        id: item.id,
+        amount: item.amount * timesTaskCompleted,
       });
+    });
 
-      var dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;
+    var dialogText = `Whilst you were offline you continued to ${task.name}, you gained`;
 
-      if(offlineMoneyGain > 0) dialogText = dialogText + `, ${Vue.prototype.$currenctFormatter.format(offlineMoneyGain)}`
+    if (offlineMoneyGain > 0)
+      dialogText =
+        dialogText +
+        `, ${Vue.prototype.$currenctFormatter.format(offlineMoneyGain)}`;
 
-      if(task.itemRewards.length > 0){
-        task.itemRewards.forEach(item => {
-          var itemData = Vue.prototype.$itemService.getItem(item.id);
-          dialogText = dialogText + `, ${item.amount * timesTaskCompleted} X ${itemData.name}`
-        });
-      }
+    if (task.itemRewards.length > 0) {
+      task.itemRewards.forEach((item) => {
+        var itemData = Vue.prototype.$itemService.getItem(item.id);
+        dialogText =
+          dialogText +
+          `, ${item.amount * timesTaskCompleted} X ${itemData.name}`;
+      });
+    }
 
-      Vue.prototype.$alerts.dialog("Offline gain", dialogText);
-      
-      commit("setActiveTask", null);
-      dispatch("savePlayerData");
-    },
-    loadPlayerData({state}){
-      return new Promise((resolve, reject) => {
-        Vue.prototype.$storage.get("playerData").then(data => {
-          if(data == null) resolve();
+    Vue.prototype.$alerts.dialog("Offline gain", dialogText);
 
-          Object.assign(state, data) 
+    commit("setActiveTask", null);
+    dispatch("savePlayerData");
+  },
+  loadPlayerData({ state }) {
+    return new Promise((resolve, reject) => {
+      Vue.prototype.$storage
+        .get("playerData")
+        .then((data) => {
+          if (data == null) resolve();
+
+          Object.assign(state, data);
           resolve();
-        }).catch(err => {
+        })
+        .catch((err) => {
           console.log(err);
           reject(err);
-        })
-      });
-    },
-    savePlayerData({state}){
-      return new Promise((resolve, reject) => {
-        Vue.prototype.$storage.set("playerData", state).then(data => {
+        });
+    });
+  },
+  savePlayerData({ state }) {
+    return new Promise((resolve, reject) => {
+      Vue.prototype.$storage
+        .set("playerData", state)
+        .then((data) => {
           console.log("Saved");
           resolve();
-        }).catch(err => {
-          Vue.prototype.$alerts.notification('error',"Unable to determine task level", "Not sure how this has happened");
-          reject();
         })
-      });
-    },
-    exportPlayerData(){
-      return new Promise((resolve, reject) => {
-        Vue.prototype.$storage.get("playerData").then(data => {
-          if(data == null){
+        .catch((err) => {
+          Vue.prototype.$alerts.notification(
+            "error",
+            "Unable to determine task level",
+            "Not sure how this has happened"
+          );
+          reject();
+        });
+    });
+  },
+  exportPlayerData() {
+    return new Promise((resolve, reject) => {
+      Vue.prototype.$storage
+        .get("playerData")
+        .then((data) => {
+          if (data == null) {
             reject();
           }
           resolve(window.btoa(JSON.stringify(data)));
-        }).catch(err => {
+        })
+        .catch((err) => {
           console.log(err);
           reject(err);
-        })
-      });
-    },
-    importPlayerData({state},playerData){
-      return new Promise((resolve, reject) => {
-        var data = JSON.parse(window.atob(playerData));
-        Object.assign(state, data) 
-        resolve();
-      });
-    },
-    resetData({state}){
-      Vue.prototype.$storage.removeAll().then(res => {
+        });
+    });
+  },
+  importPlayerData({ state }, playerData) {
+    return new Promise((resolve, reject) => {
+      var data = JSON.parse(window.atob(playerData));
+      Object.assign(state, data);
+      resolve();
+    });
+  },
+  resetData({ state }) {
+    Vue.prototype.$storage
+      .removeAll()
+      .then((res) => {
         state.money = 0;
         state.log = [];
         state.inventory = [];
@@ -142,13 +180,22 @@ const actions = {
         state.stats = {
           tasks: [],
           totalMoneyEarned: 0,
-          totalMoneySpent: 0
+          totalMoneySpent: 0,
         };
-        Vue.prototype.$alerts.notification('success',"Reset", "Data has been reset");
-      }).catch(error =>{
-        Vue.prototype.$alerts.notification('error',"Unable to reset data", "Not sure how this has happened");
+        Vue.prototype.$alerts.notification(
+          "success",
+          "Reset",
+          "Data has been reset"
+        );
+      })
+      .catch((error) => {
+        Vue.prototype.$alerts.notification(
+          "error",
+          "Unable to reset data",
+          "Not sure how this has happened"
+        );
       });
-    },
-  }
+  },
+};
 
 export default actions;

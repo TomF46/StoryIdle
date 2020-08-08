@@ -3,7 +3,7 @@
     <div v-if="loaded">
       <idle-header></idle-header>
       <keep-alive>
-      <router-view/>
+        <router-view />
       </keep-alive>
     </div>
     <notifications group="notify" position="bottom center" />
@@ -12,127 +12,143 @@
 </template>
 
 <script>
-import Header from './components/Header'
+import Header from "./components/Header";
 export default {
-  name: 'app',
-  components:{
-    "idle-header" : Header
+  name: "app",
+  components: {
+    "idle-header": Header,
   },
-  data: function() {
+  data: function () {
     return {
-      loaded: false
+      loaded: false,
     };
   },
-  computed:{
-    darkModeClass(){
+  computed: {
+    darkModeClass() {
       var isCurrentlyDarkMode = this.$store.state.settingsData.darkMode;
 
       return isCurrentlyDarkMode ? "dark" : "light";
-    }
+    },
   },
-  mounted(){
-    this.$store.dispatch("loadPlayerData").then(res => {
-      this.loaded = true;
-      this.$store.dispatch("giveOfflineGains");
-    }).catch(err =>{
-      console.log(err)
-      this.$alerts.notification('error',"Unable to load player data", "Not sure how this has happened");
-    });
+  mounted() {
+    this.$store
+      .dispatch("loadPlayerData")
+      .then((res) => {
+        this.loaded = true;
+        this.$store.dispatch("giveOfflineGains");
+      })
+      .catch((err) => {
+        console.log(err);
+        this.$alerts.notification(
+          "error",
+          "Unable to load player data",
+          "Not sure how this has happened"
+        );
+      });
     this.$store.dispatch("loadSettingsData");
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
-  /* Import flexgrid css during build */
-  @import '../node_modules/flexboxgrid/dist/flexboxgrid.min.css';
-  @import './assets/flexHelper.css';
+/* Import flexgrid css during build */
+@import "../node_modules/flexboxgrid/dist/flexboxgrid.min.css";
+@import "./assets/flexHelper.css";
 
-  html, body {
-    height:100%;
-    margin:0;
-    padding:0;
-    overflow-x: hidden;
-    font-family: 'Roboto', sans-serif;
-  }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
 
-  body, #app{
-    margin: 0px;
-    min-height: 100vh;
-  }
+body,
+#app {
+  margin: 0px;
+  min-height: 100vh;
+}
 
-  .center-text{
-    text-align: center;
-  }
+.center-text {
+  text-align: center;
+}
 
-  .page-title {
-    text-align: center;
-    font-size: 2rem;
-  }
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+}
 
-  .side-pane-title{
-    text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    font-size: 1.25rem;
-  }
+.side-pane-title {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+}
 
-  .pointer{
-    cursor: pointer;
-  }
+.pointer {
+  cursor: pointer;
+}
 
-.light{
+.light {
   background-color: #f0f0f0;
 
-  .navigation .navigation-button{
+  .navigation .navigation-button {
     background-color: #f0f0f0 !important;
   }
 
-  .item-card, .task-card, .card, .vue-dialog{
+  .item-card,
+  .task-card,
+  .card,
+  .vue-dialog {
     background-color: #fafafa;
   }
 }
 
-.dark{
+.dark {
   background-color: #121212;
 
   color: #edeeef;
 
-  .navigation .navigation-button{
+  .navigation .navigation-button {
     background-color: #121212 !important;
     color: #edeeef;
   }
 
-  .item-card, .task-card, .card, .vue-dialog{
+  .item-card,
+  .task-card,
+  .card,
+  .vue-dialog {
     background-color: #404040;
   }
 
-  .v-select{
+  .v-select {
     background-color: #edeeef;
   }
 
-  .header{
+  .header {
     background-color: #121212;
     color: #31708e;
   }
 }
 
-.shop, .inventory {
+.shop,
+.inventory {
   margin: 0 5vw;
 
-  .shelves{
+  .shelves {
     margin-top: 40px;
   }
 
-  .search-box{
+  .search-box {
     width: 100%;
     margin-left: 10px;
     height: 90%;
     background-color: #edeeef;
-    border: 1px solid rgba(60,60,60,.26);
+    border: 1px solid rgba(60, 60, 60, 0.26);
   }
 
-  .v-select{
+  .v-select {
     margin-right: 10px;
   }
 
@@ -163,11 +179,11 @@ export default {
       bottom: 0;
       border-radius: 0 0 5px 5px;
     }
-    .card-text{
+    .card-text {
       padding-bottom: 40px; // to clear card button
     }
 
-    .icon{
+    .icon {
       width: 33%;
       margin: 0 auto;
     }

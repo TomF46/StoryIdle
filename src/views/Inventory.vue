@@ -8,7 +8,7 @@
         <p class="page-title">{{money}}</p>
       </div>
       <div class="col-xs-5 col-md-3">
-        <input class="search-box" v-model="searchTerm" placeholder="Search for item">
+        <input class="search-box" v-model="searchTerm" placeholder="Search for item" />
       </div>
       <div class="col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6">
         <v-select v-model="amountToSell" :options="amountToSellOptions" :clearable="false" />
@@ -26,7 +26,10 @@
           <div class="col-xs-12">
             <p class="card-text center-text">Stock {{item.amount}}</p>
           </div>
-          <button v-if="item.canBeSold" class="card-button pointer">Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
+          <button
+            v-if="item.canBeSold"
+            class="card-button pointer"
+          >Sell {{amountToSell}} £{{getTotalValue(item.value)}}</button>
           <button v-if="!item.canBeSold" class="card-button cant-sell">Not for resale</button>
         </div>
       </div>
@@ -36,55 +39,60 @@
 
 <script>
 export default {
-  name: 'Inventory',
-  data: function() {
+  name: "Inventory",
+  data: function () {
     return {
       searchTerm: "",
       amountToSell: 1,
-      amountToSellOptions: [1,5,10,100]
+      amountToSellOptions: [1, 5, 10, 100],
     };
   },
-  computed:{
-      inventoryItems(){
-        var items = [];
+  computed: {
+    inventoryItems() {
+      var items = [];
 
-        this.$store.state.playerData.inventory.forEach(item => {
-            var copy = this.$itemService.getItem(item.id);
-            copy.amount = item.amount;
-            items.push(copy);
-        });
-        return items;
-      },
-      searchResults(){
-        if(!this.searchTerm) return this.inventoryItems;
+      this.$store.state.playerData.inventory.forEach((item) => {
+        var copy = this.$itemService.getItem(item.id);
+        copy.amount = item.amount;
+        items.push(copy);
+      });
+      return items;
+    },
+    searchResults() {
+      if (!this.searchTerm) return this.inventoryItems;
 
-        return this.inventoryItems.filter(x => x.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
-      },
-      money(){
-        return this.$currenctFormatter.format(this.$store.state.playerData.money);
-      },
+      return this.inventoryItems.filter((x) =>
+        x.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    },
+    money() {
+      return this.$currenctFormatter.format(this.$store.state.playerData.money);
+    },
   },
-  methods:{
-      sellItem(item){
-        if(!item.canBeSold) return;
-          this.$store.dispatch("sellItem", {item: item, amount: this.amountToSell});
-      },
-      getTotalValue(unitPrice){
-        return unitPrice * this.amountToSell;
-      },
-      canSellCss(canBeSold){
-        return canBeSold ? "pointer" : "";
-      }
-  }
-}
+  methods: {
+    sellItem(item) {
+      if (!item.canBeSold) return;
+      this.$store.dispatch("sellItem", {
+        item: item,
+        amount: this.amountToSell,
+      });
+    },
+    getTotalValue(unitPrice) {
+      return unitPrice * this.amountToSell;
+    },
+    canSellCss(canBeSold) {
+      return canBeSold ? "pointer" : "";
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-.inventory{
-  .card-button.cant-sell{
+.inventory {
+  .card-button.cant-sell {
     background-color: #404040;
   }
-  .item-card .icon{
+  .item-card .icon {
     padding-bottom: 10px;
   }
 }

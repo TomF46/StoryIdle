@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div :class="dynamicViewPortClass" class="game-viewport">
-      <div id="inventory-pane" class="col-xs-0 col-sm-2  hidden-xs pane">
+      <div id="inventory-pane" class="col-xs-0 col-sm-2 hidden-xs pane">
         <game-inventory></game-inventory>
       </div>
       <div id="tasks-pane" class="col-xs-12 col-md-8 pane">
@@ -24,26 +24,26 @@
 </template>
 
 <script>
-import QuickInventory from '../components/Quick-Inventory'
-import Log from '../components/Log'
-import Navigation from '../components/Navigation'
+import QuickInventory from "../components/Quick-Inventory";
+import Log from "../components/Log";
+import Navigation from "../components/Navigation";
 
 export default {
-  name: 'Main',
-  components:{
-    "game-inventory" : QuickInventory,
-    "game-log" : Log,
-    "game-navigation" : Navigation
+  name: "Main",
+  components: {
+    "game-inventory": QuickInventory,
+    "game-log": Log,
+    "game-navigation": Navigation,
   },
   data() {
     return {
-      pageWidth: 0
+      pageWidth: 0,
     };
   },
-  computed:{
-    dynamicViewPortClass(){
+  computed: {
+    dynamicViewPortClass() {
       return this.pageWidth >= 64 ? "row" : "";
-    }
+    },
   },
   created() {
     window.addEventListener("resize", this.handleResize);
@@ -51,40 +51,40 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },
-  mounted(){
+  mounted() {
     this.setPageWidth();
   },
-  methods:{
-    handleResize(){
+  methods: {
+    handleResize() {
       this.setPageWidth();
     },
-    setPageWidth(){
-      this.pageWidth = window.innerWidth / parseFloat(
-        getComputedStyle(
-          document.querySelector('body')
-        )['font-size']
-      )
-    }
-  }
-}
+    setPageWidth() {
+      this.pageWidth =
+        window.innerWidth /
+        parseFloat(
+          getComputedStyle(document.querySelector("body"))["font-size"]
+        );
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-.main{
-  #inventory-pane{
+.main {
+  #inventory-pane {
     border-right: 1px solid grey;
   }
-  #log-pane{
+  #log-pane {
     border-left: 1px solid grey;
   }
-  #tasks-pane{
+  #tasks-pane {
     padding: 0px;
     padding-bottom: 10px;
   }
-  .pane{
+  .pane {
     min-height: calc(100vh - 4rem);
   }
-  .navigation-bar{
+  .navigation-bar {
     height: 4rem;
     border-bottom: 1px solid grey;
   }
@@ -99,6 +99,6 @@ export default {
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 </style>
